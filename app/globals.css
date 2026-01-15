@@ -1,26 +1,194 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Premium Blue-Accented Dark Mode by Default */
+    
+    /* Backgrounds: Deep, rich midnight tones */
+    --background: #0A0E17;  /* Deepest navy */
+    --foreground: #F8FAFC;  /* Cool white */
+    
+    /* Cards: Glassmorphism base */
+    --card: rgba(16, 23, 41, 0.7);
+    --card-foreground: #F8FAFC;
+    
+    /* Popovers */
+    --popover: #111827;
+    --popover-foreground: #F8FAFC;
+    
+    /* Brand Colors: Electric Blue & Cyan */
+    --primary: #3B82F6;     /* Electric Blue */
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #1E293B;   /* Slate Blue */
+    --secondary-foreground: #F8FAFC;
+    
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+    
+    --accent: #06B6D4;      /* Cyan highlight */
+    --accent-foreground: #FFFFFF;
+    
+    --destructive: #EF4444;
+    --destructive-foreground: #F8FAFC;
+
+    --border: rgba(148, 163, 184, 0.1);
+    --input: rgba(148, 163, 184, 0.1);
+    --ring: #3B82F6;
+    
+    --radius: 0.75rem;
+    
+    /* Glassmorphism Utilities */
+    --glass-bg: rgba(16, 23, 41, 0.6);
+    --glass-border: rgba(148, 163, 184, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  }
+
+  .light {
+    /* Softer Light Mode — no plain white, gentle neutral tint */
+    --background: #edf1f7;
+    --foreground: #111827;
+    
+    --card: rgba(255, 255, 255, 0.85);
+    --card-foreground: #111827;
+    
+    --popover: #f8fafc;
+    --popover-foreground: #111827;
+    
+    --primary: #1d4ed8;
+    --primary-foreground: #ffffff;
+    
+    --secondary: #e2e8f0;
+    --secondary-foreground: #111827;
+    
+    --muted: #e2e8f0;
+    --muted-foreground: #4b5563;
+    
+    --accent: #0ea5e9;
+    --accent-foreground: #ffffff;
+    
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+
+    --border: #cfd8e3;
+    --input: #cfd8e3;
+    --ring: #1d4ed8;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Hide scrollbars globally - can be overridden per page */
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /* Show scrollbars on portfolio and other pages */
+  body.portfolio-page,
+  body.portfolio-page html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
+  }
+  
+  body.portfolio-page::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  body.portfolio-page::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  body.portfolio-page::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.2);
+    border-radius: 4px;
+  }
+  
+  body.portfolio-page::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 163, 184, 0.4);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in srgb, var(--card) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(1.08);
+    -webkit-backdrop-filter: blur(14px) saturate(1.08);
+    border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  }
+  
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glass-hover:hover {
+    background: color-mix(in srgb, var(--card) 96%, transparent);
+    border-color: color-mix(in srgb, var(--border) 95%, transparent);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.22);
+    transform: translateY(-3px);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  
+  /* Hide scrollbars completely */
+  .no-scrollbar {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  /* Hide scrollbars on home page specifically */
+  body:has(.no-scrollbar) {
+    overflow-x: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  
+  body:has(.no-scrollbar)::-webkit-scrollbar {
+    display: none !important;
+  }
 }
