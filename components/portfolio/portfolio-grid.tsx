@@ -2,9 +2,11 @@
 
 import { Photo } from "@/types/photo";
 import { useState, useMemo, useEffect, useRef } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { GlassCard } from "@/components/ui/glass-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { PhotoLightbox } from "@/components/portfolio/photo-lightbox";
+import { FavoriteButton } from "@/components/favorites/favorite-button";
 import { Filter, MapPin, SlidersHorizontal, Search, Tag, ChevronLeft, ChevronRight, Camera, Aperture, Zap, GaugeCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buildGoogleMapsUrlFromGps, buildGoogleMapsUrlFromLocation } from "@/lib/location";
@@ -14,9 +16,18 @@ interface PortfolioGridProps {
 }
 
 export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
-    const [filter, setFilter] = useState("all");
-    const [seriesFilter, setSeriesFilter] = useState("all");
-    const [query, setQuery] = useState("");
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const [filter, setFilter] = useState(() => searchParams.get("category") || "all");
+    const [seriesFilter, setSeriesFilter] = useState(() => searchParams.get("series") || "all");
+    const [query, setQuery] = useState(() => searchParams.get("q") || "");
+    const [showExif, setShowExif] = useState<boolean>(() => {
+        if (typeof window === "undefined") return true;
+        const stored = typeof localStorage !== "undefined" ? localStorage.getItem("jaygraphy-show-exif") : null;
+        return stored ? stored === "1" : true;
+    });
     const [page, setPage] = useState(1);
     const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(null);
     const gridTopRef = useRef<HTMLDivElement | null>(null);
@@ -60,6 +71,23 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
             setPage(1);
         }
     }, [filteredPhotos.length, page, PAGE_SIZE]);
+
+    // Persist EXIF toggle
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            localStorage.setItem("jaygraphy-show-exif", showExif ? "1" : "0");
+        }
+    }, [showExif]);
+
+    // Sync URL with current filters
+    useEffect(() => {
+        const params = new URLSearchParams();
+        if (filter !== "all") params.set("category", filter);
+        if (seriesFilter !== "all") params.set("series", seriesFilter);
+        if (query.trim()) params.set("q", query.trim());
+        const qs = params.toString();
+        router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    }, [filter, seriesFilter, query, pathname, router]);
 
     // Scroll to top of grid when page changes
     useEffect(() => {
@@ -148,7 +176,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                             <SlidersHorizontal className="w-3 h-3" />
                             <span className="font-medium">Series</span>
                         </div>
-                        {["all", "niagara", "bruce", "montreal", "toronto", "goa", "kerala"].map((s) => (
+                        {["all", "niagara", "bruce", "montreal", "toronto", "goa", "kerala", "bhuj", "quebec", "etobicoke"].map((s) => (
                             <button
                                 key={s}
                                 onClick={() => {
@@ -165,6 +193,26 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                                 {s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1)}
                             </button>
                         ))}
+
+                        <button
+                            onClick={() => setShowExif((v) => !v)}
+                            className={cn(
+                                "ml-2 px-3 py-1 rounded-full border text-[11px] uppercase tracking-wide",
+                                showExif ? "bg-primary text-primary-foreground border-primary" : "bg-transparent border-white/10 text-muted-foreground hover:border-blue-500/50 hover:text-white"
+                            )}
+                        >
+                            EXIF {showExif ? "On" : "Off"}
+                        </button>
+
+                        <button
+                            onClick={async () => {
+                                const url = typeof window !== "undefined" ? window.location.href : "";
+                                if (url) await navigator.clipboard.writeText(url);
+                            }}
+                            className="px-3 py-1 rounded-full border text-[11px] uppercase tracking-wide bg-white/5 hover:bg-white/10 text-muted-foreground"
+                        >
+                            Copy filtered view
+                        </button>
                     </div>
                 </div>
             </div>
@@ -198,6 +246,9 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 relative z-10"
                                             onLoad={(e) => (e.currentTarget.previousElementSibling as HTMLElement | null)?.classList.add("opacity-0")}
                                         />
+                                        <div className="absolute top-2 left-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <FavoriteButton photoId={photo.id} size={16} />
+                                        </div>
                                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                             <span className="px-4 py-2 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-white text-sm font-medium">View Details</span>
                                         </div>
@@ -206,33 +257,34 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                                             {photo.category}
                                         </div>
 
-                                        {/* EXIF chips on hover */}
-                                        <div className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            {photo.exif.model && (
-                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                    <Camera className="w-3 h-3" />
-                                                    {photo.exif.model}
-                                                </span>
-                                            )}
-                                            {photo.exif.aperture && (
-                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                    <Aperture className="w-3 h-3" />
-                                                    {photo.exif.aperture}
-                                                </span>
-                                            )}
-                                            {photo.exif.iso && (
-                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                    <Zap className="w-3 h-3" />
-                                                    ISO {photo.exif.iso}
-                                                </span>
-                                            )}
-                                            {photo.exif.focalLength && (
-                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                    <GaugeCircle className="w-3 h-3" />
-                                                    {photo.exif.focalLength}
-                                                </span>
-                                            )}
-                                        </div>
+                                        {showExif && (
+                                            <div className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                {photo.exif.model && (
+                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                        <Camera className="w-3 h-3" />
+                                                        {photo.exif.model}
+                                                    </span>
+                                                )}
+                                                {photo.exif.aperture && (
+                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                        <Aperture className="w-3 h-3" />
+                                                        {photo.exif.aperture}
+                                                    </span>
+                                                )}
+                                                {photo.exif.iso && (
+                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                        <Zap className="w-3 h-3" />
+                                                        ISO {photo.exif.iso}
+                                                    </span>
+                                                )}
+                                                {photo.exif.focalLength && (
+                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                        <GaugeCircle className="w-3 h-3" />
+                                                        {photo.exif.focalLength}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="p-4 space-y-1">
                                         <h3 className="font-bold text-lg leading-tight group-hover:text-blue-400 transition-colors">

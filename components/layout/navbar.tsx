@@ -10,6 +10,8 @@ import { Upload } from "lucide-react"
 const navItems = [
     { name: "Home", href: "/" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Map", href: "/map" },
+    { name: "Favorites", href: "/favorites" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
 ]
@@ -19,7 +21,7 @@ export function Navbar() {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-            <div className="absolute inset-0 bg-background/60 backdrop-blur-xl border-b border-white/5" />
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-xl border-b border-border/60 shadow-sm" />
 
             <div className="container relative mx-auto px-4 h-20 flex items-center justify-between">
                 <Link href="/" className="text-2xl font-bold tracking-tighter hover:text-primary transition-colors flex items-center gap-2">

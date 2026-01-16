@@ -30,7 +30,7 @@ export function FeaturedStrip({ photos }: FeaturedStripProps) {
     }
 
     return (
-        <section className="py-20 relative z-10 bg-background/60 backdrop-blur-sm border-y border-border transition-colors duration-300 text-foreground">
+        <section className="py-16 relative z-10 bg-background/70 backdrop-blur-md border-y border-border transition-colors duration-300 text-foreground">
             <div className="container mx-auto px-4 mb-10 flex items-end justify-between">
                 <div>
                     <h2 className="text-3xl md:text-4xl font-bold mb-2">Latest Captures</h2>

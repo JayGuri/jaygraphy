@@ -1,10 +1,11 @@
 import { HeroSection } from "@/components/home/hero-section";
-import { FeaturedStrip } from "@/components/home/featured-strip";
+import { FeaturedStories } from "@/components/home/featured-stories";
+import { HomeBento } from "@/components/home/home-bento";
+import { LocationPins } from "@/components/home/location-pins";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { Navbar } from "@/components/layout/navbar";
 import { getAllPhotos } from "@/lib/photo-storage";
 import { TripTimeline } from "@/components/home/trip-timeline";
-import { MapCta } from "@/components/home/map-cta";
 
 export const dynamic = 'force-dynamic';
 
@@ -19,8 +20,9 @@ export default async function Home() {
 
       <main className="relative z-10 overflow-hidden bg-background text-foreground">
         <HeroSection />
-        <FeaturedStrip photos={featuredPhotos} />
-        <MapCta />
+        <HomeBento />
+        <FeaturedStories photos={featuredPhotos} />
+        <LocationPins />
         <TripTimeline />
       </main>
     </div>

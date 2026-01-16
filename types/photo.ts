@@ -3,8 +3,13 @@ export interface Photo {
     title: string;
     // Flexible category system but keeping some standard ones for type safety suggestion
     category: "street" | "nature" | "city" | "portrait" | "landscape" | "minimal" | "other" | string;
+    series?: "niagara" | "bruce" | "montreal" | "toronto" | "goa" | "kerala" | "bhuj" | "quebec" | "etobicoke" | string;
     location: string;
+    coordinates?: { lat: number; lng: number };
+    dms?: string;
     description?: string;
+    behindTheShot?: string;
+    exifToggleHidden?: boolean;
     src: string;
     width: number;
     height: number;

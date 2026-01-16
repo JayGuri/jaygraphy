@@ -19,7 +19,7 @@ export function TripTimeline() {
           <span className="text-xs text-muted-foreground">Chronology</span>
         </div>
         <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-border/60 hidden md:block" />
+          <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-border/80 hidden md:block" />
           <div className="space-y-4">
             {trips.map((trip, idx) => (
               <div key={trip.title} className="relative pl-0 md:pl-12">

@@ -2,10 +2,11 @@
 
 import { Photo } from "@/types/photo";
 import { motion } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, Camera, MapPin, Calendar, Share2, Download, Maximize2 } from "lucide-react";
-import { useEffect } from "react";
+import { X, ChevronLeft, ChevronRight, Camera, MapPin, Calendar, Share2, Download, Maximize2, Heart, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { buildGoogleMapsUrlFromGps, buildGoogleMapsUrlFromLocation, formatDMS } from "@/lib/location";
+import { useFavorites } from "@/components/favorites/use-favorites";
 
 interface PhotoLightboxProps {
     photo: Photo;
@@ -15,6 +16,10 @@ interface PhotoLightboxProps {
 }
 
 export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxProps) {
+    const { isFavorite, toggleFavorite } = useFavorites();
+    const fav = isFavorite(photo.id);
+    const [showStory, setShowStory] = useState(false);
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
@@ -26,10 +31,13 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                     el.requestFullscreen().catch(() => {});
                 }
             }
+            if (e.key.toLowerCase() === "h") {
+                toggleFavorite(photo.id);
+            }
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [onClose, onNext, onPrev]);
+    }, [onClose, onNext, onPrev, toggleFavorite, photo.id]);
 
     const mapsUrl = photo.exif?.gps
         ? buildGoogleMapsUrlFromGps(photo.exif.gps.latitude, photo.exif.gps.longitude)
@@ -73,6 +81,13 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
             <div className="flex flex-col lg:flex-row gap-8 w-full max-w-7xl h-full items-center justify-center">
                 {/* Main Image */}
                 <div className="flex-1 relative w-full h-full flex items-center justify-center">
+                    <button
+                        onClick={() => toggleFavorite(photo.id)}
+                        className="absolute top-4 left-4 p-2 rounded-full bg-black/60 text-white/80 hover:text-red-400 hover:bg-black/80 transition z-50"
+                        aria-label={fav ? "Remove from favorites" : "Add to favorites"}
+                    >
+                        <Heart className="w-5 h-5" fill={fav ? "currentColor" : "none"} />
+                    </button>
                     <motion.img
                             id="lightbox-img"
                         key={photo.id}
@@ -179,6 +194,23 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                                 <div className="flex items-center gap-2 text-xs text-muted-foreground pt-4 border-t border-white/5">
                                     <Calendar className="w-3 h-3" />
                                     TAKEN ON {new Date(photo.takenAt).toLocaleDateString()}
+                                </div>
+                            )}
+
+                            {photo.behindTheShot && (
+                                <div className="pt-4 border-t border-white/5 space-y-2">
+                                    <button
+                                        onClick={() => setShowStory((v) => !v)}
+                                        className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition"
+                                    >
+                                        <ChevronDown className={`w-4 h-4 transition ${showStory ? "rotate-180" : ""}`} />
+                                        Behind the shot
+                                    </button>
+                                    {showStory && (
+                                        <p className="text-sm text-muted-foreground leading-relaxed">
+                                            {photo.behindTheShot}
+                                        </p>
+                                    )}
                                 </div>
                             )}
 
