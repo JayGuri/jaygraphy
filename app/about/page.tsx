@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/layout/navbar";
 import { GlassCard } from "@/components/ui/glass-card";
 import { AnimatedBackground } from "@/components/ui/animated-background";
-import { Camera, MapPin, Coffee, Code } from "lucide-react";
+import { Camera, MapPin, Coffee, Code, Sparkles, Compass } from "lucide-react";
 
 export default function About() {
     return (
-        <div className="min-h-screen pb-20">
+        <div className="min-h-screen pb-20 bg-background text-foreground transition-colors duration-300">
             <AnimatedBackground />
             <Navbar />
 
@@ -13,10 +13,10 @@ export default function About() {
                 <div className="max-w-4xl mx-auto space-y-8">
                     <div className="space-y-4">
                         <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
-                            Behind the Lens
+                            About Jaygraphy
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                            I'm Jay, a photographer and engineer obsessed with the intersection of technology and art.
+                            I’m Jay, an engineering student and photographer blending tech discipline with storytelling.
                         </p>
                     </div>
 
@@ -27,8 +27,7 @@ export default function About() {
                             </div>
                             <h3 className="text-2xl font-bold">The Philosophy</h3>
                             <p className="text-muted-foreground">
-                                I believe photography is more than just capturing light—it's about preserving a feeling.
-                                My work focuses on the candid, the quiet moments in chaotic cities, and the vast silence of nature.
+                                Photography is how I preserve feeling. I chase candid light in chaotic cities and the vast silence of nature, aiming for frames that feel lived-in, not staged.
                             </p>
                         </GlassCard>
 
@@ -38,14 +37,43 @@ export default function About() {
                             </div>
                             <h3 className="text-2xl font-bold">The Tech</h3>
                             <p className="text-muted-foreground">
-                                Shot primarily on Sony Alpha systems. Edited with a focus on color theory and mood.
-                                This portfolio itself is an experiment in digital expression, built with Next.js and modern web technologies.
+                                Sony-first, mobile-second. I edit with restraint—color theory, clean contrast, zero gimmicks. This portfolio is a live lab built with Next.js to ship ideas fast.
                             </p>
                         </GlassCard>
                     </div>
 
-                    <GlassCard className="p-8 mt-8">
-                        <h3 className="text-xl font-bold mb-6">Equipment Bag</h3>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <GlassCard className="p-6 space-y-3">
+                            <div className="flex items-center gap-3 text-blue-400">
+                                <Sparkles className="w-5 h-5" />
+                                <h3 className="text-lg font-bold">Signature</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm">
+                                Moody blues, clean lines, and human scale—balancing softness in nature with structure in cities.
+                            </p>
+                        </GlassCard>
+                        <GlassCard className="p-6 space-y-3">
+                            <div className="flex items-center gap-3 text-cyan-400">
+                                <Compass className="w-5 h-5" />
+                                <h3 className="text-lg font-bold">Destinations</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm">
+                                Bruce Peninsula, Niagara Falls, Montreal nights, Toronto streets, Kerala tea hills, Goa coasts.
+                            </p>
+                        </GlassCard>
+                        <GlassCard className="p-6 space-y-3">
+                            <div className="flex items-center gap-3 text-amber-400">
+                                <Coffee className="w-5 h-5" />
+                                <h3 className="text-lg font-bold">Workflow</h3>
+                            </div>
+                            <p className="text-muted-foreground text-sm">
+                                Shoot → Cull → Color in Lightroom → Ship. No over-processing; let the light breathe.
+                            </p>
+                        </GlassCard>
+                    </div>
+
+                    <GlassCard className="p-8 mt-6">
+                        <h3 className="text-xl font-bold mb-6">Gear & Toolkit</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div className="p-4 rounded-lg bg-white/5 border border-white/5 text-center">
                                 <span className="block font-bold text-blue-300">Sony a6400</span>

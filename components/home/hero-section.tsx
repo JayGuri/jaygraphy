@@ -7,7 +7,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 
 export function HeroSection() {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center -mt-20 pt-20 transition-colors duration-300">
+        <section className="relative min-h-[90vh] flex items-center justify-center -mt-12 pt-16 transition-colors duration-300">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" />
@@ -33,15 +33,15 @@ export function HeroSection() {
                         </motion.div>
 
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]">
-                            <span className="text-white">Capturing</span>
+                            <span className="text-foreground dark:text-white transition-colors">Capturing</span>
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 text-glow">
                                 The Unseen
                             </span>
                         </h1>
 
-                        <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
-                            Engineering student by day, photographer by passion. Capturing moments from the Grotto to city streets, documenting the world through my lens—one frame at a time.
+                        <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
+                            Engineering student by day, photographer by passion. From the Grotto’s blue caves to late-night city light trails—I shoot, ship, and share the story in every frame.
                         </p>
                     </div>
 

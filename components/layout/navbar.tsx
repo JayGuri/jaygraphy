@@ -23,8 +23,8 @@ export function Navbar() {
 
             <div className="container relative mx-auto px-4 h-20 flex items-center justify-between">
                 <Link href="/" className="text-2xl font-bold tracking-tighter hover:text-primary transition-colors flex items-center gap-2">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
-                        JAY.G
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400">
+                        JAYGRAPHY
                     </span>
                 </Link>
 
