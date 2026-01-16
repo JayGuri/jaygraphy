@@ -1,17 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Camera, Globe } from "lucide-react";
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 
 export function HeroSection() {
+    const { scrollY } = useScroll();
+    const blobY = useTransform(scrollY, [0, 400], [0, -60]);
+    const blobY2 = useTransform(scrollY, [0, 400], [0, 40]);
+
     return (
         <section className="relative min-h-[90vh] flex items-center justify-center -mt-12 pt-16 transition-colors duration-300">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse delay-1000" />
+                <motion.div style={{ y: blobY }} className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" />
+                <motion.div style={{ y: blobY2 }} className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse delay-1000" />
             </div>
 
             <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10 text-foreground">
@@ -50,7 +54,7 @@ export function HeroSection() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="group relative px-8 py-4 bg-white text-black font-bold rounded-full flex items-center gap-2 overflow-hidden"
+                                className="group relative px-8 py-4 bg-white text-black font-bold rounded-full flex items-center gap-2 overflow-hidden shimmer"
                             >
                                 <span className="relative z-10">View Portfolio</span>
                                 <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -126,6 +130,28 @@ export function HeroSection() {
                 <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
                 <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
             </motion.div>
+
+            {/* Featured Story CTA */}
+            <div className="container mx-auto px-4 mt-12 relative z-10">
+                <GlassCard className="p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-card/80 border border-border/70">
+                    <div>
+                        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Featured Story</p>
+                        <h3 className="text-2xl font-bold text-foreground">Niagara Falls — Mist, Motion, Midnight Blues</h3>
+                        <p className="text-sm text-muted-foreground mt-1 max-w-2xl">
+                            A series on water, light, and speed. Long exposures, spray in the air, and the glow of the falls after dark.
+                        </p>
+                    </div>
+                    <Link href="/portfolio">
+                        <motion.button
+                            whileHover={{ scale: 1.04 }}
+                            whileTap={{ scale: 0.96 }}
+                            className="px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow shimmer"
+                        >
+                            View the Series
+                        </motion.button>
+                    </Link>
+                </GlassCard>
+            </div>
         </section>
     );
 }

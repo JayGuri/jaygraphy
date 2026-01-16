@@ -5,7 +5,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { PhotoLightbox } from "@/components/portfolio/photo-lightbox";
-import { Filter, MapPin, SlidersHorizontal, Search, Tag, ChevronLeft, ChevronRight } from "lucide-react";
+import { Filter, MapPin, SlidersHorizontal, Search, Tag, ChevronLeft, ChevronRight, Camera, Aperture, Zap, GaugeCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buildGoogleMapsUrlFromGps, buildGoogleMapsUrlFromLocation } from "@/lib/location";
 
@@ -15,6 +15,7 @@ interface PortfolioGridProps {
 
 export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
     const [filter, setFilter] = useState("all");
+    const [seriesFilter, setSeriesFilter] = useState("all");
     const [query, setQuery] = useState("");
     const [page, setPage] = useState(1);
     const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(null);
@@ -35,6 +36,11 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
             result = result.filter((p) => p.category.toString().toLowerCase() === filter);
         }
 
+        if (seriesFilter !== "all") {
+            const key = seriesFilter.toLowerCase();
+            result = result.filter((p) => p.location.toLowerCase().includes(key));
+        }
+
         if (query.trim()) {
             const q = query.toLowerCase();
             result = result.filter((p) => {
@@ -45,7 +51,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
         }
 
         return result;
-    }, [initialPhotos, filter, query]);
+    }, [initialPhotos, filter, query, seriesFilter]);
 
     // Reset page when filters change
     useEffect(() => {
@@ -136,6 +142,30 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                             className="w-full pl-9 pr-3 py-2 rounded-full bg-white/5 border border-white/10 text-sm outline-none focus:border-blue-500/70 focus:ring-1 focus:ring-blue-500/50"
                         />
                     </div>
+
+                    <div className="flex flex-wrap items-center gap-2 text-xs">
+                        <div className="flex items-center gap-1 text-muted-foreground mr-1">
+                            <SlidersHorizontal className="w-3 h-3" />
+                            <span className="font-medium">Series</span>
+                        </div>
+                        {["all", "niagara", "bruce", "montreal", "toronto", "goa", "kerala"].map((s) => (
+                            <button
+                                key={s}
+                                onClick={() => {
+                                    setSeriesFilter(s);
+                                    setPage(1);
+                                }}
+                                className={cn(
+                                    "px-3 py-1 rounded-full border text-[11px] uppercase tracking-wide",
+                                    seriesFilter === s
+                                        ? "bg-blue-600 border-blue-500 text-white"
+                                        : "bg-transparent border-white/10 text-muted-foreground hover:border-blue-500/50 hover:text-white"
+                                )}
+                            >
+                                {s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1)}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -160,11 +190,13 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                             >
                                 <GlassCard hoverEffect className="p-0 overflow-hidden h-full bg-muted/20 border-white/5">
                                     <div className="aspect-[3/4] relative overflow-hidden">
+                                        <div className="absolute inset-0 skeleton" />
                                         <img
                                             src={photo.src}
                                             alt={photo.title}
                                             loading="lazy"
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 relative z-10"
+                                            onLoad={(e) => (e.currentTarget.previousElementSibling as HTMLElement | null)?.classList.add("opacity-0")}
                                         />
                                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                             <span className="px-4 py-2 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-white text-sm font-medium">View Details</span>
@@ -172,6 +204,34 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
 
                                         <div className="absolute top-2 right-2 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-[10px] uppercase font-bold tracking-widest text-white/80 opacity-0 group-hover:opacity-100 transition-opacity delay-100">
                                             {photo.category}
+                                        </div>
+
+                                        {/* EXIF chips on hover */}
+                                        <div className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            {photo.exif.model && (
+                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                    <Camera className="w-3 h-3" />
+                                                    {photo.exif.model}
+                                                </span>
+                                            )}
+                                            {photo.exif.aperture && (
+                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                    <Aperture className="w-3 h-3" />
+                                                    {photo.exif.aperture}
+                                                </span>
+                                            )}
+                                            {photo.exif.iso && (
+                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                    <Zap className="w-3 h-3" />
+                                                    ISO {photo.exif.iso}
+                                                </span>
+                                            )}
+                                            {photo.exif.focalLength && (
+                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
+                                                    <GaugeCircle className="w-3 h-3" />
+                                                    {photo.exif.focalLength}
+                                                </span>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="p-4 space-y-1">
@@ -218,7 +278,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
 
             {/* Pagination */}
             {filteredPhotos.length > PAGE_SIZE && (
-                <div className="flex items-center justify-between pt-4 border-t border-white/5 text-sm text-muted-foreground flex-col gap-3 md:flex-row">
+                    <div className="flex items-center justify-between pt-4 border-t border-white/5 text-sm text-muted-foreground flex-col gap-3 md:flex-row">
                     <div>
                         Showing{" "}
                         <span className="font-semibold text-white">
@@ -236,7 +296,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                         <button
                             onClick={() => setPage((p) => Math.max(1, p - 1))}
                             disabled={currentPage === 1}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/10 disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-500/60 hover:text-white transition-colors"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/10 disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-500/60 hover:text-white transition-colors shimmer"
                         >
                             <ChevronLeft className="w-4 h-4" />
                             Prev
@@ -249,7 +309,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                         <button
                             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                             disabled={currentPage === totalPages}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/10 disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-500/60 hover:text-white transition-colors"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-white/10 disabled:opacity-40 disabled:cursor-not-allowed hover:border-blue-500/60 hover:text-white transition-colors shimmer"
                         >
                             Next
                             <ChevronRight className="w-4 h-4" />

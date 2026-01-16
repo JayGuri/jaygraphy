@@ -2,7 +2,7 @@
 
 import { Photo } from "@/types/photo";
 import { motion } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, Camera, MapPin, Calendar } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Camera, MapPin, Calendar, Share2, Download, Maximize2 } from "lucide-react";
 import { useEffect } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { buildGoogleMapsUrlFromGps, buildGoogleMapsUrlFromLocation, formatDMS } from "@/lib/location";
@@ -20,6 +20,12 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
             if (e.key === "Escape") onClose();
             if (e.key === "ArrowRight" && onNext) onNext();
             if (e.key === "ArrowLeft" && onPrev) onPrev();
+            if (e.key.toLowerCase() === "f") {
+                const el = document.querySelector("#lightbox-img") as HTMLElement | null;
+                if (el && el.requestFullscreen) {
+                    el.requestFullscreen().catch(() => {});
+                }
+            }
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
@@ -68,6 +74,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                 {/* Main Image */}
                 <div className="flex-1 relative w-full h-full flex items-center justify-center">
                     <motion.img
+                            id="lightbox-img"
                         key={photo.id}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -174,6 +181,31 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                                     TAKEN ON {new Date(photo.takenAt).toLocaleDateString()}
                                 </div>
                             )}
+
+                            <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                                <a
+                                    href={photo.src}
+                                    download
+                                    className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm transition-colors"
+                                >
+                                    <Download className="w-4 h-4" /> Download
+                                </a>
+                                <button
+                                    onClick={() => navigator.clipboard.writeText(window.location.href)}
+                                    className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm transition-colors"
+                                >
+                                    <Share2 className="w-4 h-4" /> Copy Link
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        const el = document.querySelector("#lightbox-img") as HTMLElement | null;
+                                        if (el && el.requestFullscreen) el.requestFullscreen().catch(() => {});
+                                    }}
+                                    className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm transition-colors"
+                                >
+                                    <Maximize2 className="w-4 h-4" /> Fullscreen (F)
+                                </button>
+                            </div>
                         </div>
                     </GlassCard>
                 </motion.div>

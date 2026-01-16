@@ -191,4 +191,40 @@
   body:has(.no-scrollbar)::-webkit-scrollbar {
     display: none !important;
   }
+
+  /* Button shimmer (subtle) */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.4) 30%, transparent 60%);
+    transform: translateX(-120%);
+    transition: opacity 0.3s ease;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .shimmer:hover::after {
+    animation: shimmer-move 1.5s ease;
+  }
+  @keyframes shimmer-move {
+    from { transform: translateX(-120%); }
+    to { transform: translateX(120%); }
+  }
+
+  /* Skeleton placeholder */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 100%);
+    background-size: 200% 100%;
+    animation: skeleton-move 1.5s ease-in-out infinite;
+  }
+  @keyframes skeleton-move {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
 }
