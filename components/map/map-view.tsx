@@ -47,6 +47,7 @@ function useCesium() {
 }
 
 export function MapView({ photos }: MapViewProps) {
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [seriesFilter, setSeriesFilter] = useState("all");
   const globeEl = useRef<HTMLDivElement | null>(null);
   const viewerRef = useRef<any>(null);
@@ -57,6 +58,17 @@ export function MapView({ photos }: MapViewProps) {
     if (seriesFilter === "all") return filtered;
     return filtered.filter((p) => (p.series || "").toLowerCase() === seriesFilter);
   }, [photos, seriesFilter]);
+
+  // Handle outside click to close preview
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      // If clicking on the map canvas itself (which cesium handles), we might want to keep it open unless we click empty space.
+      // But for now, let's rely on cesium click handler to clear selection if we click nothing.
+      // Actually, easiest is: if we click outside the preview card and not on a pin, close?
+      // Let's rely on the Cesium handler for map interactions.
+    };
+    // No-op for now
+  }, []);
 
   useEffect(() => {
     if (!ready || !globeEl.current || viewerRef.current) return;
@@ -69,14 +81,37 @@ export function MapView({ photos }: MapViewProps) {
       geocoder: false,
       homeButton: false,
       navigationHelpButton: false,
-      infoBox: true,
+      infoBox: false, // Disable default infoBox
+      selectionIndicator: false, // Disable default selection indicator
       sceneModePicker: false,
+      creditContainer: document.createElement("div"), // Hide credits
     });
     viewerRef.current.scene.globe.enableLighting = true;
     viewerRef.current.scene.globe.showGroundAtmosphere = true;
     viewerRef.current.scene.postProcessStages.fxaa.enabled = true;
     viewerRef.current.scene.highDynamicRange = true;
-  }, [ready]);
+
+    // Click handler
+    const handler = new Cesium.ScreenSpaceEventHandler(viewerRef.current.scene.canvas);
+    handler.setInputAction((movement: any) => {
+      const pickedObject = viewerRef.current.scene.pick(movement.position);
+      if (Cesium.defined(pickedObject) && pickedObject.id) {
+        // It's an entity
+        const entity = pickedObject.id;
+        // Find the photo associated with this entity
+        // We can store photo ID in entity id or properties
+        const photoId = entity.id;
+        const photo = photos.find(p => p.id === photoId);
+        if (photo) {
+          setSelectedPhoto(photo);
+        }
+      } else {
+        // Clicked empty space
+        setSelectedPhoto(null);
+      }
+    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+  }, [ready, photos]);
 
   useEffect(() => {
     const Cesium = (window as any).Cesium;
@@ -89,9 +124,17 @@ export function MapView({ photos }: MapViewProps) {
     const getPin = (series?: string) => {
       const key = (series || "default").toLowerCase();
       if (pinCache[key]) return pinCache[key];
-      const color = seriesColors[key] || "#2563eb";
-      // Use a camera icon emoji as glyph for relevance; falls back to color pin if glyph fails
-      pinCache[key] = pinBuilder.fromText("📷", Cesium.Color.fromCssColorString(color), 48);
+      const colorStr = seriesColors[key] || "#2563eb";
+      const color = Cesium.Color.fromCssColorString(colorStr);
+
+      try {
+        // Use a bullet point character which is safe and looks like a pin head
+        pinCache[key] = pinBuilder.fromText("•", color, 48);
+      } catch (e) {
+        console.error("Error creating pin:", e);
+        // Fallback
+        pinCache[key] = pinBuilder.fromText("?", color, 48);
+      }
       return pinCache[key];
     };
 
@@ -99,37 +142,34 @@ export function MapView({ photos }: MapViewProps) {
     geoPhotos.forEach((photo) => {
       const pos = Cesium.Cartesian3.fromDegrees(photo.coordinates!.lng, photo.coordinates!.lat);
       positions.push(pos);
+
       viewer.entities.add({
+        id: photo.id, // Store ID to look up later
         position: pos,
         billboard: {
           image: getPin(photo.series),
           verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-          scale: 1.05,
+          scale: 0.8, // Slightly smaller, sleeker
+          disableDepthTestDistance: Number.POSITIVE_INFINITY, // Always show on top of terrain? Maybe not.
+          heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
         },
-        description: `
-          <div style="max-width:220px">
-            <div style="font-weight:700;margin-bottom:4px;">${photo.title}</div>
-            <div style="color:#6b7280;font-size:12px;margin-bottom:6px;">${photo.location}</div>
-            <img src="${photo.src}" alt="${photo.title}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:6px;" />
-            <a href="/portfolio?photo=${photo.id}" style="color:#2563eb;font-size:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">
-              View in portfolio
-            </a>
-          </div>
-        `,
       });
     });
 
     if (positions.length) {
+      // Logic to fly to bounds only on first load or significant change? 
+      // We will keep it for now.
       const rectangle = (window as any).Cesium.Rectangle.fromCartographicArray(
         positions.map((p) => (window as any).Cesium.Cartographic.fromCartesian(p))
       );
-      viewer.camera.flyTo({ destination: rectangle, duration: 1.2 });
+      // Add some buffer
+      viewer.camera.flyTo({ destination: rectangle, duration: 1.5 });
     }
   }, [geoPhotos, ready]);
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2 items-center">
+    <div className="space-y-4 relative group">
+      <div className="flex flex-wrap gap-2 items-center z-10 relative">
         <span className="text-sm text-muted-foreground flex items-center gap-1">
           <MapPin className="w-4 h-4" /> Filter by series
         </span>
@@ -137,20 +177,55 @@ export function MapView({ photos }: MapViewProps) {
           <button
             key={opt}
             onClick={() => setSeriesFilter(opt)}
-            className={`px-3 py-1 rounded-full border text-xs uppercase tracking-wide transition ${
-              seriesFilter === opt
-                ? "bg-primary text-primary-foreground border-primary"
-                : "border-border text-muted-foreground hover:text-foreground hover:border-primary/60"
-            }`}
+            className={`px-3 py-1 rounded-full border text-xs uppercase tracking-wide transition ${seriesFilter === opt
+              ? "bg-primary text-primary-foreground border-primary"
+              : "border-border text-muted-foreground hover:text-foreground hover:border-primary/60"
+              }`}
           >
             {opt === "all" ? "All" : opt}
           </button>
         ))}
       </div>
 
-      <div className="w-full h-[70vh] rounded-2xl overflow-hidden border border-border bg-muted/30 relative">
+      <div className="w-full h-[75vh] rounded-3xl overflow-hidden border border-white/10 bg-black/40 relative shadow-2xl">
         {!ready && <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">Loading globe…</div>}
         <div ref={globeEl} className="w-full h-full" />
+
+        {/* Custom Preview Card Overlay */}
+        {selectedPhoto && (
+          <div className="absolute bottom-6 left-6 z-50 animate-in slide-in-from-bottom-4 fade-in duration-300">
+            <div className="w-80 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl p-0">
+              <div className="relative h-48">
+                <img
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.title}
+                  className="w-full h-full object-cover"
+                />
+                <button
+                  onClick={(e) => { e.stopPropagation(); setSelectedPhoto(null); }}
+                  className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/50 text-white hover:bg-black/70 flex items-center justify-center backdrop-blur-md transition-colors"
+                >
+                  &times;
+                </button>
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-12">
+                  <div className="text-white font-bold text-lg leading-tight">{selectedPhoto.title}</div>
+                  <div className="text-white/70 text-xs flex items-center gap-1 mt-1">
+                    <MapPin className="w-3 h-3" /> {selectedPhoto.location}
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 bg-muted/5">
+                <a
+                  href={`/portfolio?photo=${selectedPhoto.id}`}
+                  target="_blank"
+                  className="block w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-center text-sm font-semibold transition-colors shadow-lg shadow-blue-900/20"
+                >
+                  View in Portfolio
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
