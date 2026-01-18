@@ -28,7 +28,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
             if (e.key.toLowerCase() === "f") {
                 const el = document.querySelector("#lightbox-img") as HTMLElement | null;
                 if (el && el.requestFullscreen) {
-                    el.requestFullscreen().catch(() => {});
+                    el.requestFullscreen().catch(() => { });
                 }
             }
             if (e.key.toLowerCase() === "h") {
@@ -89,7 +89,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                         <Heart className="w-5 h-5" fill={fav ? "currentColor" : "none"} />
                     </button>
                     <motion.img
-                            id="lightbox-img"
+                        id="lightbox-img"
                         key={photo.id}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -103,10 +103,10 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="w-full lg:w-96 flex-shrink-0"
+                    className="w-full lg:w-[500px] flex-shrink-0"
                 >
-                    <GlassCard className="h-full max-h-[80vh] overflow-y-auto w-full bg-black/40 border-white/10">
-                        <div className="space-y-6">
+                    <GlassCard className="h-full max-h-[85vh] overflow-y-auto w-full bg-black/40 border-white/10 p-6">
+                        <div className="space-y-8">
                             <div>
                                 <h2 className="text-3xl font-bold mb-1">{photo.title}</h2>
                                 <div className="flex flex-col gap-1 text-sm">
@@ -144,31 +144,31 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                                 {photo.description || "No description provided."}
                             </p>
 
-                            <div className="grid grid-cols-2 gap-3">
-                                <div className="p-3 rounded-lg bg-white/5 border border-white/5 space-y-1">
-                                    <span className="text-xs text-muted-foreground block">Camera</span>
-                                    <span className="text-sm font-medium flex items-center gap-2">
-                                        <Camera className="w-3 h-3 text-blue-400" />
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col justify-center min-h-[100px] space-y-2 hover:bg-white/10 transition-colors">
+                                    <span className="text-xs text-muted-foreground uppercase tracking-widest">Camera</span>
+                                    <span className="text-base font-medium flex items-center gap-2 text-white">
+                                        <Camera className="w-4 h-4 text-blue-400" />
                                         {photo.exif.model || "Unknown"}
                                     </span>
                                 </div>
-                                <div className="p-3 rounded-lg bg-white/5 border border-white/5 space-y-1">
-                                    <span className="text-xs text-muted-foreground block">Lens</span>
-                                    <span className="text-sm font-medium truncate" title={photo.exif.lens}>
+                                <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col justify-center min-h-[100px] space-y-2 hover:bg-white/10 transition-colors">
+                                    <span className="text-xs text-muted-foreground uppercase tracking-widest">Lens</span>
+                                    <span className="text-base font-medium text-white leading-snug">
                                         {photo.exif.lens || "Unknown"}
                                     </span>
                                 </div>
-                                <div className="p-3 rounded-lg bg-white/5 border border-white/5 space-y-1">
-                                    <span className="text-xs text-muted-foreground block">Settings</span>
-                                    <div className="flex gap-2 text-sm font-medium text-white/90">
+                                <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col justify-center min-h-[100px] space-y-2 hover:bg-white/10 transition-colors">
+                                    <span className="text-xs text-muted-foreground uppercase tracking-widest">Settings</span>
+                                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-base font-medium text-white/90">
                                         <span>{photo.exif.aperture}</span>
                                         <span>{photo.exif.exposureTime}</span>
-                                        <span>ISO{photo.exif.iso}</span>
+                                        <span>ISO {photo.exif.iso}</span>
                                     </div>
                                 </div>
-                                <div className="p-3 rounded-lg bg-white/5 border border-white/5 space-y-1">
-                                    <span className="text-xs text-muted-foreground block">Focal Length</span>
-                                    <span className="text-sm font-medium">
+                                <div className="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col justify-center min-h-[100px] space-y-2 hover:bg-white/10 transition-colors">
+                                    <span className="text-xs text-muted-foreground uppercase tracking-widest">Focal Length</span>
+                                    <span className="text-base font-medium text-white">
                                         {photo.exif.focalLength || "--"}
                                     </span>
                                 </div>
@@ -231,7 +231,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                                 <button
                                     onClick={() => {
                                         const el = document.querySelector("#lightbox-img") as HTMLElement | null;
-                                        if (el && el.requestFullscreen) el.requestFullscreen().catch(() => {});
+                                        if (el && el.requestFullscreen) el.requestFullscreen().catch(() => { });
                                     }}
                                     className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm transition-colors"
                                 >
