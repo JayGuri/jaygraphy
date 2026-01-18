@@ -29,7 +29,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
         return stored ? stored === "1" : true;
     });
     const [page, setPage] = useState(1);
-    const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(null);
+    const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(searchParams.get("photo"));
     const gridTopRef = useRef<HTMLDivElement | null>(null);
 
     const PAGE_SIZE = 12;
@@ -85,9 +85,20 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
         if (filter !== "all") params.set("category", filter);
         if (seriesFilter !== "all") params.set("series", seriesFilter);
         if (query.trim()) params.set("q", query.trim());
+        if (selectedPhotoId) params.set("photo", selectedPhotoId);
         const qs = params.toString();
         router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
-    }, [filter, seriesFilter, query, pathname, router]);
+    }, [filter, seriesFilter, query, pathname, router, selectedPhotoId]);
+
+    // Sync selected photo with URL (for links from map or shared URLs)
+    useEffect(() => {
+        const photoId = searchParams.get("photo");
+        if (photoId && initialPhotos.some((p) => p.id === photoId)) {
+            setSelectedPhotoId(photoId);
+        } else {
+            setSelectedPhotoId((prev) => (prev ? null : prev));
+        }
+    }, [searchParams, initialPhotos]);
 
     // Scroll to top of grid when page changes
     useEffect(() => {
