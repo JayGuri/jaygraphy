@@ -13,6 +13,7 @@ type Circle = {
 interface ExposureTriangleLoaderProps {
   durationMs?: number;
   onComplete?: () => void;
+  fadeBufferMs?: number;
 }
 
 /**
@@ -20,9 +21,10 @@ interface ExposureTriangleLoaderProps {
  * Three circles (ISO / Aperture / Shutter) orbit, collapse, and merge into a clean aperture mark.
  * Auto-dismisses after durationMs; pass onComplete to hook into the end of the animation.
  */
-export function ExposureTriangleLoader({ durationMs = 3600, onComplete }: ExposureTriangleLoaderProps) {
+export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, onComplete }: ExposureTriangleLoaderProps) {
   const [phase, setPhase] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [exit, setExit] = useState(false);
 
   const circles: Circle[] = useMemo(
     () => [
@@ -34,18 +36,21 @@ export function ExposureTriangleLoader({ durationMs = 3600, onComplete }: Exposu
   );
 
   useEffect(() => {
-    const timings = durationMs * 0.4; // first phase portion
+    const timings = durationMs * 0.45; // allow longer spin
     const timers = [
       setTimeout(() => setPhase(1), timings * 0.6),
       setTimeout(() => setPhase(2), timings * 1.2),
-      setTimeout(() => setPhase(3), timings * 1.5),
+      setTimeout(() => setPhase(3), timings * 1.55),
+      setTimeout(() => {
+        setExit(true); // start lifting blur
+      }, durationMs - fadeBufferMs),
       setTimeout(() => {
         setIsComplete(true);
         onComplete?.();
       }, durationMs),
     ];
     return () => timers.forEach((t) => clearTimeout(t));
-  }, [durationMs, onComplete]);
+  }, [durationMs, fadeBufferMs, onComplete]);
 
   const getCirclePosition = (index: number) => {
     if (phase === 0 || phase === 1) {
@@ -61,7 +66,16 @@ export function ExposureTriangleLoader({ durationMs = 3600, onComplete }: Exposu
   if (isComplete) return null;
 
   return (
-    <div className="fixed inset-0 z-[140] flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 overflow-hidden">
+    <div
+      className="fixed inset-0 z-[140] flex items-center justify-center text-slate-100 overflow-hidden"
+      style={{
+        backdropFilter: exit ? "blur(0px)" : "blur(12px)",
+        background: exit
+          ? "linear-gradient(135deg, rgba(2,6,23,0.75), rgba(2,6,23,0.55))"
+          : "linear-gradient(135deg, rgba(2,6,23,0.9), rgba(2,6,23,0.8))",
+        transition: "backdrop-filter 0.6s ease, background 0.6s ease",
+      }}
+    >
       <div
         className="absolute inset-0"
         style={{
@@ -108,8 +122,8 @@ export function ExposureTriangleLoader({ durationMs = 3600, onComplete }: Exposu
 
         <g
           style={{
-            transform: `rotate(${phase === 0 ? 0 : 180}deg)`,
-            transition: "transform 2s ease-in-out",
+            transform: `rotate(${phase === 0 ? 0 : 540}deg)`,
+            transition: "transform 3.2s ease-in-out",
             transformOrigin: "center",
           }}
         >
@@ -163,28 +177,6 @@ export function ExposureTriangleLoader({ durationMs = 3600, onComplete }: Exposu
             >
               <circle r="55" fill="none" stroke="url(#subtleGradient)" strokeWidth="2" opacity="0.5" />
               <circle r="48" fill="rgba(148, 163, 184, 0.08)" opacity="0.9" />
-
-              {[...Array(6)].map((_, i) => {
-                const angle = i * 60 * (Math.PI / 180);
-                const x1 = Math.cos(angle) * 18;
-                const y1 = Math.sin(angle) * 18;
-                const x2 = Math.cos(angle) * 40;
-                const y2 = Math.sin(angle) * 40;
-                return (
-                  <line
-                    key={i}
-                    x1={x1}
-                    y1={y1}
-                    x2={x2}
-                    y2={y2}
-                    stroke="rgba(148, 163, 184, 0.6)"
-                    strokeWidth="5.5"
-                    strokeLinecap="round"
-                    opacity="0.8"
-                  />
-                );
-              })}
-
               <circle r="12" fill="rgba(148, 163, 184, 0.75)" opacity="0.9" style={{ filter: "url(#softGlow)" }} />
             </g>
           )}
