@@ -40,7 +40,7 @@ export function HeroSection() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                        Engineering student by day, photographer by choice. From the Grotto’s blue caves to late-night city light trails—every set is sequenced, color-managed, and delivered over CDN for a crisp, fast experience.
+                        Engineering student by day, photographer by choice. From the Grotto’s blue caves to late-night city light trails—every set is sequenced, color-managed, and treated like a finished series.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4">
@@ -68,8 +68,8 @@ export function HeroSection() {
                         <div className="hidden md:flex items-center gap-3 px-4 py-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur text-sm text-muted-foreground/80">
                             <Aperture className="w-4 h-4 text-primary" />
                             <div>
-                                <p className="font-semibold text-foreground">CDN-first delivery</p>
-                                <p className="text-xs">No local storage – optimized frames, instant focus.</p>
+                                <p className="font-semibold text-foreground">Color + clarity</p>
+                                <p className="text-xs">Intentional grading, clean delivery, zero clutter.</p>
                             </div>
                         </div>
                     </div>

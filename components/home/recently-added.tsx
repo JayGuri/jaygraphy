@@ -42,7 +42,7 @@ export function RecentlyAdded({ photos }: RecentlyAddedProps) {
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Recently Added</p>
             <h3 className="text-3xl md:text-4xl font-bold text-foreground">Fresh drops from the camera roll</h3>
-            <p className="text-muted-foreground mt-1">CDN-backed, preloaded, and arranged in a flowing masonry grid.</p>
+            <p className="text-muted-foreground mt-1">Preloaded and sequenced in a flowing masonry grid.</p>
           </div>
           <Link
             href="/portfolio"

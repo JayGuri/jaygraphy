@@ -1,18 +1,21 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useCallback, useState, useMemo } from "react";
 import { gsap } from "gsap";
+import { Photo } from "@/types/photo";
 
 export interface BentoCardProps {
   color?: string;
   title?: string;
   description?: string;
   label?: string;
+  image?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
 }
 
 export interface BentoProps {
+  photos?: Photo[];
   textAutoHide?: boolean;
   enableStars?: boolean;
   enableSpotlight?: boolean;
@@ -30,45 +33,6 @@ const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 320;
 const DEFAULT_GLOW_COLOR = "132, 0, 255";
 const MOBILE_BREAKPOINT = 768;
-
-const cardData: BentoCardProps[] = [
-  {
-    color: "#0c0b11",
-    title: "Coastal Blues",
-    description: "Long exposures, muted tides, misty horizons.",
-    label: "Niagara / Bruce",
-  },
-  {
-    color: "#0c0b11",
-    title: "City Pulse",
-    description: "Botanical domes, metro glow, and street neon.",
-    label: "Toronto / Montreal",
-  },
-  {
-    color: "#0c0b11",
-    title: "Golden Dust",
-    description: "Goan dusk frames and candid silhouettes.",
-    label: "Goa",
-  },
-  {
-    color: "#0c0b11",
-    title: "Tea Mist",
-    description: "Layered greens, fog lines, and backlit ridges.",
-    label: "Kerala",
-  },
-  {
-    color: "#0c0b11",
-    title: "Heritage Lines",
-    description: "Stone textures, balconies, and soft sky gradients.",
-    label: "Quebec",
-  },
-  {
-    color: "#0c0b11",
-    title: "Night Trails",
-    description: "Light streaks and midnight reflections.",
-    label: "Urban",
-  },
-];
 
 const createParticleElement = (x: number, y: number, color: string = DEFAULT_GLOW_COLOR): HTMLDivElement => {
   const el = document.createElement("div");
@@ -510,6 +474,7 @@ const useMobileDetection = () => {
 };
 
 export const MagicBento: React.FC<BentoProps> = ({
+  photos,
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -525,6 +490,56 @@ export const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const cardData: BentoCardProps[] = useMemo(() => {
+    if (photos && photos.length) {
+      const pool = photos.slice(0, 6);
+      return pool.map((p) => ({
+        color: "#0c0b11",
+        title: p.displayTitle || p.title,
+        description: p.location || "Captured on the road",
+        label: p.series ? p.series.toString().toUpperCase() : "FEATURED",
+        image: p.cdnSrc || p.src,
+      }));
+    }
+    return [
+      {
+        color: "#0c0b11",
+        title: "Coastal Blues",
+        description: "Long exposures, muted tides, misty horizons.",
+        label: "Niagara / Bruce",
+      },
+      {
+        color: "#0c0b11",
+        title: "City Pulse",
+        description: "Botanical domes, metro glow, and street neon.",
+        label: "Toronto / Montreal",
+      },
+      {
+        color: "#0c0b11",
+        title: "Golden Dust",
+        description: "Goan dusk frames and candid silhouettes.",
+        label: "Goa",
+      },
+      {
+        color: "#0c0b11",
+        title: "Tea Mist",
+        description: "Layered greens, fog lines, and backlit ridges.",
+        label: "Kerala",
+      },
+      {
+        color: "#0c0b11",
+        title: "Heritage Lines",
+        description: "Stone textures, balconies, and soft sky gradients.",
+        label: "Quebec",
+      },
+      {
+        color: "#0c0b11",
+        title: "Night Trails",
+        description: "Light streaks and midnight reflections.",
+        label: "Urban",
+      },
+    ];
+  }, [photos]);
 
   return (
     <>
@@ -547,6 +562,11 @@ export const MagicBento: React.FC<BentoProps> = ({
             className: baseClassName,
             style: {
               backgroundColor: card.color,
+              backgroundImage: card.image
+                ? `linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 55%), url(${card.image})`
+                : undefined,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               "--glow-color": glowColor,
             } as React.CSSProperties,
           };

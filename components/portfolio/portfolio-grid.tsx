@@ -128,8 +128,8 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
             paginatedPhotos.map((photo, idx) => {
                 const computedHeight =
                     photo.height && photo.width
-                        ? Math.max(320, (photo.height / Math.max(photo.width, 1)) * 480)
-                        : 360 + (idx % 6) * 28;
+                        ? Math.max(420, (photo.height / Math.max(photo.width, 1)) * 560)
+                        : 420 + (idx % 6) * 42;
 
                 const meta: Record<string, string> = {
                     [photo.series ? "Series" : "Location"]: photo.series ? getSeriesLabel(photo.series) : photo.location,

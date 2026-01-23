@@ -13,6 +13,7 @@ export const dynamic = 'force-dynamic';
 export default async function Home() {
   const photos = await getAllPhotos();
   const featuredPhotos = [...photos].sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime()).slice(0, 10);
+  const heroBentoPhotos = photos.slice(0, 6);
 
   return (
     <div className="min-h-screen relative overflow-hidden no-scrollbar bg-background text-foreground transition-colors duration-300">
@@ -22,7 +23,7 @@ export default async function Home() {
       <main className="relative z-10 overflow-hidden bg-background text-foreground">
         <HeroSection />
         <section className="flex justify-center py-8">
-          <MagicBento enableTilt enableSpotlight enableStars enableBorderGlow glowColor="132, 0, 255" />
+          <MagicBento photos={heroBentoPhotos} enableTilt enableSpotlight enableStars enableBorderGlow glowColor="132, 0, 255" />
         </section>
         <RecentlyAdded photos={photos} />
         <FeaturedStories photos={featuredPhotos} />

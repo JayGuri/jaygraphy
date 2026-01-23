@@ -240,7 +240,7 @@ export const Masonry: React.FC<MasonryProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="masonry-list" style={{ height: Math.max(gridHeight, 420) }}>
+    <div ref={containerRef} className="masonry-list" style={{ height: Math.max(gridHeight + 24, 520) }}>
       {grid.map((item) => {
         return (
           <div
