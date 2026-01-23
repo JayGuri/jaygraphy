@@ -3,13 +3,13 @@
 import { Photo } from "@/types/photo";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { GlassCard } from "@/components/ui/glass-card";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { PhotoLightbox } from "@/components/portfolio/photo-lightbox";
-import { FavoriteButton } from "@/components/favorites/favorite-button";
-import { Filter, MapPin, SlidersHorizontal, Search, Tag, ChevronLeft, ChevronRight, Camera, Aperture, Zap, GaugeCircle } from "lucide-react";
+import { Filter, SlidersHorizontal, Search, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buildGoogleMapsUrlFromGps, buildGoogleMapsUrlFromLocation } from "@/lib/location";
+import { Masonry } from "@/components/ui/masonry";
+import { getSeriesLabel, getSeriesOptions } from "@/lib/series";
 
 interface PortfolioGridProps {
     initialPhotos: Photo[];
@@ -40,6 +40,8 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
         return ["all", ...Array.from(cats)];
     }, [initialPhotos]);
 
+    const seriesOptions = useMemo(() => getSeriesOptions(initialPhotos), [initialPhotos]);
+
     const filteredPhotos = useMemo(() => {
         let result = [...initialPhotos];
 
@@ -49,14 +51,14 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
 
         if (seriesFilter !== "all") {
             const key = seriesFilter.toLowerCase();
-            result = result.filter((p) => p.location.toLowerCase().includes(key));
+            result = result.filter((p) => (p.series || "").toString().toLowerCase() === key);
         }
 
         if (query.trim()) {
             const q = query.toLowerCase();
             result = result.filter((p) => {
                 return (
-                    p.title.toLowerCase().includes(q)
+                    (p.displayTitle || p.title).toLowerCase().includes(q)
                 );
             });
         }
@@ -121,6 +123,35 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
         [initialPhotos, selectedPhotoId]
     );
 
+    const masonryItems = useMemo(
+        () =>
+            paginatedPhotos.map((photo, idx) => {
+                const computedHeight =
+                    photo.height && photo.width
+                        ? Math.max(320, (photo.height / Math.max(photo.width, 1)) * 480)
+                        : 360 + (idx % 6) * 28;
+
+                const meta: Record<string, string> = {
+                    [photo.series ? "Series" : "Location"]: photo.series ? getSeriesLabel(photo.series) : photo.location,
+                };
+
+                if (showExif) {
+                    if (photo.exif.aperture) meta["Aperture"] = photo.exif.aperture;
+                    if (photo.exif.iso) meta["ISO"] = photo.exif.iso;
+                    if (photo.exif.exposureTime) meta["Shutter"] = photo.exif.exposureTime;
+                }
+
+                return {
+                    id: photo.id,
+                    img: photo.cdnSrc || photo.src,
+                    height: computedHeight,
+                    url: "#",
+                    meta,
+                };
+            }),
+        [paginatedPhotos, showExif]
+    );
+
     const getMapsUrl = (photo: Photo) => {
         if (photo.exif?.gps) {
             return buildGoogleMapsUrlFromGps(photo.exif.gps.latitude, photo.exif.gps.longitude);
@@ -183,11 +214,15 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2 text-xs">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] uppercase tracking-wide text-muted-foreground mr-2">
+                            <Sparkles className="w-3 h-3 text-primary" />
+                            CDN masonry view
+                        </div>
                         <div className="flex items-center gap-1 text-muted-foreground mr-1">
                             <SlidersHorizontal className="w-3 h-3" />
                             <span className="font-medium">Series</span>
                         </div>
-                        {["all", "niagara", "bruce", "montreal", "toronto", "goa", "kerala", "bhuj", "quebec", "etobicoke"].map((s) => (
+                        {seriesOptions.map((s) => (
                             <button
                                 key={s}
                                 onClick={() => {
@@ -201,7 +236,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                                         : "bg-transparent border-white/10 text-muted-foreground hover:border-blue-500/50 hover:text-white"
                                 )}
                             >
-                                {s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1)}
+                                {s === "all" ? "All" : getSeriesLabel(s)}
                             </button>
                         ))}
 
@@ -234,108 +269,17 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                     <p>No photos found in this category.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <AnimatePresence mode="popLayout">
-                        {paginatedPhotos.map((photo) => (
-                            <motion.div
-                                key={photo.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
-                                layoutId={`photo-${photo.id}`}
-                                onClick={() => setSelectedPhotoId(photo.id)}
-                                className="cursor-pointer group"
-                            >
-                                <GlassCard hoverEffect className="p-0 overflow-hidden h-full bg-muted/20 border-white/5">
-                                    <div className="aspect-[3/4] relative overflow-hidden">
-                                        <div className="absolute inset-0 skeleton" />
-                                        <img
-                                            src={photo.src}
-                                            alt={photo.title}
-                                            loading="lazy"
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 relative z-10"
-                                            onLoad={(e) => (e.currentTarget.previousElementSibling as HTMLElement | null)?.classList.add("opacity-0")}
-                                        />
-                                        <div className="absolute top-2 left-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <FavoriteButton photoId={photo.id} size={16} />
-                                        </div>
-                                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                            <span className="px-4 py-2 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-white text-sm font-medium">View Details</span>
-                                        </div>
-
-                                        <div className="absolute top-2 right-2 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-[10px] uppercase font-bold tracking-widest text-white/80 opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                                            {photo.category}
-                                        </div>
-
-                                        {showExif && (
-                                            <div className="absolute bottom-2 left-2 right-2 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                {photo.exif.model && (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                        <Camera className="w-3 h-3" />
-                                                        {photo.exif.model}
-                                                    </span>
-                                                )}
-                                                {photo.exif.aperture && (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                        <Aperture className="w-3 h-3" />
-                                                        {photo.exif.aperture}
-                                                    </span>
-                                                )}
-                                                {photo.exif.iso && (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                        <Zap className="w-3 h-3" />
-                                                        ISO {photo.exif.iso}
-                                                    </span>
-                                                )}
-                                                {photo.exif.focalLength && (
-                                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 text-[10px] text-white/80">
-                                                        <GaugeCircle className="w-3 h-3" />
-                                                        {photo.exif.focalLength}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div className="p-4 space-y-1">
-                                        <h3 className="font-bold text-lg leading-tight group-hover:text-blue-400 transition-colors">
-                                            {photo.title}
-                                        </h3>
-                                        {photo.location && (
-                                            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                                <MapPin className="w-3 h-3" />
-                                                <a
-                                                    href={getMapsUrl(photo)}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="truncate hover:text-blue-400 hover:underline underline-offset-2"
-                                                >
-                                                    {photo.location}
-                                                </a>
-                                            </div>
-                                        )}
-                                        {photo.tags && photo.tags.length > 0 && (
-                                            <div className="flex flex-wrap gap-1 pt-1">
-                                                {photo.tags.slice(0, 4).map((tag) => (
-                                                    <span
-                                                        key={tag}
-                                                        className="px-2 py-0.5 rounded-full bg-white/5 text-[10px] uppercase tracking-wide text-muted-foreground"
-                                                    >
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                                {photo.tags.length > 4 && (
-                                                    <span className="text-[10px] text-muted-foreground">
-                                                        +{photo.tags.length - 4} more
-                                                    </span>
-                                                )}
-                                            </div>
-                                        )}
-                                    </div>
-                                </GlassCard>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
+                <div className="relative rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl">
+                    <Masonry
+                        items={masonryItems}
+                        animateFrom="bottom"
+                        stagger={0.06}
+                        blurToFocus
+                        scaleOnHover
+                        hoverScale={0.97}
+                        colorShiftOnHover
+                        onSelect={(item) => setSelectedPhotoId(item.id)}
+                    />
                 </div>
             )}
 

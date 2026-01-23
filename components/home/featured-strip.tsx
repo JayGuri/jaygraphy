@@ -66,8 +66,8 @@ export function FeaturedStrip({ photos }: FeaturedStripProps) {
                             <GlassCard hoverEffect className="h-full p-2 group relative overflow-hidden">
                                 <div className="relative aspect-[4/5] rounded-lg overflow-hidden mb-3">
                                     <img
-                                        src={photo.src}
-                                        alt={photo.title}
+                                        src={photo.cdnSrc || photo.src}
+                                        alt={photo.displayTitle || photo.title}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
@@ -86,7 +86,7 @@ export function FeaturedStrip({ photos }: FeaturedStripProps) {
                                 </div>
                                 <div className="px-2 pb-2 space-y-1">
                                     <h3 className="font-bold text-lg mb-1 group-hover:text-blue-400 transition-colors">
-                                        {photo.title}
+                                        {photo.displayTitle || photo.title}
                                     </h3>
                                     <div className="flex items-center justify-between text-xs text-muted-foreground">
                                         <a

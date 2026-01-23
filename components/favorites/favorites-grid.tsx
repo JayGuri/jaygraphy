@@ -46,13 +46,13 @@ export function FavoritesGrid({ photos }: Props) {
           return (
             <GlassCard key={photo.id} className="p-0 overflow-hidden bg-muted/20 border-border/70">
               <div className="relative aspect-[3/4]">
-                <img src={photo.src} alt={photo.title} className="w-full h-full object-cover" />
+                <img src={photo.cdnSrc || photo.src} alt={photo.displayTitle || photo.title} className="w-full h-full object-cover" />
                 <div className="absolute top-2 left-2">
                   <FavoriteButton photoId={photo.id} size={16} />
                 </div>
               </div>
               <div className="p-4 space-y-1">
-                <h3 className="font-semibold text-lg">{photo.title}</h3>
+                <h3 className="font-semibold text-lg">{photo.displayTitle || photo.title}</h3>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span className="uppercase tracking-wide text-[11px] text-primary">{photo.category}</span>
                   {mapsUrl && (

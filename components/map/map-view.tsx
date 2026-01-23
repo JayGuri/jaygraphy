@@ -3,12 +3,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Photo } from "@/types/photo";
 import { MapPin } from "lucide-react";
+import { getSeriesLabel, getSeriesOptions } from "@/lib/series";
 
 interface MapViewProps {
   photos: Photo[];
 }
-
-const seriesOptions = ["all", "niagara", "bruce", "montreal", "toronto", "goa", "kerala", "bhuj", "quebec", "etobicoke"];
 
 const seriesColors: Record<string, string> = {
   niagara: "#2563eb",
@@ -52,6 +51,7 @@ export function MapView({ photos }: MapViewProps) {
   const globeEl = useRef<HTMLDivElement | null>(null);
   const viewerRef = useRef<any>(null);
   const ready = useCesium();
+  const seriesOptions = useMemo(() => getSeriesOptions(photos), [photos]);
 
   const geoPhotos = useMemo(() => {
     const filtered = photos.filter((p) => p.coordinates && p.coordinates.lat && p.coordinates.lng);
@@ -182,7 +182,7 @@ export function MapView({ photos }: MapViewProps) {
               : "border-border text-muted-foreground hover:text-foreground hover:border-primary/60"
               }`}
           >
-            {opt === "all" ? "All" : opt}
+            {opt === "all" ? "All" : getSeriesLabel(opt)}
           </button>
         ))}
       </div>
@@ -197,8 +197,8 @@ export function MapView({ photos }: MapViewProps) {
             <div className="w-80 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl p-0">
               <div className="relative h-48">
                 <img
-                  src={selectedPhoto.src}
-                  alt={selectedPhoto.title}
+                  src={selectedPhoto.cdnSrc || selectedPhoto.src}
+                  alt={selectedPhoto.displayTitle || selectedPhoto.title}
                   className="w-full h-full object-cover"
                 />
                 <button
@@ -208,7 +208,7 @@ export function MapView({ photos }: MapViewProps) {
                   &times;
                 </button>
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-12">
-                  <div className="text-white font-bold text-lg leading-tight">{selectedPhoto.title}</div>
+                  <div className="text-white font-bold text-lg leading-tight">{selectedPhoto.displayTitle || selectedPhoto.title}</div>
                   <div className="text-white/70 text-xs flex items-center gap-1 mt-1">
                     <MapPin className="w-3 h-3" /> {selectedPhoto.location}
                   </div>

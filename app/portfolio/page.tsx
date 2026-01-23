@@ -1,5 +1,4 @@
 import { PortfolioGrid } from "@/components/portfolio/portfolio-grid";
-import { Navbar } from "@/components/layout/navbar";
 import { getAllPhotos } from "@/lib/photo-storage";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 
@@ -11,7 +10,6 @@ export default async function Portfolio() {
     return (
         <div className="min-h-screen pb-20 bg-background text-foreground transition-colors duration-300">
             <AnimatedBackground />
-            <Navbar />
 
             <main className="container mx-auto px-4 pt-28 bg-background text-foreground transition-colors duration-300">
                 <div className="mb-12">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google"; // Can use a more "tech" or "clean" font if available, or default
 import "./globals.css";
+import "@/components/ui/magic-bento.css";
+import "@/components/ui/masonry.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 

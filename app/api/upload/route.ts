@@ -6,7 +6,9 @@ import path from "path";
 import fs from "fs/promises";
 import exifr from "exifr";
 import { classifyImage } from "@/lib/image-classifier";
-import { needsAutoTitle, generateAutoTitle } from "@/lib/title";
+import { needsAutoTitle, generateAutoTitle, cleanPhotoTitle } from "@/lib/title";
+import { inferSeries } from "@/lib/series";
+import { withCdn } from "@/lib/cdn";
 
 export async function POST(req: NextRequest) {
     try {
@@ -164,13 +166,26 @@ export async function POST(req: NextRequest) {
                 title: newPhoto.title,
                 location: newPhoto.location,
                 category: newPhoto.category,
-                takenAt: newPhoto.takenAt,
+            });
+        } else {
+            newPhoto.title = cleanPhotoTitle(newPhoto.title, {
+                location: newPhoto.location,
+                category: newPhoto.category,
             });
         }
 
         await savePhoto(newPhoto);
 
-        return NextResponse.json({ success: true, photo: newPhoto });
+        // Send enriched payload back to client
+        const series = inferSeries(newPhoto);
+        return NextResponse.json({
+            success: true,
+            photo: {
+                ...newPhoto,
+                series,
+                cdnSrc: withCdn(newPhoto.src),
+            },
+        });
     } catch (error) {
         console.error("Upload error:", error);
         return NextResponse.json({ error: "Upload failed" }, { status: 500 });

@@ -1,6 +1,9 @@
 import { Photo } from "@/types/photo";
 import fs from "fs/promises";
 import path from "path";
+import { withCdn } from "./cdn";
+import { inferSeries } from "./series";
+import { cleanPhotoTitle } from "./title";
 
 const DATA_FILE_PATH = path.join(process.cwd(), "data", "photos.json");
 const PHOTOS_DIR = path.join(process.cwd(), "public", "photos");
@@ -29,7 +32,22 @@ export async function ensureDataDir() {
 export async function getAllPhotos(): Promise<Photo[]> {
     await ensureDataDir();
     const data = await fs.readFile(DATA_FILE_PATH, "utf-8");
-    return JSON.parse(data) as Photo[];
+    const photos = JSON.parse(data) as Photo[];
+
+    return photos.map((photo) => {
+        const series = inferSeries(photo);
+        const displayTitle = cleanPhotoTitle(photo.title, {
+            location: photo.location,
+            category: photo.category,
+        });
+
+        return {
+            ...photo,
+            series: series ?? photo.series,
+            displayTitle,
+            cdnSrc: withCdn(photo.src),
+        };
+    });
 }
 
 export async function getPhotoById(id: string): Promise<Photo | undefined> {
@@ -41,11 +59,25 @@ export async function savePhoto(photo: Photo): Promise<void> {
     const photos = await getAllPhotos();
     const existsIndex = photos.findIndex((p) => p.id === photo.id);
 
+    const { cdnSrc: _cdn, displayTitle: _displayTitle, ...rest } = photo;
+
+    const series = inferSeries(rest);
+    const normalizedTitle = cleanPhotoTitle(photo.title, {
+        location: rest.location,
+        category: rest.category,
+    });
+
+    const persistable: Photo = {
+        ...rest,
+        series: series ?? rest.series,
+        title: normalizedTitle,
+    };
+
     if (existsIndex >= 0) {
-        photos[existsIndex] = photo;
+        photos[existsIndex] = persistable;
     } else {
         // Add new photo at the beginning
-        photos.unshift(photo);
+        photos.unshift(persistable);
     }
 
     await fs.writeFile(DATA_FILE_PATH, JSON.stringify(photos, null, 2));

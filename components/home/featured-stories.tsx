@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import type { Photo } from "@/types/photo";
+import { getSeriesLabel } from "@/lib/series";
 
 const storiesOrder = ["niagara", "bruce", "toronto"];
 
@@ -45,7 +46,7 @@ export function FeaturedStories({ photos }: Props) {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Featured Story</p>
-            <h3 className="text-2xl font-bold capitalize text-foreground">{current.series.replace("-", " ")} Series</h3>
+            <h3 className="text-2xl font-bold capitalize text-foreground">{getSeriesLabel(current.series)}</h3>
           </div>
           <div className="flex gap-2">
             {stories.map((_, i) => (
@@ -70,9 +71,9 @@ export function FeaturedStories({ photos }: Props) {
           >
             {current.items.map((photo) => (
               <div key={photo.id} className="relative overflow-hidden rounded-xl border border-border bg-card/80">
-                <img src={photo.src} alt={photo.title} className="w-full h-40 md:h-48 object-cover" />
+                <img src={photo.cdnSrc || photo.src} alt={photo.displayTitle || photo.title} className="w-full h-40 md:h-48 object-cover transition duration-500 hover:scale-[1.02]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 hover:opacity-100 transition p-3 flex flex-col justify-end">
-                  <h4 className="text-sm font-semibold text-white line-clamp-1">{photo.title}</h4>
+                  <h4 className="text-sm font-semibold text-white line-clamp-1">{photo.displayTitle || photo.title}</h4>
                   <p className="text-[11px] text-white/80 uppercase tracking-wide">{photo.category}</p>
                 </div>
               </div>

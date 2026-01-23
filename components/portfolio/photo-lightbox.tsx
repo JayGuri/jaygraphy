@@ -19,6 +19,8 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
     const { isFavorite, toggleFavorite } = useFavorites();
     const fav = isFavorite(photo.id);
     const [showStory, setShowStory] = useState(false);
+    const imageSrc = photo.cdnSrc || photo.src;
+    const displayTitle = photo.displayTitle || photo.title;
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -93,8 +95,8 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                         key={photo.id}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        src={photo.src}
-                        alt={photo.title}
+                        src={imageSrc}
+                        alt={displayTitle}
                         className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
                     />
                 </div>
@@ -108,7 +110,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                     <GlassCard className="h-full max-h-[85vh] overflow-y-auto w-full bg-black/40 border-white/10 p-6">
                         <div className="space-y-8">
                             <div>
-                                <h2 className="text-3xl font-bold mb-1">{photo.title}</h2>
+                                <h2 className="text-3xl font-bold mb-1">{displayTitle}</h2>
                                 <div className="flex flex-col gap-1 text-sm">
                                     <div className="flex items-center gap-2 text-blue-400 font-medium">
                                         <span className="uppercase tracking-widest">{photo.category}</span>
@@ -216,7 +218,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
 
                             <div className="flex items-center gap-3 pt-4 border-t border-white/5">
                                 <a
-                                    href={photo.src}
+                                    href={imageSrc}
                                     download
                                     className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm transition-colors"
                                 >

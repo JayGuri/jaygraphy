@@ -18,6 +18,10 @@ export interface Photo {
     uploadedAt: string; // ISO string
     takenAt?: string;   // ISO string from EXIF
 
+    // Derived/UX fields
+    cdnSrc?: string;
+    displayTitle?: string;
+
     exif: {
         make?: string;      // e.g. "Sony"
         model?: string;     // e.g. "ILCE-6400"
