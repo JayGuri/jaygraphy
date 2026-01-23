@@ -30,7 +30,7 @@
   padding: 1.25em;
   border-radius: 20px;
   border: 1px solid var(--border-color);
-  background: var(--background-dark);
+  background: color-mix(in srgb, var(--background-dark) 70%, transparent);
   font-weight: 300;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -84,7 +84,7 @@
 .magic-bento-card__description {
   font-size: 13px;
   line-height: 1.4;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .magic-bento-card--text-autohide .magic-bento-card__title,

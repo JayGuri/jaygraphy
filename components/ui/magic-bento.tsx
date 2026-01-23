@@ -563,7 +563,7 @@ export const MagicBento: React.FC<BentoProps> = ({
             style: {
               backgroundColor: card.color,
               backgroundImage: card.image
-                ? `linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 55%), url(${card.image})`
+                ? `linear-gradient(180deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0.48) 60%), url(${card.image})`
                 : undefined,
               backgroundSize: "cover",
               backgroundPosition: "center",

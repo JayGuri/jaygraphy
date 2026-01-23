@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/layout/navbar";
 import { GlassCard } from "@/components/ui/glass-card";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { Camera, MapPin, Coffee, Code, Sparkles, Compass } from "lucide-react";
@@ -7,17 +6,21 @@ export default function About() {
     return (
         <div className="min-h-screen pb-20 bg-background text-foreground transition-colors duration-300">
             <AnimatedBackground />
-            <Navbar />
 
             <main className="container mx-auto px-4 pt-32">
-                <div className="max-w-4xl mx-auto space-y-8">
-                    <div className="space-y-4">
-                        <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
-                            About Jaygraphy
-                        </h1>
-                        <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                            I’m Jay, an engineering student and photographer blending tech discipline with storytelling.
-                        </p>
+                <div className="max-w-5xl mx-auto space-y-8">
+                    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 via-white/0 to-primary/5 p-8 lg:p-12 shadow-[0_30px_120px_rgba(0,0,0,0.35)]">
+                        <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-primary/10 blur-3xl" />
+                        <div className="absolute -bottom-16 -left-24 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl" />
+                        <div className="relative z-10 space-y-4">
+                            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">About</p>
+                            <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+                                About Jaygraphy
+                            </h1>
+                            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                                I’m Jay, an engineering student and photographer blending tech discipline with storytelling.
+                            </p>
+                        </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6 pt-8">
