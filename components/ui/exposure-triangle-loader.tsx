@@ -21,7 +21,7 @@ interface ExposureTriangleLoaderProps {
  * Three circles (ISO / Aperture / Shutter) orbit, collapse, and merge into a clean aperture mark.
  * Auto-dismisses after durationMs; pass onComplete to hook into the end of the animation.
  */
-export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, onComplete }: ExposureTriangleLoaderProps) {
+export function ExposureTriangleLoader({ durationMs = 2800, fadeBufferMs = 267, onComplete }: ExposureTriangleLoaderProps) {
   const [phase, setPhase] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [exit, setExit] = useState(false);
@@ -73,7 +73,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
         background: exit
           ? "linear-gradient(135deg, rgba(2,6,23,0.75), rgba(2,6,23,0.55))"
           : "linear-gradient(135deg, rgba(2,6,23,0.9), rgba(2,6,23,0.8))",
-        transition: "backdrop-filter 0.6s ease, background 0.6s ease",
+        transition: "backdrop-filter 0.4s ease, background 0.4s ease",
       }}
     >
       <div
@@ -81,7 +81,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
         style={{
           background: "radial-gradient(circle at center, rgba(94, 109, 128, 0.08) 0%, transparent 60%)",
           opacity: phase >= 2 ? 0.9 : 0.5,
-          transition: "opacity 1.2s ease-in-out",
+          transition: "opacity 0.8s ease-in-out",
         }}
       />
 
@@ -115,7 +115,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
                   y2={end.y}
                   stroke="rgba(148, 163, 184, 0.18)"
                   strokeWidth="1.4"
-                  style={{ transition: "all 1s ease-in-out", opacity: phase === 0 ? 0.35 : 0.18 }}
+                  style={{ transition: "all 0.67s ease-in-out", opacity: phase === 0 ? 0.35 : 0.18 }}
                 />
               );
             })}
@@ -123,7 +123,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
         <g
           style={{
             transform: `rotate(${phase === 0 ? 0 : 540}deg)`,
-            transition: "transform 3.2s ease-in-out",
+            transition: "transform 2.13s ease-in-out",
             transformOrigin: "center",
           }}
         >
@@ -134,7 +134,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
                 key={circle.id}
                 style={{
                   transform: `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
-                  transition: "all 1s ease-in-out",
+                  transition: "all 0.67s ease-in-out",
                   opacity: pos.opacity,
                 }}
               >
@@ -171,7 +171,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
               style={{
                 opacity: phase === 3 ? 1 : 0,
                 transform: `scale(${phase === 3 ? 1 : 0.35})`,
-                transition: "all 1s ease-out",
+                transition: "all 0.67s ease-out",
                 transformOrigin: "center",
               }}
             >
@@ -184,7 +184,7 @@ export function ExposureTriangleLoader({ durationMs = 4200, fadeBufferMs = 400, 
 
         <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
           <p
-            className="text-slate-500 text-xs tracking-[0.25em] uppercase font-light transition-all duration-700"
+            className="text-slate-500 text-xs tracking-[0.25em] uppercase font-light transition-all duration-[467ms]"
             style={{ opacity: phase >= 3 ? 1 : 0.55 }}
           >
             Loading
