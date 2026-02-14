@@ -6,7 +6,6 @@ import path from "path";
 import fs from "fs/promises";
 import sharp from "sharp";
 import exifr from "exifr";
-import { classifyImage } from "@/lib/image-classifier";
 import { needsAutoTitle, generateAutoTitle, cleanPhotoTitle } from "@/lib/title";
 import { inferSeries } from "@/lib/series";
 import { withCdn } from "@/lib/cdn";
@@ -166,8 +165,9 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        // Classify image to derive category and tags
+        // Classify image to derive category and tags (lazy import to avoid ONNX cold-start on every request)
         try {
+            const { classifyImage } = await import("@/lib/image-classifier");
             const classification = await classifyImage(filePath);
             if (classification.tags?.length) {
                 newPhoto.tags = classification.tags;
