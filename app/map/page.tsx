@@ -1,6 +1,7 @@
 import { getAllPhotos } from "@/lib/photo-storage";
 import { Navbar } from "@/components/layout/navbar";
 import { AnimatedBackground } from "@/components/ui/animated-background";
+import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { MapView } from "@/components/map/map-view";
 
 export const dynamic = "force-dynamic";
@@ -35,7 +36,15 @@ export default async function MapPage() {
         </div>
 
         {hasCoords ? (
-          <MapView photos={photos} />
+          <ErrorBoundary
+            fallback={
+              <div className="flex items-center justify-center h-96 text-muted-foreground">
+                <p>Could not load the 3D map. Please refresh the page.</p>
+              </div>
+            }
+          >
+            <MapView photos={photos} />
+          </ErrorBoundary>
         ) : (
           <p className="text-muted-foreground">No GPS data found for your photos yet.</p>
         )}

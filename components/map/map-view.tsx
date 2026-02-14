@@ -23,6 +23,7 @@ const seriesColors: Record<string, string> = {
 
 function useCesium() {
   const [ready, setReady] = useState(false);
+  const [loadError, setLoadError] = useState(false);
   useEffect(() => {
     if (typeof window === "undefined") return;
     if ((window as any).Cesium) {
@@ -40,9 +41,13 @@ function useCesium() {
     script.src = `${baseUrl}Cesium.js`;
     script.async = true;
     script.onload = () => setReady(true);
+    script.onerror = () => {
+      console.error("Failed to load CesiumJS from CDN");
+      setLoadError(true);
+    };
     document.body.appendChild(script);
   }, []);
-  return ready;
+  return { ready, loadError };
 }
 
 export function MapView({ photos }: MapViewProps) {
@@ -50,8 +55,12 @@ export function MapView({ photos }: MapViewProps) {
   const [seriesFilter, setSeriesFilter] = useState("all");
   const globeEl = useRef<HTMLDivElement | null>(null);
   const viewerRef = useRef<any>(null);
-  const ready = useCesium();
+  const { ready: cesiumLoaded, loadError: cesiumError } = useCesium();
   const seriesOptions = useMemo(() => getSeriesOptions(photos), [photos]);
+
+  if (cesiumError) {
+    throw new Error("Failed to load CesiumJS from CDN");
+  }
 
   const geoPhotos = useMemo(() => {
     const filtered = photos.filter((p) => p.coordinates && p.coordinates.lat && p.coordinates.lng);
@@ -71,7 +80,7 @@ export function MapView({ photos }: MapViewProps) {
   }, []);
 
   useEffect(() => {
-    if (!ready || !globeEl.current || viewerRef.current) return;
+    if (!cesiumLoaded || !globeEl.current || viewerRef.current) return;
     const Cesium = (window as any).Cesium;
     if (!Cesium) return;
     viewerRef.current = new Cesium.Viewer(globeEl.current, {
@@ -111,12 +120,12 @@ export function MapView({ photos }: MapViewProps) {
       }
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
-  }, [ready, photos]);
+  }, [cesiumLoaded, photos]);
 
   useEffect(() => {
     const Cesium = (window as any).Cesium;
     const viewer = viewerRef.current;
-    if (!ready || !viewer || !Cesium) return;
+    if (!cesiumLoaded || !viewer || !Cesium) return;
 
     viewer.entities.removeAll();
     const pinBuilder = new Cesium.PinBuilder();
@@ -165,7 +174,7 @@ export function MapView({ photos }: MapViewProps) {
       // Add some buffer
       viewer.camera.flyTo({ destination: rectangle, duration: 1.5 });
     }
-  }, [geoPhotos, ready]);
+  }, [geoPhotos, cesiumLoaded]);
 
   return (
     <div className="space-y-4 relative group">
@@ -188,8 +197,15 @@ export function MapView({ photos }: MapViewProps) {
       </div>
 
       <div className="w-full h-[75vh] rounded-3xl overflow-hidden border border-white/10 bg-black/40 relative shadow-2xl">
-        {!ready && <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">Loading globe…</div>}
-        <div ref={globeEl} className="w-full h-full" />
+        {!cesiumLoaded && (
+          <div className="w-full h-full flex items-center justify-center bg-[#0A0E17] rounded-xl absolute inset-0">
+            <div className="flex flex-col items-center gap-4 text-muted-foreground">
+              <div className="w-16 h-16 rounded-full border-2 border-blue-500/30 border-t-blue-500 animate-spin" />
+              <p className="text-sm">Loading 3D Globe...</p>
+            </div>
+          </div>
+        )}
+        <div ref={globeEl} className="w-full h-full" style={{ opacity: cesiumLoaded ? 1 : 0, transition: "opacity 0.5s ease" }} />
 
         {/* Custom Preview Card Overlay */}
         {selectedPhoto && (
