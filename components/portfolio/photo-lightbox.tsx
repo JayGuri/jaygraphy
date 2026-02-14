@@ -44,8 +44,16 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev, onPhotoUpdated }
                 toggleFavorite(photo.id);
             }
         };
+
+        const prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            document.body.style.overflow = prevOverflow;
+        };
     }, [onClose, onNext, onPrev, toggleFavorite, photo.id]);
 
     const mapsUrl = photo.exif?.gps
