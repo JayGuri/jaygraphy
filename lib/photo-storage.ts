@@ -8,6 +8,10 @@ import { cleanPhotoTitle } from "./title";
 const DATA_FILE_PATH = path.join(process.cwd(), "data", "photos.json");
 const PHOTOS_DIR = path.join(process.cwd(), "public", "photos");
 
+let cachedPhotos: Photo[] | null = null;
+let cacheTimestamp = 0;
+const CACHE_TTL_MS = 60_000;
+
 export async function ensureDataDir() {
     const dataDir = path.dirname(DATA_FILE_PATH);
     try {
@@ -30,11 +34,15 @@ export async function ensureDataDir() {
 }
 
 export async function getAllPhotos(): Promise<Photo[]> {
+    if (cachedPhotos !== null && Date.now() - cacheTimestamp < CACHE_TTL_MS) {
+        return cachedPhotos;
+    }
+
     await ensureDataDir();
     const data = await fs.readFile(DATA_FILE_PATH, "utf-8");
     const photos = JSON.parse(data) as Photo[];
 
-    return photos.map((photo) => {
+    const result = photos.map((photo) => {
         const series = inferSeries(photo);
         const displayTitle = cleanPhotoTitle(photo.title, {
             location: photo.location,
@@ -48,6 +56,10 @@ export async function getAllPhotos(): Promise<Photo[]> {
             cdnSrc: withCdn(photo.src),
         };
     });
+
+    cachedPhotos = result;
+    cacheTimestamp = Date.now();
+    return result;
 }
 
 export async function getPhotoById(id: string): Promise<Photo | undefined> {
@@ -81,6 +93,7 @@ export async function savePhoto(photo: Photo): Promise<void> {
     }
 
     await fs.writeFile(DATA_FILE_PATH, JSON.stringify(photos, null, 2));
+    cachedPhotos = null;
 }
 
 export async function deletePhoto(id: string): Promise<void> {
@@ -103,4 +116,5 @@ export async function deletePhoto(id: string): Promise<void> {
 
     const newPhotos = photos.filter((p) => p.id !== id);
     await fs.writeFile(DATA_FILE_PATH, JSON.stringify(newPhotos, null, 2));
+    cachedPhotos = null;
 }
