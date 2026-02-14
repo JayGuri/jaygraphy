@@ -21,7 +21,15 @@ export default async function Home() {
       <main className="relative z-10 overflow-hidden bg-background text-foreground">
         <HeroSection />
         <section className="flex justify-center py-8">
-          <MagicBento photos={heroBentoPhotos} enableTilt enableSpotlight enableStars enableBorderGlow glowColor="132, 0, 255" />
+          <MagicBento
+          photos={heroBentoPhotos}
+          enableTilt
+          enableSpotlight={false}
+          enableStars
+          enableBorderGlow
+          glowColor="132, 0, 255"
+          particleCount={6}
+        />
         </section>
         <RecentlyAdded photos={photos} />
         <FeaturedStories photos={featuredPhotos} />
