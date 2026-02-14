@@ -332,6 +332,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                         onClose={() => setSelectedPhotoId(null)}
                         onNext={handleNext}
                         onPrev={handlePrev}
+                        onPhotoUpdated={() => router.refresh()}
                     />
                 )}
             </AnimatePresence>

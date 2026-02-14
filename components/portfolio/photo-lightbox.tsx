@@ -13,12 +13,19 @@ interface PhotoLightboxProps {
     onClose: () => void;
     onNext?: () => void;
     onPrev?: () => void;
+    /** Called after location is set so the parent can refresh (e.g. router.refresh()) */
+    onPhotoUpdated?: (photo: Photo) => void;
 }
 
-export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxProps) {
+export function PhotoLightbox({ photo, onClose, onNext, onPrev, onPhotoUpdated }: PhotoLightboxProps) {
     const { isFavorite, toggleFavorite } = useFavorites();
     const fav = isFavorite(photo.id);
     const [showStory, setShowStory] = useState(false);
+    const [showSetLocation, setShowSetLocation] = useState(false);
+    const [locationForm, setLocationForm] = useState({ lat: "", lng: "" });
+    const [locationSaving, setLocationSaving] = useState(false);
+    const [locationError, setLocationError] = useState<string | null>(null);
+    const hasGps = !!(photo.exif?.gps || (photo as { coordinates?: { lat: number; lng: number } }).coordinates);
     const imageSrc = photo.cdnSrc || photo.src;
     const displayTitle = photo.displayTitle || photo.title;
 
@@ -138,6 +145,76 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxP
                                             <MapPin className="w-3 h-3" />
                                             <span>{dms}</span>
                                         </a>
+                                    )}
+                                    {!hasGps && (
+                                        <div className="pt-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowSetLocation((v) => !v)}
+                                                className="text-xs text-blue-400 hover:text-blue-300 underline underline-offset-2"
+                                            >
+                                                {showSetLocation ? "Cancel" : "Set location (for map)"}
+                                            </button>
+                                            {showSetLocation && (
+                                                <form
+                                                    className="mt-2 flex flex-wrap items-center gap-2"
+                                                    onSubmit={async (e) => {
+                                                        e.preventDefault();
+                                                        setLocationError(null);
+                                                        const lat = Number.parseFloat(locationForm.lat);
+                                                        const lng = Number.parseFloat(locationForm.lng);
+                                                        if (Number.isNaN(lat) || Number.isNaN(lng)) {
+                                                            setLocationError("Enter valid lat and lng.");
+                                                            return;
+                                                        }
+                                                        setLocationSaving(true);
+                                                        try {
+                                                            const res = await fetch(`/api/photos/${photo.id}`, {
+                                                                method: "PATCH",
+                                                                headers: { "Content-Type": "application/json" },
+                                                                body: JSON.stringify({ coordinates: { lat, lng } }),
+                                                            });
+                                                            if (!res.ok) {
+                                                                const err = await res.json().catch(() => ({}));
+                                                                setLocationError((err as { error?: string }).error || "Failed to save.");
+                                                                return;
+                                                            }
+                                                            const { photo: updated } = (await res.json()) as { photo: Photo };
+                                                            onPhotoUpdated?.(updated);
+                                                            setShowSetLocation(false);
+                                                            setLocationForm({ lat: "", lng: "" });
+                                                        } finally {
+                                                            setLocationSaving(false);
+                                                        }
+                                                    }}
+                                                >
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Latitude"
+                                                        value={locationForm.lat}
+                                                        onChange={(e) => setLocationForm((f) => ({ ...f, lat: e.target.value }))}
+                                                        className="w-24 rounded bg-white/10 px-2 py-1 text-sm border border-white/20 placeholder:text-white/40"
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Longitude"
+                                                        value={locationForm.lng}
+                                                        onChange={(e) => setLocationForm((f) => ({ ...f, lng: e.target.value }))}
+                                                        className="w-24 rounded bg-white/10 px-2 py-1 text-sm border border-white/20 placeholder:text-white/40"
+                                                    />
+                                                    <button
+                                                        type="submit"
+                                                        disabled={locationSaving}
+                                                        className="rounded bg-blue-600 px-2 py-1 text-sm text-white hover:bg-blue-500 disabled:opacity-50"
+                                                    >
+                                                        {locationSaving ? "Saving…" : "Save"}
+                                                    </button>
+                                                    {locationError && (
+                                                        <span className="text-xs text-red-400">{locationError}</span>
+                                                    )}
+                                                </form>
+                                            )}
+                                        </div>
                                     )}
                                 </div>
                             </div>

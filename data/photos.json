@@ -1,5 +1,87 @@
 [
   {
+    "id": "8d25bdfa-5419-43f6-b29f-641e023105ed",
+    "title": "DSC00965",
+    "category": "Nature",
+    "location": "Unknown Location",
+    "src": "/photos/71d75ee8-b118-42b9-a83b-0b3672e32af2-DSC00965.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgP/xAAhEAACAgICAQUAAAAAAAAAAAABAgMRABIEIUEFMVGRsf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAEREjH/2gAMAwEAAhEDEQA/AGvUpOOFAAUvuFIHRF/OcYHWKBpHGp21AC9/WTYp5J1bkMabcyEeCRQGNwOxiZDR7u/Nmr/cvb4ERZ48SmBGbtmFm8MzuUAVfYChhjWB/9k=",
+    "tags": [
+      "megalith, megalithic structure",
+      "mitten",
+      "cliff, drop, drop-off"
+    ],
+    "uploadedAt": "2026-02-14T14:49:00.659Z",
+    "takenAt": "2026-02-04T07:54:38.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "18mm",
+      "aperture": "f/5",
+      "exposureTime": "1/1000s",
+      "iso": "100"
+    }
+  },
+  {
+    "id": "126ec96c-585e-45e6-a3e7-02ca1fa72cc3",
+    "title": "DSC00720",
+    "category": "Travel",
+    "location": "Unknown Location",
+    "src": "/photos/0cf67bbf-daed-47cb-b78c-469c28587267-DSC00720.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBv/EACAQAAMAAgEEAwAAAAAAAAAAAAECAwARBAUSQWEGMaH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCX8aEZ0ratkRtBFVjr3v8AM02ww2CCPWZ7oPC49uGaWmKMW8+AMuoqyQLNQqj6AGhgJqg78MXWh7zhmkf/2Q==",
+    "tags": [
+      "stupa, tope",
+      "palace",
+      "bell cote, bell cot"
+    ],
+    "uploadedAt": "2026-02-14T14:48:59.613Z",
+    "takenAt": "2026-02-01T09:20:35.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "108mm",
+      "aperture": "f/5.6",
+      "exposureTime": "1/200s",
+      "iso": "100"
+    },
+    "displayTitle": "DSC00720",
+    "cdnSrc": "/photos/0cf67bbf-daed-47cb-b78c-469c28587267-DSC00720.JPG"
+  },
+  {
+    "id": "5f9f9037-570c-41c2-bde4-377314cb9808",
+    "title": "DSC00617",
+    "category": "Wildlife",
+    "location": "Unknown Location",
+    "src": "/photos/b99f85c5-b5e5-46d8-a5f1-a79d15e79cb7-DSC00617.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABQABBP/EACMQAAICAQEJAQAAAAAAAAAAAAECAAMEERITFSEiIzFBYZH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABcRAQEBAQAAAAAAAAAAAAAAAAAhEUH/2gAMAwEAAhEDEQA/ADeHUlaC6bYNqggOup19eZ33O7X2VPiPSiDpdiND+QzEclqPlgMYyrCV5yS7TcC3IN4ZTLW7hlHG/9k=",
+    "tags": [
+      "birdhouse",
+      "lakeside, lakeshore",
+      "lampshade, lamp shade"
+    ],
+    "uploadedAt": "2026-02-14T14:48:58.054Z",
+    "takenAt": "2026-01-31T09:54:57.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "23mm",
+      "aperture": "f/5",
+      "exposureTime": "1/4000s",
+      "iso": "100"
+    },
+    "displayTitle": "DSC00617",
+    "cdnSrc": "/photos/b99f85c5-b5e5-46d8-a5f1-a79d15e79cb7-DSC00617.JPG"
+  },
+  {
     "id": "69452ff4-4211-45b6-990b-61b06bff27f2",
     "title": "The Grotto • 2024-07-17 • 42cb",
     "category": "Nature",
@@ -26,7 +108,10 @@
         "latitude": 45.24512777777778,
         "longitude": -81.523225
       }
-    }
+    },
+    "series": "bruce",
+    "displayTitle": "The Grotto",
+    "cdnSrc": "/photos/3120ada9-d30a-459b-8b71-ebf4d55ad963-IMG_9999.jpg"
   },
   {
     "id": "75e90cec-9cce-456a-9989-2afaf3f48f07",
@@ -43,7 +128,9 @@
     ],
     "uploadedAt": "2026-01-14T09:47:01.990Z",
     "takenAt": "2024-01-20T04:11:23.000Z",
-    "exif": {}
+    "exif": {},
+    "displayTitle": "----",
+    "cdnSrc": "/photos/42953217-133a-4a6d-a533-02f487546f0e-8e7a0856-6583-40cb-ac58-5a79342c8dd9.JPG"
   },
   {
     "id": "ea29dca7-e137-4603-8fcf-52e1b70af62c",
@@ -60,7 +147,9 @@
     ],
     "uploadedAt": "2026-01-14T09:47:01.788Z",
     "takenAt": "2024-07-18T19:05:05.000Z",
-    "exif": {}
+    "exif": {},
+    "displayTitle": "----",
+    "cdnSrc": "/photos/3aecbd6d-5aa9-4ee0-b3f0-46700402374b-c47faf1e-cbd3-4b8b-b2e0-c32ba0563409.JPG"
   },
   {
     "id": "7a3238fa-3c08-4479-bffb-dd0a81dd206e",
@@ -89,7 +178,10 @@
         "latitude": 46.813294444444445,
         "longitude": -71.2025
       }
-    }
+    },
+    "series": "quebec",
+    "displayTitle": "Old Quebec",
+    "cdnSrc": "/photos/63fe310d-1c92-46b7-8a46-100dab47ef37-IMG_0154.jpg"
   },
   {
     "id": "c49b12eb-5989-42e5-8ff9-d841b7ac1a08",
@@ -118,7 +210,10 @@
         "latitude": 46.81325555555555,
         "longitude": -71.20281111111112
       }
-    }
+    },
+    "series": "quebec",
+    "displayTitle": "Old Quebec",
+    "cdnSrc": "/photos/0bceeba5-bf1b-4aec-91fd-783ef1670ea5-IMG_0156.jpg"
   },
   {
     "id": "a9cf68fe-829b-4786-86b0-a3d538f48a75",
@@ -147,7 +242,10 @@
         "latitude": 46.812263888888886,
         "longitude": -71.20340833333334
       }
-    }
+    },
+    "series": "quebec",
+    "displayTitle": "Quebec City",
+    "cdnSrc": "/photos/ee156427-5a5a-4901-a4e9-cecc284216a5-IMG_0170.jpg"
   },
   {
     "id": "6c972e49-16ac-4cc5-8d3e-3a65b6a094b4",
@@ -176,7 +274,10 @@
         "latitude": 45.556774999999995,
         "longitude": -73.55973888888889
       }
-    }
+    },
+    "series": "montreal",
+    "displayTitle": "Old Montreal",
+    "cdnSrc": "/photos/6d2a946f-364c-4fb9-b077-e840ff20d5d9-IMG_0225.jpg"
   },
   {
     "id": "6ea4b373-1f9e-498b-9a8c-3c8c7150a7c8",
@@ -205,7 +306,10 @@
         "latitude": 45.50951111111111,
         "longitude": -73.55158333333333
       }
-    }
+    },
+    "series": "montreal",
+    "displayTitle": "Montreal Botanical Garden",
+    "cdnSrc": "/photos/26e3bc37-a5d3-45d4-93d1-cd03ba5c6a83-IMG_0271.jpg"
   },
   {
     "id": "9915b9b5-d2fb-445b-8053-f4e795b29462",
@@ -234,7 +338,9 @@
         "latitude": 45.498536111111115,
         "longitude": -73.59810555555555
       }
-    }
+    },
+    "displayTitle": "Montréal",
+    "cdnSrc": "/photos/64edd25b-8261-4a2a-b44b-f694d196ccd4-IMG_0280.jpg"
   },
   {
     "id": "d80682a4-3f95-4c5f-abd9-455cf001365f",
@@ -259,7 +365,9 @@
       "aperture": "f/2.8",
       "exposureTime": "1/120s",
       "iso": "200"
-    }
+    },
+    "displayTitle": "Unknown Location",
+    "cdnSrc": "/photos/9ae8e958-9246-4c81-afcc-3ee3042e765c-IMG_0294.jpg"
   },
   {
     "id": "efa42517-c352-4226-90c9-edda3fc4996c",
@@ -288,7 +396,9 @@
         "latitude": 45.492336111111115,
         "longitude": -73.6174861111111
       }
-    }
+    },
+    "displayTitle": "Montréal",
+    "cdnSrc": "/photos/bc76fde1-fc4c-493b-b3e2-39e4c2dfcbd7-IMG_0296.jpg"
   },
   {
     "id": "939fe28d-d111-4fe4-9bad-8319907927c9",
@@ -313,7 +423,9 @@
       "aperture": "f/1.78",
       "exposureTime": "1/718s",
       "iso": "80"
-    }
+    },
+    "displayTitle": "Unknown Location",
+    "cdnSrc": "/photos/103e9727-b4fe-41e5-8035-d014f7b84e02-IMG_0298.jpg"
   },
   {
     "id": "e63ae042-8974-4a11-a223-f64f90b6cb9f",
@@ -342,7 +454,9 @@
         "latitude": 45.5047,
         "longitude": -73.55667777777778
       }
-    }
+    },
+    "displayTitle": "Montréal",
+    "cdnSrc": "/photos/53582b2b-71a5-4d93-b6e5-370b074f40ec-IMG_0320.jpg"
   },
   {
     "id": "361990b5-cdee-4045-8245-69beda85b80d",
@@ -371,7 +485,10 @@
         "latitude": 43.633158333333334,
         "longitude": -79.36565277777777
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "High Park",
+    "cdnSrc": "/photos/8db13c2c-f4c6-405d-a46f-65c66094d27a-IMG_0439-(1).jpg"
   },
   {
     "id": "9693901e-cc33-4faf-b0bc-0bd9d52e91d9",
@@ -400,7 +517,10 @@
         "latitude": 43.642313888888886,
         "longitude": -79.38742777777779
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Toronto Waterfront",
+    "cdnSrc": "/photos/139a73dc-960b-4b64-bd2d-a1a7752ca60c-IMG_0457.jpg"
   },
   {
     "id": "ec57b242-3689-48f8-a7a6-0b17e0f5a981",
@@ -429,7 +549,10 @@
         "latitude": 43.079175000000006,
         "longitude": -79.07813333333333
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/a2764443-eb6f-44fa-9ee1-d456d9d05a15-IMG_0500.jpg"
   },
   {
     "id": "6f1937db-0267-47ee-a0d9-9df3d584590d",
@@ -458,7 +581,10 @@
         "latitude": 43.07926944444445,
         "longitude": -79.07815555555555
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/ba1c8724-e774-4bf8-a30e-751d21af7788-IMG_0504.jpg"
   },
   {
     "id": "10b7b09b-f067-436a-825f-09f13e2a70aa",
@@ -487,7 +613,10 @@
         "latitude": 43.081725000000006,
         "longitude": -79.07792777777777
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/86fcf8fb-0fad-474c-b667-2671f4a5ccdb-IMG_0552.jpg"
   },
   {
     "id": "1f275f64-287f-4f43-b3ea-d00c0229608a",
@@ -516,7 +645,10 @@
         "latitude": 43.08051944444445,
         "longitude": -79.07829166666666
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/cd790ed5-0346-4ff4-ac96-91fbfdf1fb8e-IMG_0573.jpg"
   },
   {
     "id": "a2ef3ce3-5378-4913-860b-3a176c6f02ee",
@@ -545,7 +677,10 @@
         "latitude": 43.08038611111112,
         "longitude": -79.07779722222222
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/360458b2-d6f4-479d-821c-e35a1c33ecb9-IMG_0609-(1).jpg"
   },
   {
     "id": "4be8d555-da6f-4284-a921-805a2ee618d7",
@@ -574,7 +709,10 @@
         "latitude": 43.07509166666667,
         "longitude": -79.07940555555555
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/34eb2b48-393b-4407-b5d3-9b69e7b2298d-IMG_0623.jpg"
   },
   {
     "id": "0af501cf-e9a5-4981-9cdb-92f8e85cc5e4",
@@ -603,7 +741,10 @@
         "latitude": 43.137702777777776,
         "longitude": -79.0545361111111
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/40d1d413-fcb6-4c6c-9560-a67c56f05c64-IMG_0659.jpg"
   },
   {
     "id": "537d44d7-91ed-44fb-8f1c-bd30e8e3344b",
@@ -632,7 +773,10 @@
         "latitude": 43.11833611111111,
         "longitude": -79.06871111111111
       }
-    }
+    },
+    "series": "niagara",
+    "displayTitle": "Niagara Falls",
+    "cdnSrc": "/photos/ee3f7a33-ca4b-49aa-ae00-16c1f66cdf50-IMG_0687.jpg"
   },
   {
     "id": "a311dc3e-85b9-42c3-84a6-4e147e85f821",
@@ -661,7 +805,10 @@
         "latitude": 43.68590833333333,
         "longitude": -79.364975
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Don Valley",
+    "cdnSrc": "/photos/4544650a-6404-4eef-90d1-c637be4865aa-IMG_0719.jpg"
   },
   {
     "id": "98c1b121-0cb9-4d8b-a068-10a8210c66e8",
@@ -690,7 +837,10 @@
         "latitude": 23.265877777777778,
         "longitude": 69.67968888888889
       }
-    }
+    },
+    "series": "bhuj",
+    "displayTitle": "Bhuj",
+    "cdnSrc": "/photos/e71f72fe-2876-45f9-9c16-719e7a2de341-IMG_7148.jpg"
   },
   {
     "id": "818e2af6-a3d9-417d-9f58-b191afa54632",
@@ -719,7 +869,10 @@
         "latitude": 43.639072222222225,
         "longitude": -79.37719722222222
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Toronto",
+    "cdnSrc": "/photos/4fdca4c3-e4cb-4a88-bc09-1d36a9a992d9-IMG_9749.jpg"
   },
   {
     "id": "9932fd1c-678d-4473-afa5-e0afee9741dc",
@@ -748,7 +901,10 @@
         "latitude": 43.66728611111111,
         "longitude": -79.4040138888889
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Toronto",
+    "cdnSrc": "/photos/a7b10ddb-a92f-4ec9-9c78-eb91d46352f5-IMG_9773.jpg"
   },
   {
     "id": "cda8ec69-3d96-4362-b12c-7af2355ff556",
@@ -777,7 +933,10 @@
         "latitude": 43.69474722222222,
         "longitude": -79.38060833333333
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Toronto",
+    "cdnSrc": "/photos/ab148f54-eef5-430b-948c-b882bdcfc937-IMG_9781.jpg"
   },
   {
     "id": "e1d8b401-a11c-45ea-8a6e-58e2163fefbb",
@@ -806,7 +965,10 @@
         "latitude": 43.69368055555555,
         "longitude": -79.37754722222222
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Toronto",
+    "cdnSrc": "/photos/81cacb34-2dbf-46d9-b347-54295477fb3c-IMG_9793.jpg"
   },
   {
     "id": "f493b793-788d-4da4-9f14-f6722293ad65",
@@ -835,7 +997,10 @@
         "latitude": 43.63155277777778,
         "longitude": -79.47155000000001
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Etobicoke",
+    "cdnSrc": "/photos/ea41433a-4690-45f1-b9f6-db7a0a9ec7a2-IMG_9835.jpg"
   },
   {
     "id": "9ed5b2cb-ad4b-48eb-9e81-993cfb636a2c",
@@ -864,7 +1029,10 @@
         "latitude": 45.00513055555555,
         "longitude": -81.22689166666667
       }
-    }
+    },
+    "series": "bruce",
+    "displayTitle": "Bruce County",
+    "cdnSrc": "/photos/a3b3cf9b-3510-49aa-97f0-a0d7d36739f6-IMG_9884.jpg"
   },
   {
     "id": "7e50fd46-5276-41ed-89ae-eb9a9a34551f",
@@ -893,7 +1061,10 @@
         "latitude": 45.001488888888886,
         "longitude": -81.23088055555556
       }
-    }
+    },
+    "series": "bruce",
+    "displayTitle": "Bruce Peninsula",
+    "cdnSrc": "/photos/d0b2f41a-239b-48d3-adea-bb32f764b680-IMG_9874.jpg"
   },
   {
     "id": "805169cc-5f06-4052-8054-8ac15d401cd6",
@@ -922,7 +1093,10 @@
         "latitude": 45.00151944444445,
         "longitude": -81.23083611111112
       }
-    }
+    },
+    "series": "bruce",
+    "displayTitle": "Bruce Peninsula",
+    "cdnSrc": "/photos/54bf37d1-d633-4b9f-8e50-3b50c919cf82-IMG_9873.jpg"
   },
   {
     "id": "2aa046fd-c6d2-45cc-b004-916cf77afd2d",
@@ -951,7 +1125,10 @@
         "latitude": 45.25769722222222,
         "longitude": -81.6676638888889
       }
-    }
+    },
+    "series": "bruce",
+    "displayTitle": "Bruce Peninsula National Park",
+    "cdnSrc": "/photos/1eb47908-d87e-4dd5-96f3-ecc471e446fa-IMG_9954.jpg"
   },
   {
     "id": "b52f4ab9-85e9-4871-a247-dfd0ceb66919",
@@ -980,7 +1157,10 @@
         "latitude": 45.25765277777778,
         "longitude": -81.66763333333334
       }
-    }
+    },
+    "series": "bruce",
+    "displayTitle": "Bruce Peninsula National Park",
+    "cdnSrc": "/photos/70de2a1b-858c-4fa1-9a9f-50cac61feebf-IMG_9956.jpg"
   },
   {
     "id": "b023f915-af1d-4cf3-a769-94dc6efafabd",
@@ -1009,7 +1189,9 @@
         "latitude": 46.8861,
         "longitude": -71.14508055555557
       }
-    }
+    },
+    "displayTitle": "Québec",
+    "cdnSrc": "/photos/679b303c-72f6-493f-9628-9ef494a1f8ee-IMG_0133.jpg"
   },
   {
     "id": "7eaffda3-54aa-47db-bc75-7a6bed9887ec",
@@ -1038,7 +1220,9 @@
         "latitude": 46.81469722222222,
         "longitude": -71.20813055555556
       }
-    }
+    },
+    "displayTitle": "Québec",
+    "cdnSrc": "/photos/a61bda6e-158b-4a1d-9d83-4145758d5d32-IMG_0196.jpg"
   },
   {
     "id": "1e0a841a-257f-4312-b273-456cba6709f2",
@@ -1067,7 +1251,9 @@
         "latitude": 46.81625277777778,
         "longitude": -71.20764166666667
       }
-    }
+    },
+    "displayTitle": "Québec",
+    "cdnSrc": "/photos/521e0b0a-1017-40cc-8dcb-27ea7dd6c209-IMG_0198.jpg"
   },
   {
     "id": "65a8de52-5949-489a-bf98-d9340aeca7ca",
@@ -1096,7 +1282,10 @@
         "latitude": 45.55681944444444,
         "longitude": -73.55918888888888
       }
-    }
+    },
+    "series": "montreal",
+    "displayTitle": "Old Montreal",
+    "cdnSrc": "/photos/494f1dde-19ce-4ca7-a8f5-33db6f01fe25-IMG_0210.jpg"
   },
   {
     "id": "2179de8d-516e-4081-b945-29482f625f06",
@@ -1125,7 +1314,9 @@
         "latitude": 45.559172222222216,
         "longitude": -73.55838055555556
       }
-    }
+    },
+    "displayTitle": "Montréal",
+    "cdnSrc": "/photos/6fbd6d62-3dc9-44b0-beb8-3e7ac2619452-IMG_0244.jpg"
   },
   {
     "id": "c607ee13-d426-4fd1-b6b5-240212db2c76",
@@ -1154,7 +1345,10 @@
         "latitude": 43.633158333333334,
         "longitude": -79.36565277777777
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "High Park",
+    "cdnSrc": "/photos/090a0980-0687-43b3-a29c-528fdcbebe70-IMG_0439.jpg"
   },
   {
     "id": "70bf7044-a8b0-492d-925e-76c7ef236ace",
@@ -1183,7 +1377,9 @@
         "latitude": 23.091102777777778,
         "longitude": 72.59632222222221
       }
-    }
+    },
+    "displayTitle": "Asarva Taluka",
+    "cdnSrc": "/photos/d568ebc3-ecda-4657-a35e-958736ae07d0-IMG_4418.jpg"
   },
   {
     "id": "659b727e-0bd5-4525-9c65-e7fac1743658",
@@ -1212,7 +1408,9 @@
         "latitude": 23.091116666666665,
         "longitude": 72.59634444444444
       }
-    }
+    },
+    "displayTitle": "Asarva Taluka",
+    "cdnSrc": "/photos/3f00509e-5815-4fa8-b00b-7597be4a9e7a-IMG_4443.jpg"
   },
   {
     "id": "c505ac9a-ea36-47d7-835f-014fa600b916",
@@ -1237,7 +1435,9 @@
       "aperture": "f/1.78",
       "exposureTime": "1/60s",
       "iso": "1250"
-    }
+    },
+    "displayTitle": "Unknown Location",
+    "cdnSrc": "/photos/8d77f4a2-3f92-410d-b0ef-a39111570c3a-IMG_4473.JPG"
   },
   {
     "id": "22ff1c99-a647-4881-9f63-9b326ce5b384",
@@ -1266,7 +1466,9 @@
         "latitude": 23.09113611111111,
         "longitude": 72.59626944444445
       }
-    }
+    },
+    "displayTitle": "Asarva Taluka",
+    "cdnSrc": "/photos/8e4c9060-882d-4f41-ba0b-0096353029b5-IMG_4538.JPG"
   },
   {
     "id": "37500b5f-a346-4717-a28f-90c641ac6513",
@@ -1295,7 +1497,9 @@
         "latitude": 15.584308333333334,
         "longitude": 73.73748055555555
       }
-    }
+    },
+    "displayTitle": "Bardez",
+    "cdnSrc": "/photos/f3011a5c-1dda-44b9-8400-96a26de52545-IMG_6453.jpg"
   },
   {
     "id": "5bae33e7-2f88-4d76-ba82-7a7fa1325165",
@@ -1324,7 +1528,9 @@
         "latitude": 15.58431388888889,
         "longitude": 73.73749444444445
       }
-    }
+    },
+    "displayTitle": "Bardez",
+    "cdnSrc": "/photos/bb9b8fa5-acc1-4674-9f5e-feafcfa4ec43-IMG_6455.jpg"
   },
   {
     "id": "92350314-4392-4488-a756-22410a13e762",
@@ -1353,7 +1559,9 @@
         "latitude": 10.032261111111112,
         "longitude": 76.8667611111111
       }
-    }
+    },
+    "displayTitle": "Devikulam",
+    "cdnSrc": "/photos/a178483e-3f04-4464-968c-889b67d7e0e4-IMG_6829.jpg"
   },
   {
     "id": "1d290b1a-6bd3-4583-8d94-6dfcb08245fc",
@@ -1382,7 +1590,9 @@
         "latitude": 10.032366666666668,
         "longitude": 76.86667499999999
       }
-    }
+    },
+    "displayTitle": "Devikulam",
+    "cdnSrc": "/photos/2f103239-c24c-41f0-b25c-89c86185e665-IMG_6852.jpg"
   },
   {
     "id": "733d58b8-bce6-432b-9dc5-858aef6c7a3e",
@@ -1411,7 +1621,9 @@
         "latitude": 10.032322222222223,
         "longitude": 76.86615833333333
       }
-    }
+    },
+    "displayTitle": "Devikulam",
+    "cdnSrc": "/photos/4d9f5d5a-28f4-41bf-9d97-f3e90e9c6f29-IMG_6867.jpg"
   },
   {
     "id": "ddeb19bf-4911-4195-b923-e4f78c5d8465",
@@ -1440,7 +1652,9 @@
         "latitude": 10.108077777777778,
         "longitude": 77.122125
       }
-    }
+    },
+    "displayTitle": "Devikulam",
+    "cdnSrc": "/photos/88afb4b5-f838-47bf-a998-3164216ce84c-IMG_6928.jpg"
   },
   {
     "id": "8dc2e0c4-c243-4367-8bb3-3afcc36d67e4",
@@ -1469,7 +1683,9 @@
         "latitude": 8.985172222222221,
         "longitude": 76.61600555555555
       }
-    }
+    },
+    "displayTitle": "Kollam",
+    "cdnSrc": "/photos/a36ee38c-177c-447e-b847-3bc439c94695-IMG_6966.jpg"
   },
   {
     "id": "6c2fb458-fae2-471f-a07e-195135071bd2",
@@ -1498,7 +1714,10 @@
         "latitude": 43.64642222222222,
         "longitude": -79.379075
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Toronto",
+    "cdnSrc": "/photos/8e99c25e-e759-457a-bbd3-33b911c7a82c-IMG_9745.jpg"
   },
   {
     "id": "78c65ae9-b6fd-44fb-ab58-acb45e7c7053",
@@ -1527,7 +1746,10 @@
         "latitude": 43.630877777777776,
         "longitude": -79.47148888888889
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Etobicoke",
+    "cdnSrc": "/photos/f55d924e-8579-4a2f-b3c3-f868ee1be686-IMG_9824.jpg"
   },
   {
     "id": "7b605c92-b37c-42ec-8883-4f0872d7789a",
@@ -1556,7 +1778,10 @@
         "latitude": 43.63083611111111,
         "longitude": -79.47085555555556
       }
-    }
+    },
+    "series": "toronto",
+    "displayTitle": "Etobicoke",
+    "cdnSrc": "/photos/ad7d6a7a-a34a-4b80-921c-bb39b4c42ade-IMG_9826.jpg"
   },
   {
     "id": "a32206a6-9630-445f-9e53-38036c0bf266",
@@ -1573,7 +1798,9 @@
     ],
     "uploadedAt": "2026-01-13T11:00:25.352Z",
     "takenAt": "2026-01-13T11:00:25.352Z",
-    "exif": {}
+    "exif": {},
+    "displayTitle": "Unknown Location",
+    "cdnSrc": "/photos/336c4090-2fe2-48ad-bf09-ea41eaf4e99e-IMG_0098.jpeg"
   },
   {
     "id": "febec18e-3800-429e-8d57-07a779e64be9",
@@ -1590,7 +1817,9 @@
     ],
     "uploadedAt": "2026-01-13T11:00:25.274Z",
     "takenAt": "2026-01-13T11:00:25.274Z",
-    "exif": {}
+    "exif": {},
+    "displayTitle": "WhatsApp Image -01-13 at 2",
+    "cdnSrc": "/photos/41165da5-f155-4bbb-9798-98b8d30a079e-WhatsApp-Image-2026-01-13-at-2.46.39-PM.jpeg"
   },
   {
     "id": "21360d8e-b01c-4359-a5b5-f34e2d04c2f8",
@@ -1619,6 +1848,8 @@
         "latitude": 46.81296944444444,
         "longitude": -71.20716944444445
       }
-    }
+    },
+    "displayTitle": "Québec",
+    "cdnSrc": "/photos/eb332008-4126-4a81-bdbe-46bb9c05d6fa-IMG_0189.jpg"
   }
 ]

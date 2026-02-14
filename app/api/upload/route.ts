@@ -4,6 +4,7 @@ import { Photo } from "@/types/photo";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import fs from "fs/promises";
+import sharp from "sharp";
 import exifr from "exifr";
 import { classifyImage } from "@/lib/image-classifier";
 import { needsAutoTitle, generateAutoTitle, cleanPhotoTitle } from "@/lib/title";
@@ -68,6 +69,23 @@ export async function POST(req: NextRequest) {
         // Save file (converted or original)
         await fs.writeFile(filePath, buffer);
 
+        // Extract dimensions and generate blur placeholder with sharp
+        let width = 0;
+        let height = 0;
+        let blurDataURL: string | undefined;
+        try {
+            const metadata = await sharp(filePath).metadata();
+            width = metadata.width ?? 0;
+            height = metadata.height ?? 0;
+        } catch (e) {
+            console.warn("Could not read image dimensions", e);
+        }
+        try {
+            const thumbBuffer = await sharp(filePath).resize(20).jpeg({ quality: 40 }).toBuffer();
+            blurDataURL = `data:image/jpeg;base64,${thumbBuffer.toString("base64")}`;
+        } catch (e) {
+            console.warn("Could not generate blur placeholder", e);
+        }
 
         // EXIF already parsed above
 
@@ -80,8 +98,9 @@ export async function POST(req: NextRequest) {
             category: "street", // default; refined by classifier below
             location: "Unknown Location",
             src: `/photos/${filename}`,
-            width: 0, // Would need image processing lib to get dimensions if exifr doesn't give them nicely, or check exifr output
-            height: 0,
+            width,
+            height,
+            ...(blurDataURL && { blurDataURL }),
             tags: [],
             uploadedAt: new Date().toISOString(),
             takenAt: anyExif?.DateTimeOriginal?.toISOString() || new Date().toISOString(),
