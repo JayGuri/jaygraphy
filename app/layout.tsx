@@ -21,6 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://unpkg.com" />
+        <link rel="dns-prefetch" href="https://unpkg.com" />
+        <link rel="preconnect" href="https://nominatim.openstreetmap.org" />
+        <link rel="dns-prefetch" href="https://nominatim.openstreetmap.org" />
+        <link rel="preconnect" href="https://wsrv.nl" />
+        <link rel="dns-prefetch" href="https://wsrv.nl" />
+      </head>
       <body className="antialiased min-h-screen bg-background text-foreground transition-colors duration-300">
         <ThemeProvider
           attribute="class"
