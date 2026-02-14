@@ -289,12 +289,15 @@ const ParticleCard: React.FC<{
       );
     };
 
-    element.addEventListener("mouseenter", handleMouseEnter);
-    element.addEventListener("mouseleave", handleMouseLeave);
-    element.addEventListener("mousemove", handleMouseMove);
-    element.addEventListener("click", handleClick);
+    const ctx = gsap.context(() => {
+      element.addEventListener("mouseenter", handleMouseEnter);
+      element.addEventListener("mouseleave", handleMouseLeave);
+      element.addEventListener("mousemove", handleMouseMove);
+      element.addEventListener("click", handleClick);
+    }, cardRef);
 
     return () => {
+      ctx.revert();
       isHoveredRef.current = false;
       element.removeEventListener("mouseenter", handleMouseEnter);
       element.removeEventListener("mouseleave", handleMouseLeave);
@@ -440,10 +443,13 @@ const GlobalSpotlight: React.FC<{
       }
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
+    const ctx = gsap.context(() => {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseleave", handleMouseLeave);
+    });
 
     return () => {
+      ctx.revert();
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);

@@ -1,5 +1,143 @@
 [
   {
+    "id": "1ede7a15-c45c-465e-9b79-1075e2877916",
+    "title": "DSC00588",
+    "category": "Nature",
+    "location": "Unknown Location",
+    "src": "/photos/5f74a4ee-ce61-40eb-85b1-c3c34f91ea86-DSC00588.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFAf/EACIQAAEEAgAHAQAAAAAAAAAAAAECAwQRACEFEhMUIjFRYf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8AjtxW08xc3awEj8yp2qVxEiwAsaB1iEh5TZQfZ1Z+7OPcSkOxoTSWyLICLr7gLSYiA7QUmq1oYZkxTjT3TDivEAa1hiFf/9k=",
+    "tags": [
+      "trilobite",
+      "cliff, drop, drop-off",
+      "african elephant, loxodonta africana"
+    ],
+    "uploadedAt": "2026-02-14T16:18:21.670Z",
+    "takenAt": "2026-01-31T09:03:26.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "77mm",
+      "aperture": "f/5.6",
+      "exposureTime": "1/160s",
+      "iso": "5000"
+    }
+  },
+  {
+    "id": "bba91aea-83bb-4fb8-91e5-1906baaf92ff",
+    "title": "DSC00452",
+    "category": "Travel",
+    "location": "Unknown Location",
+    "src": "/photos/41023346-6b98-40a8-8948-bf29a654b418-DSC00452.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQCAwX/xAAkEAACAQMDAwUAAAAAAAAAAAABAgMABBESEyEFUWEiMUGBkf/EABYBAQEBAAAAAAAAAAAAAAAAAAUBAv/EABoRAAIDAQEAAAAAAAAAAAAAAAABERJBAhP/2gAMAwEAAhEDEQA/AL5rnYuFV3j2+SIgMZA7nv8AP1UWubdmLksVAxhSePysJdZmh0OV3CFJPJ9/NBkmhe5CTMFBLYHHOaP8p0Qbq4Y1P1S4SVhA7BPDUUhC7MrHUR6jRW6crCWP/9k=",
+    "tags": [
+      "toyshop",
+      "confectionery, confectionary, candy store",
+      "throne"
+    ],
+    "uploadedAt": "2026-02-14T16:18:20.956Z",
+    "takenAt": "2026-01-30T13:54:58.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "43mm",
+      "aperture": "f/7.1",
+      "exposureTime": "1/6s",
+      "iso": "100"
+    },
+    "displayTitle": "DSC00452",
+    "cdnSrc": "/photos/41023346-6b98-40a8-8948-bf29a654b418-DSC00452.JPG"
+  },
+  {
+    "id": "f9e97050-7da8-458e-95de-660c324217d4",
+    "title": "DSC00451",
+    "category": "Street",
+    "location": "Unknown Location",
+    "src": "/photos/b43c94ed-d7ee-4b4b-844d-b286a6f60bf4-DSC00451.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCAwT/xAAiEAABBAEEAgMAAAAAAAAAAAABAAIDERIEISJRFDFhcYH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABoRAAICAwAAAAAAAAAAAAAAAAABAhESMVH/2gAMAwEAAhEDEQA/AF0cfkudxjNtDsidyPR/Vo1Eemjgle2Ng403IWD0PhJYdRI2I400j2RsSECV721kRVHtSuEm9limqK5IAHmsa+0KZO+4BPaEtsJ48P/Z",
+    "tags": [
+      "toyshop",
+      "restaurant, eating house, eating place, eatery",
+      "grocery store, grocery, food market, market"
+    ],
+    "uploadedAt": "2026-02-14T16:18:19.870Z",
+    "takenAt": "2026-01-30T13:54:30.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "18mm",
+      "aperture": "f/3.5",
+      "exposureTime": "1/40s",
+      "iso": "100"
+    },
+    "displayTitle": "DSC00451",
+    "cdnSrc": "/photos/b43c94ed-d7ee-4b4b-844d-b286a6f60bf4-DSC00451.JPG"
+  },
+  {
+    "id": "776845a3-294b-4046-ad97-4aebc378fa3c",
+    "title": "DSC00334",
+    "category": "Street",
+    "location": "Unknown Location",
+    "src": "/photos/27f18bf0-db7b-4eaa-9469-82098e001eba-DSC00334.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBv/EACEQAAEEAgAHAAAAAAAAAAAAAAEAAgMRBCESIjFBUZHB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwL/xAAZEQACAwEAAAAAAAAAAAAAAAAAAQISMRH/2gAMAwEAAhEDEQA/AM7j4IMYkkALSNAb9qhuHAb3bTfDTh2+qGDNngYWxvIaRVJbp3mNsd8rRQFdEDhNvRbRSwfI4MIBkB0CKF6O0KPflCWpHT//2Q==",
+    "tags": [
+      "jack-o'-lantern",
+      "lampshade, lamp shade",
+      "barrow, garden cart, lawn cart, wheelbarrow"
+    ],
+    "uploadedAt": "2026-02-14T16:18:18.766Z",
+    "takenAt": "2026-01-30T11:22:06.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "46mm",
+      "aperture": "f/5",
+      "exposureTime": "1/50s",
+      "iso": "100"
+    },
+    "displayTitle": "DSC00334",
+    "cdnSrc": "/photos/27f18bf0-db7b-4eaa-9469-82098e001eba-DSC00334.JPG"
+  },
+  {
+    "id": "964efa2b-188f-4342-b0f1-f2d7dbd81061",
+    "title": "DSC00333",
+    "category": "Travel",
+    "location": "Unknown Location",
+    "src": "/photos/74c482c0-e3e8-4cf9-8966-7c6a623bd379-DSC00333.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAQL/xAAhEAACAQQCAgMAAAAAAAAAAAABAgMABBEhEjEFIzJBQv/EABcBAAMBAAAAAAAAAAAAAAAAAAACAwT/xAAaEQADAQADAAAAAAAAAAAAAAAAAQIRITFR/9oADAMBAAIRAxEAPwCGluIFA2ST8s9V168mVWRlz2fzg0vH5OdYmQkNrG62xumhiCcEZQScMKyuL5bKahme0jkZWSSMLx1gCip1xcSNMzBioP0NYop1F52Gz4f/2Q==",
+    "tags": [
+      "lampshade, lamp shade",
+      "spotlight, spot",
+      "toyshop"
+    ],
+    "uploadedAt": "2026-02-14T16:18:16.929Z",
+    "takenAt": "2026-01-30T11:22:04.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "63mm",
+      "aperture": "f/5.6",
+      "exposureTime": "1/50s",
+      "iso": "100"
+    },
+    "displayTitle": "DSC00333",
+    "cdnSrc": "/photos/74c482c0-e3e8-4cf9-8966-7c6a623bd379-DSC00333.JPG"
+  },
+  {
     "id": "8d25bdfa-5419-43f6-b29f-641e023105ed",
     "title": "DSC00965",
     "category": "Nature",
@@ -23,7 +161,9 @@
       "aperture": "f/5",
       "exposureTime": "1/1000s",
       "iso": "100"
-    }
+    },
+    "displayTitle": "DSC00965",
+    "cdnSrc": "/photos/71d75ee8-b118-42b9-a83b-0b3672e32af2-DSC00965.JPG"
   },
   {
     "id": "126ec96c-585e-45e6-a3e7-02ca1fa72cc3",
