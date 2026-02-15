@@ -3,6 +3,14 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 
+function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number): T {
+  let timer: ReturnType<typeof setTimeout>;
+  return ((...args: unknown[]) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  }) as T;
+}
+
 type AnimateFrom = "bottom" | "top" | "left" | "right" | "center" | "random";
 
 export interface MasonryItem {
@@ -56,12 +64,15 @@ const useMeasure = <T extends HTMLElement>() => {
 
   useLayoutEffect(() => {
     if (!ref.current) return;
-    const ro = new ResizeObserver(([entry]) => {
-      const { width, height } = entry.contentRect;
-      setSize({ width, height });
-    });
-    ro.observe(ref.current);
-    return () => ro.disconnect();
+    const resizeObserver = new ResizeObserver(
+      debounce(() => {
+        if (!ref.current) return;
+        const { width, height } = ref.current.getBoundingClientRect();
+        setSize({ width, height });
+      }, 150)
+    );
+    resizeObserver.observe(ref.current);
+    return () => resizeObserver.disconnect();
   }, []);
 
   return [ref, size] as const;
@@ -105,8 +116,15 @@ export const Masonry: React.FC<MasonryProps> = ({
     1
   );
 
-  const [containerRef, { width }] = useMeasure<HTMLDivElement>();
+  const [containerRef, { width: containerWidth }] = useMeasure<HTMLDivElement>();
   const [imagesReady, setImagesReady] = useState(false);
+
+  const columnCount = useMemo(() => {
+    if (containerWidth < 640) return 1;
+    if (containerWidth < 1024) return 2;
+    if (containerWidth < 1280) return 3;
+    return columns;
+  }, [containerWidth, columns]);
 
   const getInitialPosition = (item: GridItem) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
@@ -142,23 +160,27 @@ export const Masonry: React.FC<MasonryProps> = ({
     preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
   }, [items]);
 
-  const grid = useMemo<GridItem[]>(() => {
-    if (!width) return [];
+  // Reference width used when computing item height in the parent (portfolio-grid).
+  // Tile height = columnWidth * (child.height / REFERENCE_WIDTH) so aspect ratio matches the image and nothing is cropped.
+  const REFERENCE_WIDTH = 500;
 
-    const colHeights = new Array(columns).fill(0);
-    const columnWidth = width / columns;
+  const grid = useMemo<GridItem[]>(() => {
+    if (!containerWidth) return [];
+
+    const colHeights = new Array(columnCount).fill(0);
+    const columnWidth = containerWidth / columnCount;
 
     return items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
-      const height = child.height / 2;
+      const height = (columnWidth * child.height) / REFERENCE_WIDTH;
       const y = colHeights[col];
 
       colHeights[col] += height;
 
       return { ...child, x, y, w: columnWidth, h: height };
     });
-  }, [columns, items, width]);
+  }, [columnCount, items, containerWidth]);
 
   const gridHeight = useMemo(
     () => (grid.length ? Math.max(...grid.map((item) => item.y + item.h)) : 0),
@@ -217,7 +239,7 @@ export const Masonry: React.FC<MasonryProps> = ({
     }, containerRef);
 
     return () => ctx.revert();
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [items, columnCount, containerWidth, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
   const handleMouseEnter = (item: GridItem) => {
     const selector = `[data-key="${item.id}"]`;
@@ -244,7 +266,7 @@ export const Masonry: React.FC<MasonryProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="masonry-list" style={{ height: Math.max(gridHeight + 24, 520) }}>
+    <div ref={containerRef} className="masonry-list" style={{ height: Math.max(gridHeight + 16, 480) }}>
       {grid.map((item) => {
         return (
           <div

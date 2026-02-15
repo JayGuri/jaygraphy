@@ -32,7 +32,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
     const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(searchParams.get("photo"));
     const gridTopRef = useRef<HTMLDivElement | null>(null);
 
-    const PAGE_SIZE = 12;
+    const PAGE_SIZE = 24;
 
     // Derive unique categories from photos
     const categories = useMemo(() => {
@@ -128,8 +128,8 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
             paginatedPhotos.map((photo, idx) => {
                 const computedHeight =
                     photo.height && photo.width
-                        ? Math.max(420, (photo.height / Math.max(photo.width, 1)) * 560)
-                        : 420 + (idx % 6) * 42;
+                        ? Math.max(380, (photo.height / Math.max(photo.width, 1)) * 500)
+                        : 380 + (idx % 6) * 42;
 
                 const meta: Record<string, string> = {
                     [photo.series ? "Series" : "Location"]: photo.series ? getSeriesLabel(photo.series) : photo.location,
@@ -269,7 +269,7 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                     <p>No photos found in this category.</p>
                 </div>
             ) : (
-                <div className="relative rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl">
+                <div className="relative rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl">
                     <Masonry
                         items={masonryItems}
                         animateFrom="bottom"
