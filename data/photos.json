@@ -1,5 +1,31 @@
 [
   {
+    "id": "f16a7f19-e70b-44eb-8541-7df18345fdec",
+    "title": "DSC00459",
+    "category": "Street",
+    "location": "Unknown Location",
+    "src": "/photos/11ea7081-4cef-4ad1-be8a-b1cf96836f25-DSC00459.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMCBAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgADESEEEjETQVFhcf/EABUBAQEAAAAAAAAAAAAAAAAAAAED/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECESFRYf/aAAwDAQACEQMRAD8AyIVrgecR9Sm1Ejeu0kcxpba5UgG2OJLU4poFJCutyvaScsl0lRSLsDhjb0YRyuii3SU/YRvgUtn/2Q==",
+    "tags": [
+      "carousel, carrousel, merry-go-round, roundabout, whirligig",
+      "theater curtain, theatre curtain",
+      "cinema, movie theater, movie theatre, movie house, picture palace"
+    ],
+    "uploadedAt": "2026-02-17T17:44:52.000Z",
+    "takenAt": "2026-01-30T14:00:31.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "61mm",
+      "aperture": "f/10",
+      "exposureTime": "1/320s",
+      "iso": "2000"
+    }
+  },
+  {
     "id": "1ede7a15-c45c-465e-9b79-1075e2877916",
     "title": "DSC00588",
     "category": "Nature",
@@ -23,7 +49,9 @@
       "aperture": "f/5.6",
       "exposureTime": "1/160s",
       "iso": "5000"
-    }
+    },
+    "displayTitle": "DSC00588",
+    "cdnSrc": "/photos/5f74a4ee-ce61-40eb-85b1-c3c34f91ea86-DSC00588.JPG"
   },
   {
     "id": "bba91aea-83bb-4fb8-91e5-1906baaf92ff",

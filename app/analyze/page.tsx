@@ -48,29 +48,49 @@ export default function AnalyzePage() {
         reader.readAsDataURL(file)
     }
 
-    const analyzeImage = () => {
+    const analyzeImage = async () => {
+        if (!selectedImage) return
         setIsAnalyzing(true)
 
-        // Simulate API call / AI processing time based on image
-        setTimeout(() => {
-            // Mock Response fitting the Mumbai/Sony shooter persona
-            const mockAnalysis: Partial<Photo> = {
-                id: "auto-generated-" + Date.now(),
-                title: "Mumbai Golden Hour",
-                category: "street",
-                location: "Predicted: Mumbai, Maharashtra",
-                description: "A vibrant street scene capturing the chaotic energy of the city during the golden hour. Shadows are long, and the light is warm.",
+        try {
+            // Convert base64 to blob/file
+            const res = await fetch(selectedImage)
+            const blob = await res.blob()
+            const file = new File([blob], "image.jpg", { type: "image/jpeg" })
+
+            const formData = new FormData()
+            formData.append('file', file)
+
+            const apiRes = await fetch('/api/analyze', {
+                method: 'POST',
+                body: formData
+            })
+
+            if (!apiRes.ok) throw new Error('Analysis failed')
+
+            const data = await apiRes.json()
+
+            setResult({
+                id: "analyzed-" + Date.now(),
+                title: `${data.category} Scene`,
+                category: data.category,
+                location: data.confidence ? `${(data.confidence * 100).toFixed(1)}% Confidence` : "AI Classified",
+                description: `Detected potential tags: ${data.tags.join(", ")}`,
                 exif: {
-                    camera: "Sony a6400 (Likely)",
-                    lens: "18-135mm F3.5-5.6",
-                    aperture: "f/4.5",
-                    shutter: "1/200s",
-                    iso: "400"
+                    make: "AI Estimation",
+                    model: "Unknown",
+                    lens: "Unknown",
+                    aperture: "f/--",
+                    exposureTime: "--",
+                    iso: "--"
                 }
-            }
-            setResult(mockAnalysis)
+            })
+        } catch (error) {
+            console.error(error)
+            alert("Failed to analyze image")
+        } finally {
             setIsAnalyzing(false)
-        }, 2500)
+        }
     }
 
     const copyToClipboard = () => {
@@ -201,7 +221,7 @@ export default function AnalyzePage() {
                                             <div className="grid grid-cols-2 gap-y-2 text-sm font-mono">
                                                 <div>
                                                     <span className="text-muted-foreground">Cam: </span>
-                                                    {result.exif?.camera}
+                                                    {result.exif?.make} {result.exif?.model}
                                                 </div>
                                                 <div>
                                                     <span className="text-muted-foreground">Lens: </span>

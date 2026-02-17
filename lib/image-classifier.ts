@@ -48,6 +48,17 @@ function mapLabelsToCategory(labels: string[]): Category {
     "fish",
     "insect",
     "butterfly",
+    "dragonfly",
+    "lizard",
+    "reptile",
+    "snake",
+    "turtle",
+    "frog",
+    "toad",
+    "crocodile",
+    "alligator",
+    "iguana",
+    "chameleon"
   ];
 
   const portrait = [
@@ -62,6 +73,10 @@ function mapLabelsToCategory(labels: string[]): Category {
     "selfie",
     "bride",
     "groom",
+    "hair",
+    "wig",
+    "mask",
+    "sunglasses"
   ];
 
   const nature = [
@@ -86,6 +101,12 @@ function mapLabelsToCategory(labels: string[]): Category {
     "rock",
     "glacier",
     "bay",
+    "grass",
+    "park",
+    "garden",
+    "sun",
+    "moon",
+    "volcano"
   ];
 
   const street = [
@@ -105,12 +126,50 @@ function mapLabelsToCategory(labels: string[]): Category {
     "plaza",
     "market",
     "station",
+    "train",
+    "metro",
+    "shop",
+    "store",
+    "neon",
+    "night",
+    "light"
+  ];
+
+  const culture = [
+    "statue",
+    "sculpture",
+    "art",
+    "painting",
+    "graffiti",
+    "mural",
+    "lantern",
+    "dragon",
+    "temple",
+    "shrine",
+    "church",
+    "mosque",
+    "castle",
+    "palace",
+    "festival",
+    "parade",
+    "costume",
+    "dance",
+    "music",
+    "instrument",
+    "stage",
+    "theater",
+    "cinema",
+    "museum",
+    "gallery",
+    "monument",
+    "balloon" // Often culturally related (hot air balloons) or festive
   ];
 
   if (includesAny(wildlife)) return "Wildlife";
   if (includesAny(portrait)) return "Portrait";
   if (includesAny(nature)) return "Nature";
   if (includesAny(street)) return "Street";
+  if (includesAny(culture)) return "Culture"; // New category
 
   // Fallback
   return "Travel";
@@ -118,7 +177,7 @@ function mapLabelsToCategory(labels: string[]): Category {
 
 export async function classifyImage(
   imagePath: string
-): Promise<{ category: Category; tags: string[] }> {
+): Promise<{ category: Category; tags: string[]; confidence?: number }> {
   const classify = await getClassifier();
   const predictions = await classify(imagePath, { topk: 3 });
 
@@ -127,7 +186,8 @@ export async function classifyImage(
     .map((p: { label: string }) => p.label.toLowerCase().trim());
 
   const category = mapLabelsToCategory(tags);
+  const confidence = predictions[0]?.score;
 
-  return { category, tags };
+  return { category, tags, confidence };
 }
 
