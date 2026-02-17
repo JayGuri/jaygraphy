@@ -50,11 +50,14 @@ function useCesium() {
   return { ready, loadError };
 }
 
+const SPIN_RADIANS_PER_FRAME = 0.0002; // slow rotation (~full globe in ~8 min at 60fps)
+
 export function MapView({ photos }: MapViewProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [seriesFilter, setSeriesFilter] = useState("all");
   const globeEl = useRef<HTMLDivElement | null>(null);
   const viewerRef = useRef<any>(null);
+  const spinAnimationRef = useRef<number | null>(null);
   const { ready: cesiumLoaded, loadError: cesiumError } = useCesium();
   const seriesOptions = useMemo(() => getSeriesOptions(photos), [photos]);
 
@@ -99,6 +102,12 @@ export function MapView({ photos }: MapViewProps) {
     viewerRef.current.scene.globe.showGroundAtmosphere = true;
     viewerRef.current.scene.postProcessStages.fxaa.enabled = true;
     viewerRef.current.scene.highDynamicRange = true;
+
+    // Frame the full globe so it is not cut off (fit with padding)
+    const C = viewerRef.current.scene.globe.ellipsoid;
+    const radius = C.maximumRadius;
+    const boundingSphere = new Cesium.BoundingSphere(Cesium.Cartesian3.ZERO, radius * 1.05);
+    viewerRef.current.camera.viewBoundingSphere(boundingSphere);
 
     // Click handler
     const handler = new Cesium.ScreenSpaceEventHandler(viewerRef.current.scene.canvas);
@@ -165,16 +174,32 @@ export function MapView({ photos }: MapViewProps) {
       });
     });
 
-    if (positions.length) {
-      // Logic to fly to bounds only on first load or significant change? 
-      // We will keep it for now.
-      const rectangle = (window as any).Cesium.Rectangle.fromCartographicArray(
-        positions.map((p) => (window as any).Cesium.Cartographic.fromCartesian(p))
-      );
-      // Add some buffer
-      viewer.camera.flyTo({ destination: rectangle, duration: 1.5 });
-    }
+    // Do not fly to pin bounds so the full globe stays visible and uncropped
   }, [geoPhotos, cesiumLoaded]);
+
+  // Slow continuous spin to showcase places
+  useEffect(() => {
+    const viewer = viewerRef.current;
+    if (!cesiumLoaded || !viewer) return;
+    const Cesium = (window as any).Cesium;
+    if (!Cesium) return;
+
+    const spin = () => {
+      const cam = viewer.camera;
+      const pos = cam.positionCartographic();
+      pos.longitude += SPIN_RADIANS_PER_FRAME;
+      cam.setView({
+        destination: Cesium.Cartesian3.fromRadians(pos.longitude, pos.latitude, pos.height),
+      });
+      spinAnimationRef.current = requestAnimationFrame(spin);
+    };
+    spinAnimationRef.current = requestAnimationFrame(spin);
+
+    return () => {
+      if (spinAnimationRef.current != null) cancelAnimationFrame(spinAnimationRef.current);
+      spinAnimationRef.current = null;
+    };
+  }, [cesiumLoaded]);
 
   return (
     <div className="space-y-4 relative group">
@@ -196,7 +221,7 @@ export function MapView({ photos }: MapViewProps) {
         ))}
       </div>
 
-      <div className="w-full h-[75vh] rounded-3xl overflow-hidden border border-white/10 bg-black/40 relative shadow-2xl">
+      <div className="w-full h-[88vh] rounded-3xl overflow-hidden border border-white/10 bg-black/40 relative shadow-2xl">
         {!cesiumLoaded && (
           <div className="w-full h-full flex items-center justify-center bg-[#0A0E17] rounded-xl absolute inset-0">
             <div className="flex flex-col items-center gap-4 text-muted-foreground">
