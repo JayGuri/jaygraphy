@@ -184,10 +184,12 @@ function extractKeyword(label: string): string {
     }
   }
 
-  // Convert to kebab-case tag
+  // Convert to kebab-case tag and clean up
   return mainPart
     .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/[^a-z0-9-]/g, '')
+    .replace(/-(and|or)$/, '') // Remove trailing -and or -or
+    .replace(/^(and|or)-/, '') // Remove leading and- or or-
 }
 
