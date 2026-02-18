@@ -17,10 +17,20 @@ export async function analyzeDepth(imagePath: string) {
     // Generate depth map
     const depthMap = await depthEstimator(imagePath)
     
-    // Extract depth values (normalized 0-1, where 0=far, 1=near)
-    const depthValues = Array.from(depthMap.depth.data as Float32Array)
+    // Extract depth values (raw data from model)
+    const rawDepthValues = Array.from(depthMap.depth.data as Float32Array)
     
-    // Calculate depth statistics
+    // Normalize to 0-1 range (model outputs 0-255 typically)
+    // Use iterative approach to avoid stack overflow on large arrays
+    let minRaw = rawDepthValues[0]
+    let maxRaw = rawDepthValues[0]
+    for (let i = 1; i < rawDepthValues.length; i++) {
+      if (rawDepthValues[i] < minRaw) minRaw = rawDepthValues[i]
+      if (rawDepthValues[i] > maxRaw) maxRaw = rawDepthValues[i]
+    }
+    const depthValues = rawDepthValues.map(val => (val - minRaw) / (maxRaw - minRaw || 1))
+    
+    // Calculate depth statistics on normalized values
     const mean = depthValues.reduce((sum, val) => sum + val, 0) / depthValues.length
     const variance = depthValues.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / depthValues.length
     const stdDev = Math.sqrt(variance)
