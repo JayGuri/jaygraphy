@@ -10,10 +10,10 @@ async function compressPhotos() {
   for (const file of files) {
     const filePath = path.join(photosDir, file)
     const stats = fs.statSync(filePath)
-    if (stats.size < 500000) { process.stdout.write("."); skipped++; continue }
     const sizeMB = (stats.size / 1024 / 1024).toFixed(2)
     try {
       const compressed = await sharp(filePath)
+        .rotate()
         .resize(2400, 2400, { fit: "inside", withoutEnlargement: true })
         .jpeg({ quality: 85, progressive: true, mozjpeg: true })
         .toBuffer()

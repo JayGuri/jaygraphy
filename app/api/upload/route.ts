@@ -68,6 +68,7 @@ export async function POST(req: NextRequest) {
         // Compress image with sharp before saving (2400px max, 85 quality, progressive JPEG)
         try {
             const compressedBuffer = await sharp(buffer)
+                .rotate()
                 .resize(2400, 2400, { fit: "inside", withoutEnlargement: true })
                 .jpeg({ quality: 85, progressive: true, mozjpeg: true })
                 .toBuffer();
