@@ -165,18 +165,34 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        // Classify image to derive category and tags (lazy import to avoid ONNX cold-start on every request)
+        // AI classification pipeline (CLIP + Depth + EXIF)
         try {
-            const { classifyImage } = await import("@/lib/image-classifier");
-            const classification = await classifyImage(filePath);
-            if (classification.tags?.length) {
-                newPhoto.tags = classification.tags;
+            console.log('[Upload] Starting AI analysis pipeline...')
+            const { analyzePhoto } = await import('@/lib/ai/photo-intelligence')
+            const aiAnalysis = await analyzePhoto(filePath, newPhoto)
+            newPhoto.category = aiAnalysis.category
+            newPhoto.tags = aiAnalysis.tags
+            newPhoto.metadata = aiAnalysis.metadata
+            newPhoto.confidence = aiAnalysis.confidence
+            console.log('[Upload] ✅ AI analysis complete (CLIP-based)')
+            console.log('[Upload] Category:', newPhoto.category)
+            console.log('[Upload] Tag count:', newPhoto.tags.length)
+            console.log('[Upload] Lighting:', newPhoto.metadata.lighting)
+            console.log('[Upload] Mood:', newPhoto.metadata.mood)
+            console.log('[Upload] DOF:', newPhoto.metadata.composition?.depthOfField)
+        } catch (aiError) {
+            console.error('[Upload] ⚠️ AI analysis failed, falling back to ViT:', aiError)
+            try {
+                const { classifyImage } = await import('@/lib/image-classifier')
+                const classifyResult = await classifyImage(filePath)
+                newPhoto.tags = classifyResult.tags || []
+                newPhoto.category = classifyResult.category || 'other'
+                console.log('[Upload] ✅ Fallback classifier used')
+            } catch (fallbackError) {
+                console.error('[Upload] ❌ Both classifiers failed:', fallbackError)
+                newPhoto.tags = ['unclassified']
+                newPhoto.category = 'other'
             }
-            if (classification.category) {
-                newPhoto.category = classification.category;
-            }
-        } catch (error) {
-            console.warn("Image classification failed; using defaults:", error);
         }
 
         // Auto-title if it's a default IMG_xxx

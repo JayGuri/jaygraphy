@@ -1,5 +1,294 @@
 [
   {
+    "id": "8c317a23-4ca7-40b6-939b-010806b22753",
+    "title": "DSC01010",
+    "category": "architectural-photography",
+    "location": "Unknown Location",
+    "src": "/photos/4ca2d69e-8aa5-4ece-9781-f29e4bc682d7-DSC01010.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGBP/EACAQAAICAgICAwAAAAAAAAAAAAECAwQAERIxBSEycYH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABcRAQEBAQAAAAAAAAAAAAAAAAABAxH/2gAMAwEAAhEDEQA/AEte1LTmBjssx38NHR+8f07bXqaySDiQSpA6/MnfHyu1yESEOpkVSrD0RvLOdFijZFUcUfQGuhiZW9HrIxEKD0cMHO26wylO/9k=",
+    "tags": [
+      "architectural-photography",
+      "backlit-subject",
+      "energetic",
+      "frame-within",
+      "cultural-landmarks",
+      "architectural-details",
+      "deep-dof",
+      "deep-focus",
+      "full-scene",
+      "layered-composition",
+      "depth-planes",
+      "wide-angle",
+      "morning-golden-hour"
+    ],
+    "uploadedAt": "2026-02-19T06:59:18.092Z",
+    "takenAt": "2026-02-05T02:16:33.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "25mm",
+      "aperture": "f/11",
+      "exposureTime": "1/320s",
+      "iso": "250"
+    },
+    "metadata": {
+      "lighting": "backlit-subject",
+      "mood": "energetic",
+      "composition": {
+        "techniques": [
+          "frame-within"
+        ],
+        "depthOfField": "deep",
+        "hasLayering": true
+      }
+    },
+    "confidence": {
+      "category": 0.5266714096069336,
+      "lighting": 0.6825920939445496,
+      "mood": 0.5455846786499023
+    }
+  },
+  {
+    "id": "dff3ebb2-1ac2-479b-b51b-b24af3e4a723",
+    "title": "DSC00936",
+    "category": "cityscape",
+    "location": "Unknown Location",
+    "src": "/photos/ec6647b4-2f5b-48f0-aa68-09fe0dad8922-DSC00936.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQFBv/EACMQAAEDAwQCAwAAAAAAAAAAAAECAwQAESEFEhMxIlFCYXH/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAYEQEBAAMAAAAAAAAAAAAAAAAAEQESIf/aAAwDAQACEQMRAD8AQJsN54BTIKAsJbSpVtoxV7uoRHIz7sRaNo8VpICb26tXJgce22Sff7VBb5HVpUR4H13ms7cMUztSjyH+RqGhKSPkSST95pWTcAnB7v3Si5T/2Q==",
+    "tags": [
+      "cityscape",
+      "backlit-subject",
+      "energetic",
+      "frame-within",
+      "cultural-landmarks",
+      "medium-dof",
+      "layered-composition",
+      "depth-planes",
+      "standard-focal-length",
+      "documentary-style",
+      "stopped-down",
+      "base-iso",
+      "bright-conditions"
+    ],
+    "uploadedAt": "2026-02-19T06:59:12.800Z",
+    "takenAt": "2026-02-04T05:06:45.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "43mm",
+      "aperture": "f/8",
+      "exposureTime": "1/160s",
+      "iso": "100"
+    },
+    "metadata": {
+      "lighting": "backlit-subject",
+      "mood": "energetic",
+      "composition": {
+        "techniques": [
+          "frame-within"
+        ],
+        "depthOfField": "medium",
+        "hasLayering": true
+      }
+    },
+    "confidence": {
+      "category": 0.4901515543460846,
+      "lighting": 0.606680691242218,
+      "mood": 0.5128514170646667
+    },
+    "displayTitle": "DSC00936",
+    "cdnSrc": "/photos/ec6647b4-2f5b-48f0-aa68-09fe0dad8922-DSC00936.JPG"
+  },
+  {
+    "id": "f2678ccc-75ba-4416-bb83-80bdf34fdf0b",
+    "title": "DSC00537",
+    "category": "travel-photography",
+    "location": "Unknown Location",
+    "src": "/photos/393490f7-2dd0-45eb-9b37-3431641ea6a2-DSC00537.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQGA//EACEQAAIBAwQDAQAAAAAAAAAAAAECAwAEEQUSITEiMkFh/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8AlYLGecAooCnoscVq2m3SZAQPxnxOaa065Z4RERyDhWz0KesoppRua4PL49flLNG1ObG7wcGimtXkEl821FQKNoA/KKJP/9k=",
+    "tags": [
+      "travel-photography",
+      "backlit-subject",
+      "energetic",
+      "frame-within",
+      "natural-landscape",
+      "medium-dof",
+      "layered-composition",
+      "depth-planes",
+      "standard-focal-length",
+      "documentary-style",
+      "stopped-down",
+      "moderate-iso",
+      "controlled-light"
+    ],
+    "uploadedAt": "2026-02-19T06:59:07.594Z",
+    "takenAt": "2026-01-31T06:20:52.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "70mm",
+      "aperture": "f/6.3",
+      "exposureTime": "1/400s",
+      "iso": "250"
+    },
+    "metadata": {
+      "lighting": "backlit-subject",
+      "mood": "energetic",
+      "composition": {
+        "techniques": [
+          "frame-within"
+        ],
+        "depthOfField": "medium",
+        "hasLayering": true
+      }
+    },
+    "confidence": {
+      "category": 0.5272161364555359,
+      "lighting": 0.6642032265663147,
+      "mood": 0.647212564945221
+    },
+    "displayTitle": "DSC00537",
+    "cdnSrc": "/photos/393490f7-2dd0-45eb-9b37-3431641ea6a2-DSC00537.JPG"
+  },
+  {
+    "id": "a78454c6-c79e-4043-b227-96c830ca0d0b",
+    "title": "DSC00260",
+    "category": "architectural-photography",
+    "location": "Unknown Location",
+    "src": "/photos/eb4ab376-4e54-441f-be3f-2c95de6f13d9-DSC00260.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQGA//EACQQAAIBAwMDBQAAAAAAAAAAAAECAwARIQQFMRITURQVIkFx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AGJXXbYHEkcktyqrjpAzzfzmkvdx6Lsvp0YLZrk/d/H5VPDAjIjNdrgEBjcDxWG4bdppNJKoiVD0YYDItkUWUzEPq5u9OzrGsSnhVPAopeRfmaKhL//Z",
+    "tags": [
+      "architectural-photography",
+      "backlit-subject",
+      "energetic",
+      "frame-within",
+      "architectural-details",
+      "cultural-landmarks",
+      "deep-dof",
+      "deep-focus",
+      "full-scene",
+      "layered-composition",
+      "depth-planes",
+      "telephoto"
+    ],
+    "uploadedAt": "2026-02-19T06:59:01.785Z",
+    "takenAt": "2026-01-30T04:31:21.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "135mm",
+      "aperture": "f/8",
+      "exposureTime": "1/320s",
+      "iso": "100"
+    },
+    "metadata": {
+      "lighting": "backlit-subject",
+      "mood": "energetic",
+      "composition": {
+        "techniques": [
+          "frame-within"
+        ],
+        "depthOfField": "deep",
+        "hasLayering": true
+      }
+    },
+    "confidence": {
+      "category": 0.5231603980064392,
+      "lighting": 0.6940093636512756,
+      "mood": 0.3923916816711426
+    },
+    "displayTitle": "DSC00260",
+    "cdnSrc": "/photos/eb4ab376-4e54-441f-be3f-2c95de6f13d9-DSC00260.JPG"
+  },
+  {
+    "id": "e6ef546b-3120-47e8-a54e-4cdd42cb341d",
+    "title": "DSC00209",
+    "category": "portrait-photography",
+    "location": "Unknown Location",
+    "src": "/photos/305a10ef-1f43-42e9-869d-6a1bcdb59d03-DSC00209.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGAv/EACIQAAICAgEDBQAAAAAAAAAAAAECAAMEESEFMVESIlNhwf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwBTigjMQKA4HCn9lMLLLckUtj2KnyA+36k506xjZ6eN1BVQ67bPc+ZYX2OiKA3gQQZhdk46i4iEzkXMbm3CNX//2Q==",
+    "tags": [
+      "portrait-photography",
+      "backlit-subject",
+      "serene",
+      "frame-within",
+      "wildlife-animals",
+      "deep-dof",
+      "deep-focus",
+      "full-scene",
+      "layered-composition",
+      "depth-planes",
+      "telephoto"
+    ],
+    "uploadedAt": "2026-02-19T06:58:51.573Z",
+    "takenAt": "2026-01-30T03:00:24.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "97mm",
+      "aperture": "f/7.1",
+      "exposureTime": "1/80s",
+      "iso": "125"
+    },
+    "metadata": {
+      "lighting": "backlit-subject",
+      "mood": "serene",
+      "composition": {
+        "techniques": [
+          "frame-within"
+        ],
+        "depthOfField": "deep",
+        "hasLayering": true
+      }
+    },
+    "confidence": {
+      "category": 0.4245345890522003,
+      "lighting": 0.4784891605377197,
+      "mood": 0.32935580611228943
+    },
+    "displayTitle": "DSC00209",
+    "cdnSrc": "/photos/305a10ef-1f43-42e9-869d-6a1bcdb59d03-DSC00209.JPG"
+  },
+  {
+    "id": "39980e7c-ac09-4629-8c2e-4ca270255282",
+    "title": "DSC00764",
+    "category": "Nature",
+    "location": "Unknown Location",
+    "src": "/photos/9d9aa5c4-5bc1-4ae5-b06e-dcbf0a82ce75-DSC00764.JPG",
+    "width": 6000,
+    "height": 4000,
+    "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQDBQb/xAAeEAEAAgICAwEAAAAAAAAAAAABAAIDERIhFCJh4f/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AMom9ak/HDgvVb48wnYD6sX3sGAcvyQo/wCRWnVaYw+kJXtrDrcIhX//2Q==",
+    "tags": [],
+    "uploadedAt": "2026-02-18T17:58:13.214Z",
+    "takenAt": "2026-02-03T09:05:07.000Z",
+    "exif": {
+      "make": "SONY",
+      "model": "ILCE-6400",
+      "lens": "E 18-135mm F3.5-5.6 OSS",
+      "focalLength": "33mm",
+      "aperture": "f/5",
+      "exposureTime": "1/50s",
+      "iso": "800"
+    },
+    "displayTitle": "DSC00764",
+    "cdnSrc": "/photos/9d9aa5c4-5bc1-4ae5-b06e-dcbf0a82ce75-DSC00764.JPG"
+  },
+  {
     "id": "f16a7f19-e70b-44eb-8541-7df18345fdec",
     "title": "DSC00459",
     "category": "Street",
@@ -8,11 +297,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMCBAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgADESEEEjETQVFhcf/EABUBAQEAAAAAAAAAAAAAAAAAAAED/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECESFRYf/aAAwDAQACEQMRAD8AyIVrgecR9Sm1Ejeu0kcxpba5UgG2OJLU4poFJCutyvaScsl0lRSLsDhjb0YRyuii3SU/YRvgUtn/2Q==",
-    "tags": [
-      "carousel, carrousel, merry-go-round, roundabout, whirligig",
-      "theater curtain, theatre curtain",
-      "cinema, movie theater, movie theatre, movie house, picture palace"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-17T17:44:52.000Z",
     "takenAt": "2026-01-30T14:00:31.000Z",
     "exif": {
@@ -23,7 +308,9 @@
       "aperture": "f/10",
       "exposureTime": "1/320s",
       "iso": "2000"
-    }
+    },
+    "displayTitle": "DSC00459",
+    "cdnSrc": "/photos/11ea7081-4cef-4ad1-be8a-b1cf96836f25-DSC00459.JPG"
   },
   {
     "id": "1ede7a15-c45c-465e-9b79-1075e2877916",
@@ -34,11 +321,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFAf/EACIQAAEEAgAHAQAAAAAAAAAAAAECAwQRACEFEhMUIjFRYf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8AjtxW08xc3awEj8yp2qVxEiwAsaB1iEh5TZQfZ1Z+7OPcSkOxoTSWyLICLr7gLSYiA7QUmq1oYZkxTjT3TDivEAa1hiFf/9k=",
-    "tags": [
-      "trilobite",
-      "cliff, drop, drop-off",
-      "african elephant, loxodonta africana"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T16:18:21.670Z",
     "takenAt": "2026-01-31T09:03:26.000Z",
     "exif": {
@@ -62,11 +345,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQCAwX/xAAkEAACAQMDAwUAAAAAAAAAAAABAgMABBESEyEFUWEiMUGBkf/EABYBAQEBAAAAAAAAAAAAAAAAAAUBAv/EABoRAAIDAQEAAAAAAAAAAAAAAAABERJBAhP/2gAMAwEAAhEDEQA/AL5rnYuFV3j2+SIgMZA7nv8AP1UWubdmLksVAxhSePysJdZmh0OV3CFJPJ9/NBkmhe5CTMFBLYHHOaP8p0Qbq4Y1P1S4SVhA7BPDUUhC7MrHUR6jRW6crCWP/9k=",
-    "tags": [
-      "toyshop",
-      "confectionery, confectionary, candy store",
-      "throne"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T16:18:20.956Z",
     "takenAt": "2026-01-30T13:54:58.000Z",
     "exif": {
@@ -90,11 +369,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCAwT/xAAiEAABBAEEAgMAAAAAAAAAAAABAAIDERIEISJRFDFhcYH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABoRAAICAwAAAAAAAAAAAAAAAAABAhESMVH/2gAMAwEAAhEDEQA/AF0cfkudxjNtDsidyPR/Vo1Eemjgle2Ng403IWD0PhJYdRI2I400j2RsSECV721kRVHtSuEm9limqK5IAHmsa+0KZO+4BPaEtsJ48P/Z",
-    "tags": [
-      "toyshop",
-      "restaurant, eating house, eating place, eatery",
-      "grocery store, grocery, food market, market"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T16:18:19.870Z",
     "takenAt": "2026-01-30T13:54:30.000Z",
     "exif": {
@@ -118,11 +393,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBv/EACEQAAEEAgAHAAAAAAAAAAAAAAEAAgMRBCESIjFBUZHB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwL/xAAZEQACAwEAAAAAAAAAAAAAAAAAAQISMRH/2gAMAwEAAhEDEQA/AM7j4IMYkkALSNAb9qhuHAb3bTfDTh2+qGDNngYWxvIaRVJbp3mNsd8rRQFdEDhNvRbRSwfI4MIBkB0CKF6O0KPflCWpHT//2Q==",
-    "tags": [
-      "jack-o'-lantern",
-      "lampshade, lamp shade",
-      "barrow, garden cart, lawn cart, wheelbarrow"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T16:18:18.766Z",
     "takenAt": "2026-01-30T11:22:06.000Z",
     "exif": {
@@ -146,11 +417,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAQL/xAAhEAACAQQCAgMAAAAAAAAAAAABAgMABBEhEjEFIzJBQv/EABcBAAMBAAAAAAAAAAAAAAAAAAACAwT/xAAaEQADAQADAAAAAAAAAAAAAAAAAQIRITFR/9oADAMBAAIRAxEAPwCGluIFA2ST8s9V168mVWRlz2fzg0vH5OdYmQkNrG62xumhiCcEZQScMKyuL5bKahme0jkZWSSMLx1gCip1xcSNMzBioP0NYop1F52Gz4f/2Q==",
-    "tags": [
-      "lampshade, lamp shade",
-      "spotlight, spot",
-      "toyshop"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T16:18:16.929Z",
     "takenAt": "2026-01-30T11:22:04.000Z",
     "exif": {
@@ -174,11 +441,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgP/xAAhEAACAgICAQUAAAAAAAAAAAABAgMRABIEIUEFMVGRsf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAEREjH/2gAMAwEAAhEDEQA/AGvUpOOFAAUvuFIHRF/OcYHWKBpHGp21AC9/WTYp5J1bkMabcyEeCRQGNwOxiZDR7u/Nmr/cvb4ERZ48SmBGbtmFm8MzuUAVfYChhjWB/9k=",
-    "tags": [
-      "megalith, megalithic structure",
-      "mitten",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T14:49:00.659Z",
     "takenAt": "2026-02-04T07:54:38.000Z",
     "exif": {
@@ -202,11 +465,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBv/EACAQAAMAAgEEAwAAAAAAAAAAAAECAwARBAUSQWEGMaH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCX8aEZ0ratkRtBFVjr3v8AM02ww2CCPWZ7oPC49uGaWmKMW8+AMuoqyQLNQqj6AGhgJqg78MXWh7zhmkf/2Q==",
-    "tags": [
-      "stupa, tope",
-      "palace",
-      "bell cote, bell cot"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T14:48:59.613Z",
     "takenAt": "2026-02-01T09:20:35.000Z",
     "exif": {
@@ -230,11 +489,7 @@
     "width": 6000,
     "height": 4000,
     "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABQABBP/EACMQAAICAQEJAQAAAAAAAAAAAAECAAMEERITFSEiIzFBYZH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABcRAQEBAQAAAAAAAAAAAAAAAAAhEUH/2gAMAwEAAhEDEQA/ADeHUlaC6bYNqggOup19eZ33O7X2VPiPSiDpdiND+QzEclqPlgMYyrCV5yS7TcC3IN4ZTLW7hlHG/9k=",
-    "tags": [
-      "birdhouse",
-      "lakeside, lakeshore",
-      "lampshade, lamp shade"
-    ],
+    "tags": [],
     "uploadedAt": "2026-02-14T14:48:58.054Z",
     "takenAt": "2026-01-31T09:54:57.000Z",
     "exif": {
@@ -257,11 +512,7 @@
     "src": "/photos/3120ada9-d30a-459b-8b71-ebf4d55ad963-IMG_9999.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "lakeside, lakeshore",
-      "coral reef"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:47:04.683Z",
     "takenAt": "2024-07-17T13:05:19.000Z",
     "exif": {
@@ -289,11 +540,7 @@
     "src": "/photos/42953217-133a-4a6d-a533-02f487546f0e-8e7a0856-6583-40cb-ac58-5a79342c8dd9.JPG",
     "width": 0,
     "height": 0,
-    "tags": [
-      "beacon, lighthouse, beacon light, pharos",
-      "seashore, coast, seacoast, sea-coast",
-      "window shade"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:47:01.990Z",
     "takenAt": "2024-01-20T04:11:23.000Z",
     "exif": {},
@@ -308,11 +555,7 @@
     "src": "/photos/3aecbd6d-5aa9-4ee0-b3f0-46700402374b-c47faf1e-cbd3-4b8b-b2e0-c32ba0563409.JPG",
     "width": 0,
     "height": 0,
-    "tags": [
-      "promontory, headland, head, foreland",
-      "seashore, coast, seacoast, sea-coast",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:47:01.788Z",
     "takenAt": "2024-07-18T19:05:05.000Z",
     "exif": {},
@@ -327,11 +570,7 @@
     "src": "/photos/63fe310d-1c92-46b7-8a46-100dab47ef37-IMG_0154.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "balloon",
-      "teddy, teddy bear",
-      "piggy bank, penny bank"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:46:33.223Z",
     "takenAt": "2024-07-22T10:29:23.000Z",
     "exif": {
@@ -359,11 +598,7 @@
     "src": "/photos/0bceeba5-bf1b-4aec-91fd-783ef1670ea5-IMG_0156.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "dome",
-      "tile roof",
-      "planetarium"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:46:03.158Z",
     "takenAt": "2024-07-22T10:31:24.000Z",
     "exif": {
@@ -391,11 +626,7 @@
     "src": "/photos/ee156427-5a5a-4901-a4e9-cecc284216a5-IMG_0170.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "umbrella",
-      "parachute, chute",
-      "balloon"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:45:32.784Z",
     "takenAt": "2024-07-22T11:24:00.000Z",
     "exif": {
@@ -423,11 +654,7 @@
     "src": "/photos/6d2a946f-364c-4fb9-b077-e840ff20d5d9-IMG_0225.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "bee",
-      "ant, emmet, pismire",
-      "fly"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:45:02.053Z",
     "takenAt": "2024-07-23T07:16:03.000Z",
     "exif": {
@@ -455,11 +682,7 @@
     "src": "/photos/26e3bc37-a5d3-45d4-93d1-cd03ba5c6a83-IMG_0271.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "dome",
-      "palace",
-      "vault"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:44:31.750Z",
     "takenAt": "2024-07-23T14:17:12.000Z",
     "exif": {
@@ -487,11 +710,7 @@
     "src": "/photos/64edd25b-8261-4a2a-b44b-f694d196ccd4-IMG_0280.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "drake",
-      "american coot, marsh hen, mud hen, water hen, fulica americana",
-      "goose"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:44:03.823Z",
     "takenAt": "2024-07-24T08:15:59.000Z",
     "exif": {
@@ -518,11 +737,7 @@
     "src": "/photos/9ae8e958-9246-4c81-afcc-3ee3042e765c-IMG_0294.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "slot, one-armed bandit",
-      "vault",
-      "organ, pipe organ"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:44:01.576Z",
     "takenAt": "2024-07-24T09:23:17.000Z",
     "exif": {
@@ -545,11 +760,7 @@
     "src": "/photos/bc76fde1-fc4c-493b-b3e2-39e4c2dfcbd7-IMG_0296.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "church, church building",
-      "vault",
-      "altar"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:43:32.528Z",
     "takenAt": "2024-07-24T09:37:59.000Z",
     "exif": {
@@ -576,11 +787,7 @@
     "src": "/photos/103e9727-b4fe-41e5-8035-d014f7b84e02-IMG_0298.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "church, church building",
-      "window screen",
-      "vault"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:43:31.005Z",
     "takenAt": "2024-07-24T09:39:32.000Z",
     "exif": {
@@ -603,11 +810,7 @@
     "src": "/photos/53582b2b-71a5-4d93-b6e5-370b074f40ec-IMG_0320.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "theater curtain, theatre curtain",
-      "organ, pipe organ",
-      "altar"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:43:01.394Z",
     "takenAt": "2024-07-24T12:49:28.000Z",
     "exif": {
@@ -634,11 +837,7 @@
     "src": "/photos/8db13c2c-f4c6-405d-a46f-65c66094d27a-IMG_0439-(1).jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "lakeside, lakeshore",
-      "promontory, headland, head, foreland"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:42:31.044Z",
     "takenAt": "2024-07-29T10:32:40.000Z",
     "exif": {
@@ -666,11 +865,7 @@
     "src": "/photos/139a73dc-960b-4b64-bd2d-a1a7752ca60c-IMG_0457.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "beacon, lighthouse, beacon light, pharos",
-      "bell cote, bell cot",
-      "church, church building"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:42:28.289Z",
     "takenAt": "2024-07-29T13:31:37.000Z",
     "exif": {
@@ -698,11 +893,7 @@
     "src": "/photos/a2764443-eb6f-44fa-9ee1-d456d9d05a15-IMG_0500.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "lifeboat",
-      "paddlewheel, paddle wheel",
-      "catamaran"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:41:58.176Z",
     "takenAt": "2024-07-30T04:48:25.000Z",
     "exif": {
@@ -730,11 +921,7 @@
     "src": "/photos/ba1c8724-e774-4bf8-a30e-751d21af7788-IMG_0504.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "promontory, headland, head, foreland",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:41:28.496Z",
     "takenAt": "2024-07-30T04:51:51.000Z",
     "exif": {
@@ -762,11 +949,7 @@
     "src": "/photos/86fcf8fb-0fad-474c-b667-2671f4a5ccdb-IMG_0552.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "promontory, headland, head, foreland",
-      "cliff, drop, drop-off",
-      "seashore, coast, seacoast, sea-coast"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:40:57.193Z",
     "takenAt": "2024-07-30T06:55:32.000Z",
     "exif": {
@@ -794,11 +977,7 @@
     "src": "/photos/cd790ed5-0346-4ff4-ac96-91fbfdf1fb8e-IMG_0573.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "promontory, headland, head, foreland",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:40:27.177Z",
     "takenAt": "2024-07-30T07:05:53.000Z",
     "exif": {
@@ -826,11 +1005,7 @@
     "src": "/photos/360458b2-d6f4-479d-821c-e35a1c33ecb9-IMG_0609-(1).jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "fireboat",
-      "lifeboat",
-      "promontory, headland, head, foreland"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:39:56.684Z",
     "takenAt": "2024-07-30T14:32:47.000Z",
     "exif": {
@@ -858,11 +1033,7 @@
     "src": "/photos/34eb2b48-393b-4407-b5d3-9b69e7b2298d-IMG_0623.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "stage",
-      "spotlight, spot",
-      "loudspeaker, speaker, speaker unit, loudspeaker system, speaker system"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:39:26.036Z",
     "takenAt": "2024-07-30T15:48:16.000Z",
     "exif": {
@@ -890,11 +1061,7 @@
     "src": "/photos/40d1d413-fcb6-4c6c-9560-a67c56f05c64-IMG_0659.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "ringlet, ringlet butterfly",
-      "admiral",
-      "cabbage butterfly"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:38:55.783Z",
     "takenAt": "2024-07-31T05:39:18.000Z",
     "exif": {
@@ -922,11 +1089,7 @@
     "src": "/photos/ee3f7a33-ca4b-49aa-ae00-16c1f66cdf50-IMG_0687.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "valley, vale",
-      "promontory, headland, head, foreland",
-      "seashore, coast, seacoast, sea-coast"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:38:53.625Z",
     "takenAt": "2024-07-31T08:23:56.000Z",
     "exif": {
@@ -954,11 +1117,7 @@
     "src": "/photos/4544650a-6404-4eef-90d1-c637be4865aa-IMG_0719.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "valley, vale",
-      "lakeside, lakeshore",
-      "balloon"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:38:22.798Z",
     "takenAt": "2024-08-02T14:10:09.000Z",
     "exif": {
@@ -986,11 +1145,7 @@
     "src": "/photos/e71f72fe-2876-45f9-9c16-719e7a2de341-IMG_7148.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "malinois",
-      "german shepherd, german shepherd dog, german police dog, alsatian",
-      "norwegian elkhound, elkhound"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:37:51.881Z",
     "takenAt": "2024-01-18T03:19:31.000Z",
     "exif": {
@@ -1018,11 +1173,7 @@
     "src": "/photos/4fdca4c3-e4cb-4a88-bc09-1d36a9a992d9-IMG_9749.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "lakeside, lakeshore",
-      "breakwater, groin, groyne, mole, bulwark, seawall, jetty",
-      "seashore, coast, seacoast, sea-coast"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:37:22.112Z",
     "takenAt": "2024-07-14T12:47:25.000Z",
     "exif": {
@@ -1050,11 +1201,7 @@
     "src": "/photos/a7b10ddb-a92f-4ec9-9c78-eb91d46352f5-IMG_9773.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "crane",
-      "steel arch bridge",
-      "lakeside, lakeshore"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:36:51.979Z",
     "takenAt": "2024-07-14T15:33:08.000Z",
     "exif": {
@@ -1082,11 +1229,7 @@
     "src": "/photos/ab148f54-eef5-430b-948c-b882bdcfc937-IMG_9781.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "bee",
-      "daisy",
-      "fly"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:36:21.321Z",
     "takenAt": "2024-07-15T10:07:43.000Z",
     "exif": {
@@ -1114,11 +1257,7 @@
     "src": "/photos/81cacb34-2dbf-46d9-b347-54295477fb3c-IMG_9793.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "suspension bridge",
-      "steel arch bridge",
-      "pier"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:35:51.165Z",
     "takenAt": "2024-07-15T10:19:00.000Z",
     "exif": {
@@ -1146,11 +1285,7 @@
     "src": "/photos/ea41433a-4690-45f1-b9f6-db7a0a9ec7a2-IMG_9835.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "lakeside, lakeshore",
-      "breakwater, groin, groyne, mole, bulwark, seawall, jetty",
-      "pier"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:35:20.991Z",
     "takenAt": "2024-07-15T15:01:36.000Z",
     "exif": {
@@ -1178,11 +1313,7 @@
     "src": "/photos/a3b3cf9b-3510-49aa-97f0-a0d7d36739f6-IMG_9884.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "cliff, drop, drop-off",
-      "promontory, headland, head, foreland",
-      "cliff dwelling"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:34:50.369Z",
     "takenAt": "2024-07-16T10:54:41.000Z",
     "exif": {
@@ -1210,11 +1341,7 @@
     "src": "/photos/d0b2f41a-239b-48d3-adea-bb32f764b680-IMG_9874.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "promontory, headland, head, foreland",
-      "seashore, coast, seacoast, sea-coast",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:34:20.607Z",
     "takenAt": "2024-07-16T10:10:14.000Z",
     "exif": {
@@ -1242,11 +1369,7 @@
     "src": "/photos/54bf37d1-d633-4b9f-8e50-3b50c919cf82-IMG_9873.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "promontory, headland, head, foreland",
-      "seashore, coast, seacoast, sea-coast",
-      "lakeside, lakeshore"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:33:50.115Z",
     "takenAt": "2024-07-16T10:05:59.000Z",
     "exif": {
@@ -1274,11 +1397,7 @@
     "src": "/photos/1eb47908-d87e-4dd5-96f3-ecc471e446fa-IMG_9954.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "lakeside, lakeshore",
-      "seashore, coast, seacoast, sea-coast",
-      "promontory, headland, head, foreland"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:33:19.485Z",
     "takenAt": "2024-07-16T15:21:43.000Z",
     "exif": {
@@ -1306,11 +1425,7 @@
     "src": "/photos/70de2a1b-858c-4fa1-9a9f-50cac61feebf-IMG_9956.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "lakeside, lakeshore",
-      "breakwater, groin, groyne, mole, bulwark, seawall, jetty",
-      "seashore, coast, seacoast, sea-coast"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-14T09:33:16.836Z",
     "takenAt": "2024-07-16T15:24:01.000Z",
     "exif": {
@@ -1338,11 +1453,7 @@
     "src": "/photos/679b303c-72f6-493f-9628-9ef494a1f8ee-IMG_0133.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "dam, dike, dyke",
-      "valley, vale",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:21:00.458Z",
     "takenAt": "2024-07-22T07:33:30.000Z",
     "exif": {
@@ -1369,11 +1480,7 @@
     "src": "/photos/a61bda6e-158b-4a1d-9d83-4145758d5d32-IMG_0196.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "analog clock",
-      "bell cote, bell cot",
-      "prison, prison house"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:20:30.228Z",
     "takenAt": "2024-07-22T12:44:58.000Z",
     "exif": {
@@ -1400,11 +1507,7 @@
     "src": "/photos/521e0b0a-1017-40cc-8dcb-27ea7dd6c209-IMG_0198.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "alp",
-      "cliff, drop, drop-off",
-      "valley, vale"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:19:59.798Z",
     "takenAt": "2024-07-22T12:50:54.000Z",
     "exif": {
@@ -1431,11 +1534,7 @@
     "src": "/photos/494f1dde-19ce-4ca7-a8f5-33db6f01fe25-IMG_0210.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "bee",
-      "pot, flowerpot",
-      "daisy"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:19:29.393Z",
     "takenAt": "2024-07-23T07:06:27.000Z",
     "exif": {
@@ -1463,11 +1562,7 @@
     "src": "/photos/6fbd6d62-3dc9-44b0-beb8-3e7ac2619452-IMG_0244.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "pot, flowerpot",
-      "daisy",
-      "greenhouse, nursery, glasshouse"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:18:59.284Z",
     "takenAt": "2024-07-23T07:52:04.000Z",
     "exif": {
@@ -1494,11 +1589,7 @@
     "src": "/photos/090a0980-0687-43b3-a29c-528fdcbebe70-IMG_0439.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "lakeside, lakeshore",
-      "promontory, headland, head, foreland"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:18:29.182Z",
     "takenAt": "2024-07-29T10:32:40.000Z",
     "exif": {
@@ -1526,11 +1617,7 @@
     "src": "/photos/d568ebc3-ecda-4657-a35e-958736ae07d0-IMG_4418.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "spotlight, spot",
-      "stage",
-      "fountain"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:17:58.271Z",
     "takenAt": "2025-01-26T15:12:28.000Z",
     "exif": {
@@ -1557,11 +1644,7 @@
     "src": "/photos/3f00509e-5815-4fa8-b00b-7597be4a9e7a-IMG_4443.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "digital clock",
-      "traffic light, traffic signal, stoplight",
-      "scoreboard"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:17:27.660Z",
     "takenAt": "2025-01-26T15:28:13.000Z",
     "exif": {
@@ -1588,11 +1671,7 @@
     "src": "/photos/8d77f4a2-3f92-410d-b0ef-a39111570c3a-IMG_4473.JPG",
     "width": 0,
     "height": 0,
-    "tags": [
-      "spotlight, spot",
-      "stage",
-      "projector"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:17:26.195Z",
     "takenAt": "2025-01-26T15:47:18.000Z",
     "exif": {
@@ -1615,11 +1694,7 @@
     "src": "/photos/8e4c9060-882d-4f41-ba0b-0096353029b5-IMG_4538.JPG",
     "width": 0,
     "height": 0,
-    "tags": [
-      "torch",
-      "spotlight, spot",
-      "stage"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:16:55.874Z",
     "takenAt": "2025-01-26T16:21:49.000Z",
     "exif": {
@@ -1646,11 +1721,7 @@
     "src": "/photos/f3011a5c-1dda-44b9-8400-96a26de52545-IMG_6453.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "lakeside, lakeshore",
-      "breakwater, groin, groyne, mole, bulwark, seawall, jetty"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:16:27.358Z",
     "takenAt": "2025-06-05T13:09:10.000Z",
     "exif": {
@@ -1677,11 +1748,7 @@
     "src": "/photos/bb9b8fa5-acc1-4674-9f5e-feafcfa4ec43-IMG_6455.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "seashore, coast, seacoast, sea-coast",
-      "breakwater, groin, groyne, mole, bulwark, seawall, jetty",
-      "promontory, headland, head, foreland"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:15:57.023Z",
     "takenAt": "2025-06-05T13:10:29.000Z",
     "exif": {
@@ -1708,11 +1775,7 @@
     "src": "/photos/a178483e-3f04-4464-968c-889b67d7e0e4-IMG_6829.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "frilled lizard, chlamydosaurus kingi",
-      "common iguana, iguana, iguana iguana",
-      "agama"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:15:27.102Z",
     "takenAt": "2025-06-21T08:28:48.000Z",
     "exif": {
@@ -1739,11 +1802,7 @@
     "src": "/photos/2f103239-c24c-41f0-b25c-89c86185e665-IMG_6852.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "sulphur-crested cockatoo, kakatoe galerita, cacatua galerita",
-      "african grey, african gray, psittacus erithacus",
-      "macaw"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:14:56.485Z",
     "takenAt": "2025-06-21T08:36:20.000Z",
     "exif": {
@@ -1770,11 +1829,7 @@
     "src": "/photos/4d9f5d5a-28f4-41bf-9d97-f3e90e9c6f29-IMG_6867.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "macaw",
-      "african grey, african gray, psittacus erithacus",
-      "lorikeet"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:14:26.355Z",
     "takenAt": "2025-06-21T09:05:00.000Z",
     "exif": {
@@ -1801,11 +1856,7 @@
     "src": "/photos/88afb4b5-f838-47bf-a998-3164216ce84c-IMG_6928.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "valley, vale",
-      "volcano",
-      "cliff, drop, drop-off"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:14:23.649Z",
     "takenAt": "2025-06-23T11:27:30.000Z",
     "exif": {
@@ -1832,11 +1883,7 @@
     "src": "/photos/a36ee38c-177c-447e-b847-3bc439c94695-IMG_6966.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "dam, dike, dyke",
-      "suspension bridge",
-      "pier"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:13:53.049Z",
     "takenAt": "2025-06-25T10:53:14.000Z",
     "exif": {
@@ -1863,11 +1910,7 @@
     "src": "/photos/8e99c25e-e759-457a-bbd3-33b911c7a82c-IMG_9745.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "fountain",
-      "dome",
-      "palace"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:13:22.638Z",
     "takenAt": "2024-07-14T12:26:00.000Z",
     "exif": {
@@ -1895,11 +1938,7 @@
     "src": "/photos/f55d924e-8579-4a2f-b3c3-f868ee1be686-IMG_9824.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "lakeside, lakeshore",
-      "seashore, coast, seacoast, sea-coast",
-      "breakwater, groin, groyne, mole, bulwark, seawall, jetty"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:12:52.095Z",
     "takenAt": "2024-07-15T14:31:43.000Z",
     "exif": {
@@ -1927,11 +1966,7 @@
     "src": "/photos/ad7d6a7a-a34a-4b80-921c-bb39b4c42ade-IMG_9826.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "aircraft carrier, carrier, flattop, attack aircraft carrier",
-      "promontory, headland, head, foreland",
-      "seashore, coast, seacoast, sea-coast"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T12:12:49.774Z",
     "takenAt": "2024-07-15T14:37:41.000Z",
     "exif": {
@@ -1959,11 +1994,7 @@
     "src": "/photos/336c4090-2fe2-48ad-bf09-ea41eaf4e99e-IMG_0098.jpeg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "castle",
-      "palace",
-      "lakeside, lakeshore"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T11:00:25.352Z",
     "takenAt": "2026-01-13T11:00:25.352Z",
     "exif": {},
@@ -1978,11 +2009,7 @@
     "src": "/photos/41165da5-f155-4bbb-9798-98b8d30a079e-WhatsApp-Image-2026-01-13-at-2.46.39-PM.jpeg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "stage",
-      "spotlight, spot",
-      "loudspeaker, speaker, speaker unit, loudspeaker system, speaker system"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T11:00:25.274Z",
     "takenAt": "2026-01-13T11:00:25.274Z",
     "exif": {},
@@ -1997,11 +2024,7 @@
     "src": "/photos/eb332008-4126-4a81-bdbe-46bb9c05d6fa-IMG_0189.jpg",
     "width": 0,
     "height": 0,
-    "tags": [
-      "thatch, thatched roof",
-      "pole",
-      "totem pole"
-    ],
+    "tags": [],
     "uploadedAt": "2026-01-13T11:00:25.244Z",
     "takenAt": "2024-07-22T12:27:39.000Z",
     "exif": {
