@@ -144,6 +144,8 @@ export function PortfolioGrid({ initialPhotos }: PortfolioGridProps) {
                 return {
                     id: photo.id,
                     img: photo.cdnSrc || photo.src,
+                    alt: photo.displayTitle || photo.title,
+                    blurDataURL: photo.blurDataURL,
                     height: computedHeight,
                     url: "#",
                     meta,

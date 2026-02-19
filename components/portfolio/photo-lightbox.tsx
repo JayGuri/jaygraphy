@@ -4,6 +4,7 @@ import { Photo } from "@/types/photo";
 import { motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Camera, MapPin, Calendar, Share2, Download, Maximize2, Heart, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { buildGoogleMapsUrlFromGps, buildGoogleMapsUrlFromLocation, formatDMS } from "@/lib/location";
 import { useFavorites } from "@/components/favorites/use-favorites";
@@ -35,7 +36,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev, onPhotoUpdated }
             if (e.key === "ArrowRight" && onNext) onNext();
             if (e.key === "ArrowLeft" && onPrev) onPrev();
             if (e.key.toLowerCase() === "f") {
-                const el = document.querySelector("#lightbox-img") as HTMLElement | null;
+                const el = document.querySelector("#lightbox-wrapper") as HTMLElement | null;
                 if (el && el.requestFullscreen) {
                     el.requestFullscreen().catch(() => { });
                 }
@@ -105,15 +106,23 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev, onPhotoUpdated }
                     >
                         <Heart className="w-5 h-5" fill={fav ? "currentColor" : "none"} />
                     </button>
-                    <motion.img
-                        id="lightbox-img"
+                                        <motion.div
+                        id="lightbox-wrapper"
                         key={photo.id}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        src={imageSrc}
-                        alt={displayTitle}
-                        className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-                    />
+                        className="relative w-full h-full min-h-[300px]"
+                    >
+                        <Image
+                            src={imageSrc}
+                            alt={displayTitle}
+                            fill
+                            className="object-contain rounded-lg shadow-2xl"
+                            priority
+                            quality={90}
+                            sizes="(max-width: 1024px) 100vw, 70vw"
+                        />
+                    </motion.div>
                 </div>
 
                 {/* Info Sidebar */}
@@ -317,7 +326,7 @@ export function PhotoLightbox({ photo, onClose, onNext, onPrev, onPhotoUpdated }
                                 </button>
                                 <button
                                     onClick={() => {
-                                        const el = document.querySelector("#lightbox-img") as HTMLElement | null;
+                                        const el = document.querySelector("#lightbox-wrapper") as HTMLElement | null;
                                         if (el && el.requestFullscreen) el.requestFullscreen().catch(() => { });
                                     }}
                                     className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-sm transition-colors"

@@ -65,22 +65,36 @@ export async function POST(req: NextRequest) {
             await fs.mkdir(publicPath, { recursive: true });
         }
 
-        // Save file (converted or original)
-        await fs.writeFile(filePath, buffer);
+        // Compress image with sharp before saving (2400px max, 85 quality, progressive JPEG)
+        try {
+            const compressedBuffer = await sharp(buffer)
+                .resize(2400, 2400, { fit: "inside", withoutEnlargement: true })
+                .jpeg({ quality: 85, progressive: true, mozjpeg: true })
+                .toBuffer();
+            buffer = compressedBuffer;
+            if (!/.(jpg|jpeg)$/i.test(filename)) {
+                filename = filename.replace(/.[^.]+$/, ".jpg");
+            }
+        } catch (compressErr) {
+            console.warn("[Upload] Image compression failed, using original:", compressErr);
+        }
+        const compressedPath = path.join(publicPath, filename);
+        await fs.writeFile(compressedPath, buffer);
+        // Update newPhoto src if filename changed (e.g. png -> jpg)
 
         // Extract dimensions and generate blur placeholder with sharp
         let width = 0;
         let height = 0;
         let blurDataURL: string | undefined;
         try {
-            const metadata = await sharp(filePath).metadata();
+            const metadata = await sharp(compressedPath).metadata();
             width = metadata.width ?? 0;
             height = metadata.height ?? 0;
         } catch (e) {
             console.warn("Could not read image dimensions", e);
         }
         try {
-            const thumbBuffer = await sharp(filePath).resize(20).jpeg({ quality: 40 }).toBuffer();
+            const thumbBuffer = await sharp(compressedPath).resize(20).jpeg({ quality: 40 }).toBuffer();
             blurDataURL = `data:image/jpeg;base64,${thumbBuffer.toString("base64")}`;
         } catch (e) {
             console.warn("Could not generate blur placeholder", e);

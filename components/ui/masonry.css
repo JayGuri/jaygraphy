@@ -7,23 +7,29 @@
 
 .masonry-item {
   position: absolute;
-  will-change: transform, width, height, opacity;
   padding: 4px;
   cursor: pointer;
   top: 0;
   left: 0;
 }
 
+.masonry-item:hover { will-change: transform, width, height; }
+.masonry-item:not(:hover) { will-change: auto; }
+
 .masonry-item > .masonry-img {
   position: relative;
-  background-size: cover;
-  background-position: center center;
   width: 100%;
   height: 100%;
   border-radius: 16px;
   box-shadow: 0px 12px 60px -14px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.masonry-item:hover > .masonry-img {
+  transform: scale(1.02);
+  box-shadow: 0px 20px 80px -14px rgba(0, 0, 0, 0.6);
 }
 
 .masonry-item .color-overlay {
@@ -33,6 +39,8 @@
     radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.28), transparent 35%);
   opacity: 0;
   transition: opacity 0.35s ease;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .masonry-item:hover .color-overlay {
@@ -55,4 +63,5 @@
   gap: 10px;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 2;
 }
