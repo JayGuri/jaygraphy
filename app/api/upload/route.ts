@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { savePhoto } from "@/lib/photo-storage";
 import { Photo } from "@/types/photo";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import fs from "fs/promises";
 import sharp from "sharp";
 import exifr from "exifr";
-import { needsAutoTitle, generateAutoTitle, cleanPhotoTitle } from "@/lib/title";
+import {
+  needsAutoTitle,
+  generateAutoTitle,
+  cleanPhotoTitle,
+} from "@/lib/title";
 import { inferSeries } from "@/lib/series";
 import { withCdn } from "@/lib/cdn";
 
@@ -19,7 +22,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
         }
 
-        let buffer = Buffer.from(await file.arrayBuffer());
+        let buffer = Buffer.from(await file.arrayBuffer()) as Buffer;
         let filename = `${uuidv4()}-${file.name.replace(/\s+/g, "-")}`;
 
         // Extract EXIF from original buffer (HEIC or otherwise) before any conversion
@@ -55,16 +58,6 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        const publicPath = path.join(process.cwd(), "public", "photos");
-        const filePath = path.join(publicPath, filename);
-
-        // Ensure directory exists
-        try {
-            await fs.access(publicPath);
-        } catch {
-            await fs.mkdir(publicPath, { recursive: true });
-        }
-
         // Compress image with sharp before saving (2400px max, 85 quality, progressive JPEG)
         try {
             const compressedBuffer = await sharp(buffer)
@@ -79,23 +72,37 @@ export async function POST(req: NextRequest) {
         } catch (compressErr) {
             console.warn("[Upload] Image compression failed, using original:", compressErr);
         }
-        const compressedPath = path.join(publicPath, filename);
-        await fs.writeFile(compressedPath, buffer);
-        // Update newPhoto src if filename changed (e.g. png -> jpg)
+
+        // Upload to Supabase Storage instead of local disk
+        const { uploadImageToStorage, savePhoto } = await import(
+          "@/lib/supabase/photo-storage"
+        );
+
+        console.log("[Upload] Uploading to Supabase Storage...");
+        const storagePath = await uploadImageToStorage(buffer, filename);
+
+        if (!storagePath) {
+          return NextResponse.json(
+            { error: "Failed to upload image to storage" },
+            { status: 500 }
+          );
+        }
+
+        console.log("[Upload] Image uploaded to storage:", storagePath);
 
         // Extract dimensions and generate blur placeholder with sharp
         let width = 0;
         let height = 0;
         let blurDataURL: string | undefined;
         try {
-            const metadata = await sharp(compressedPath).metadata();
+            const metadata = await sharp(buffer).metadata();
             width = metadata.width ?? 0;
             height = metadata.height ?? 0;
         } catch (e) {
             console.warn("Could not read image dimensions", e);
         }
         try {
-            const thumbBuffer = await sharp(compressedPath).resize(20).jpeg({ quality: 40 }).toBuffer();
+            const thumbBuffer = await sharp(buffer).resize(20).jpeg({ quality: 40 }).toBuffer();
             blurDataURL = `data:image/jpeg;base64,${thumbBuffer.toString("base64")}`;
         } catch (e) {
             console.warn("Could not generate blur placeholder", e);
@@ -111,7 +118,8 @@ export async function POST(req: NextRequest) {
             title: file.name.split(".")[0],
             category: "street", // default; refined by classifier below
             location: "Unknown Location",
-            src: `/photos/${filename}`,
+            // Supabase storage path; src/cdnSrc come from toAppPhoto()
+            src: `/api/photo/${"TEMP"}`, // placeholder to satisfy type; real src via Supabase
             width,
             height,
             ...(blurDataURL && { blurDataURL }),
@@ -181,10 +189,13 @@ export async function POST(req: NextRequest) {
         }
 
         // AI classification pipeline (CLIP + Depth + EXIF)
+        const filePath = filename; // Placeholder path for AI pipeline
         try {
-            console.log('[Upload] Starting AI analysis pipeline...')
-            const { analyzePhoto } = await import('@/lib/ai/photo-intelligence')
-            const aiAnalysis = await analyzePhoto(filePath, newPhoto)
+            console.log("[Upload] Starting AI analysis pipeline...");
+            const { analyzePhoto } = await import(
+              "@/lib/ai/photo-intelligence"
+            );
+            const aiAnalysis = await analyzePhoto(filePath, newPhoto);
             newPhoto.category = aiAnalysis.category
             newPhoto.tags = aiAnalysis.tags
             newPhoto.metadata = aiAnalysis.metadata
@@ -224,16 +235,41 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        await savePhoto(newPhoto);
+        const saved = await savePhoto({
+          id: newPhoto.id,
+          title: newPhoto.title,
+          category: newPhoto.category,
+          series: newPhoto.series,
+          tags: newPhoto.tags,
+          storage_path: storagePath,
+          width: newPhoto.width,
+          height: newPhoto.height,
+          blur_data_url: newPhoto.blurDataURL,
+          location: newPhoto.location,
+          coordinates: newPhoto.coordinates,
+          dms: newPhoto.dms,
+          exif: newPhoto.exif,
+          metadata: newPhoto.metadata,
+          confidence: newPhoto.confidence,
+          description: newPhoto.description,
+          behind_the_shot: newPhoto.behindTheShot,
+          exif_toggle_hidden: newPhoto.exifToggleHidden ?? false,
+          uploaded_at: newPhoto.uploadedAt,
+          taken_at: newPhoto.takenAt,
+        });
 
         // Send enriched payload back to client
         const series = inferSeries(newPhoto);
         return NextResponse.json({
             success: true,
             photo: {
-                ...newPhoto,
-                series,
-                cdnSrc: withCdn(newPhoto.src),
+              ...newPhoto,
+              series,
+              // src/cdnSrc for clients come from Supabase mapping
+              src: `/api/photo/${newPhoto.id}`,
+              cdnSrc: saved
+                ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/photos/${saved.storage_path}`
+                : undefined,
             },
         });
     } catch (error) {

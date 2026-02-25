@@ -43,3 +43,6 @@ next-env.d.ts
 # data
 data/messages.json
 
+# env files
+.env.local
+.env

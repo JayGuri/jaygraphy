@@ -35,7 +35,7 @@ export function MapView({ photos }: MapViewProps) {
     import("globe.gl").then(({ default: Globe }) => {
       if (!alive || !containerRef.current) return;
       const el = containerRef.current;
-      const globe = Globe()(el)
+      const globe = (Globe as any)()(el)
         .width(el.clientWidth)
         .height(el.clientHeight)
         .backgroundColor("rgba(0,0,0,0)")

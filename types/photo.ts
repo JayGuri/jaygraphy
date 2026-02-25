@@ -1,3 +1,5 @@
+export type { SupabasePhoto, toAppPhoto } from "@/lib/supabase/types";
+
 export interface Photo {
     id: string;
     title: string;

@@ -1,5 +1,5 @@
 import { PortfolioGrid } from "@/components/portfolio/portfolio-grid";
-import { getAllPhotos } from "@/lib/photo-storage";
+import { getAllPhotos } from "@/lib/supabase/photo-storage";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 
 export const dynamic = 'force-dynamic';

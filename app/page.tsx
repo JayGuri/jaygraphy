@@ -2,7 +2,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import { FeaturedStories } from "@/components/home/featured-stories";
 import { LocationPins } from "@/components/home/location-pins";
 import { AnimatedBackground } from "@/components/ui/animated-background";
-import { getAllPhotos } from "@/lib/photo-storage";
+import { getAllPhotos } from "@/lib/supabase/photo-storage";
 import { TripTimeline } from "@/components/home/trip-timeline";
 import { MagicBento } from "@/components/ui/magic-bento";
 import { RecentlyAdded } from "@/components/home/recently-added";

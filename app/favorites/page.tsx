@@ -1,4 +1,4 @@
-import { getAllPhotos } from "@/lib/photo-storage";
+import { getAllPhotos } from "@/lib/supabase/photo-storage";
 import { Navbar } from "@/components/layout/navbar";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { FavoritesGrid } from "@/components/favorites/favorites-grid";
