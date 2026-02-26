@@ -6,7 +6,6 @@ import "@/components/ui/masonry.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { NavigationProgress } from "@/components/ui/navigation-progress";
-import { SessionLoader } from "@/components/ui/session-loader";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +37,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NavigationProgress />
-          <SessionLoader />
           <Navbar />
           <main className="pt-16 min-h-screen bg-background text-foreground transition-colors duration-300">
             {children}
