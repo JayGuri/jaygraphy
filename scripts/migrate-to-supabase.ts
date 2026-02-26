@@ -7,12 +7,14 @@ import { createClient } from "@supabase/supabase-js";
 import type { SupabasePhoto } from "../lib/supabase/types";
 
 // Create our own Supabase admin client for the migration script
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !serviceRoleKey) {
   throw new Error("Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in .env.local");
 }
+
+console.log("Supabase URL:", JSON.stringify(supabaseUrl)); 
 
 const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey, {
   auth: {
@@ -20,6 +22,17 @@ const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey, {
     persistSession: false,
   },
 });
+
+(async () => {
+  const { error } = await supabaseAdmin.from("photos").select("id").limit(1);
+  if (error) {
+    console.error("Test DB query failed:", error);
+    process.exit(1);
+  } else {
+    console.log("Test DB query OK");
+  }
+})();
+
 async function migrate() {
   console.log("🚀 Starting migration to Supabase...\n");
 
