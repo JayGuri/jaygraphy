@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { supabase } from "./client";
 import { supabaseAdmin } from "./server";
 import type { SupabasePhoto } from "./types";
@@ -7,7 +8,7 @@ import { inferSeries } from "@/lib/series";
 import { cleanPhotoTitle } from "@/lib/title";
 
 // Get all photos (replaces old getAllPhotos from lib/photo-storage.ts)
-export async function getAllPhotos(): Promise<Photo[]> {
+export const getAllPhotos = cache(async (): Promise<Photo[]> => {
   console.log("[Supabase] Fetching all photos...");
 
   const { data, error } = await supabase
@@ -26,17 +27,15 @@ export async function getAllPhotos(): Promise<Photo[]> {
   return (data as SupabasePhoto[]).map((photo) => {
     const appPhoto = toAppPhoto(photo);
 
-    // Enrich with inferred series if not set
     if (!appPhoto.series) {
       appPhoto.series = inferSeries(appPhoto);
     }
 
-    // Clean display title
     appPhoto.displayTitle = cleanPhotoTitle(appPhoto.title);
 
     return appPhoto;
   });
-}
+});
 
 // Get single photo by ID
 export async function getPhotoById(id: string): Promise<Photo | null> {

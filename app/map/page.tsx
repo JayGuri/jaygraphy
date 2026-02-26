@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { MapView } from "@/components/map/map-view";
+import { CesiumMap } from "@/components/map/cesium-map";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,7 @@ export default async function MapPage() {
   const photosRaw = await getAllPhotos();
   const photos = photosRaw.map(toCoordinates);
   const hasCoords = photos.some((p) => p.coordinates);
+  const useCesium = !!process.env.NEXT_PUBLIC_CESIUM_ION_TOKEN;
 
   return (
     <div className="min-h-screen pb-16 bg-background text-foreground">
@@ -36,15 +38,19 @@ export default async function MapPage() {
         </div>
 
         {hasCoords ? (
-          <ErrorBoundary
-            fallback={
-              <div className="flex items-center justify-center h-96 text-muted-foreground">
-                <p>Could not load the 3D map. Please refresh the page.</p>
-              </div>
-            }
-          >
-            <MapView photos={photos} />
-          </ErrorBoundary>
+          useCesium ? (
+            <CesiumMap photos={photos} />
+          ) : (
+            <ErrorBoundary
+              fallback={
+                <div className="flex items-center justify-center h-96 text-muted-foreground">
+                  <p>Could not load the 3D map. Please refresh the page.</p>
+                </div>
+              }
+            >
+              <MapView photos={photos} />
+            </ErrorBoundary>
+          )
         ) : (
           <p className="text-muted-foreground">No GPS data found for your photos yet.</p>
         )}
